@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7E372960-4BD4-4CAC-9564-0D35B46C9C71}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProyectoECU</RootNamespace>
+    <AssemblyName>ProyectoECU</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v16.1.Core, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraEditors.v16.1, Version=16.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="MetroFramework">
+      <HintPath>..\..\..\..\..\Downloads\Compressed\METRO DLL_2\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design">
+      <HintPath>..\..\..\..\..\Downloads\Compressed\METRO DLL_2\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts">
+      <HintPath>..\..\..\..\..\Downloads\Compressed\METRO DLL_2\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ECU_ConexionDB\ECU_ConexionPostgres.cs" />
+    <Compile Include="ECU_Ayuda\ECU_Ayuda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_Ayuda\ECU_Ayuda.Designer.cs">
+      <DependentUpon>ECU_Ayuda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECU_GestionCurso\ECU_GestionCurso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_GestionCurso\ECU_GestionCurso.Designer.cs">
+      <DependentUpon>ECU_GestionCurso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECU_GestionEstudiante\ECU_GestionEstudiante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_GestionEstudiante\ECU_GestionEstudiante.Designer.cs">
+      <DependentUpon>ECU_GestionEstudiante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECU_GestionInstructor\ECU_GestionInstructor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_GestionInstructor\ECU_GestionInstructor.Designer.cs">
+      <DependentUpon>ECU_GestionInstructor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECU_GestionMatricula\ECU_GestionMatricula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_GestionMatricula\ECU_GestionMatricula.Designer.cs">
+      <DependentUpon>ECU_GestionMatricula.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECU_GestionPago\ECU_GestionPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_GestionPago\ECU_GestionPago.Designer.cs">
+      <DependentUpon>ECU_GestionPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECU_GestionUsuario\ECU_GestionUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_GestionUsuario\ECU_GestionUsuario.Designer.cs">
+      <DependentUpon>ECU_GestionUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECU_Login\ECU_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_Login\ECU_Login.Designer.cs">
+      <DependentUpon>ECU_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ECU_Principal\ECU_Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_Principal\ECU_Principal.Designer.cs">
+      <DependentUpon>ECU_Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ECU_Ayuda\ECU_Ayuda.resx">
+      <DependentUpon>ECU_Ayuda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECU_GestionCurso\ECU_GestionCurso.resx">
+      <DependentUpon>ECU_GestionCurso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECU_GestionEstudiante\ECU_GestionEstudiante.resx">
+      <DependentUpon>ECU_GestionEstudiante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECU_GestionInstructor\ECU_GestionInstructor.resx">
+      <DependentUpon>ECU_GestionInstructor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECU_GestionMatricula\ECU_GestionMatricula.resx">
+      <DependentUpon>ECU_GestionMatricula.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECU_GestionPago\ECU_GestionPago.resx">
+      <DependentUpon>ECU_GestionPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECU_GestionUsuario\ECU_GestionUsuario.resx">
+      <DependentUpon>ECU_GestionUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECU_Login\ECU_Login.resx">
+      <DependentUpon>ECU_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ECU_Principal\ECU_Principal.resx">
+      <DependentUpon>ECU_Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagenuSUARIO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ImagenuSUARIOS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\IconoUsuarioX.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
