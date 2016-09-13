@@ -28,13 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
             this.SuspendLayout();
+            // 
+            // pdfViewer1
+            // 
+            this.pdfViewer1.Location = new System.Drawing.Point(458, 134);
+            this.pdfViewer1.Name = "pdfViewer1";
+            this.pdfViewer1.Size = new System.Drawing.Size(8, 8);
+            this.pdfViewer1.TabIndex = 0;
             // 
             // ECU_Ayuda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 382);
+            this.Controls.Add(this.pdfViewer1);
             this.Name = "ECU_Ayuda";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ayuda";
@@ -43,5 +53,7 @@
         }
 
         #endregion
+
+        private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
     }
 }

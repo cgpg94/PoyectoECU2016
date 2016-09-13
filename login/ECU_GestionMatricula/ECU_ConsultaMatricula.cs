@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ProyectoECU
+namespace ProyectoECU.Interfaces
 {
-    public partial class ECU_GestionMatricula : Form
+    public partial class ECU_ConsultaMatricula : Form
     {
-        public ECU_GestionMatricula()
+        public ECU_ConsultaMatricula()
         {
             InitializeComponent();
-        }
-
-        private void metroTile1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

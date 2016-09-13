@@ -16,5 +16,10 @@ namespace ProyectoECU.Interfaces
         {
             InitializeComponent();
         }
+
+        private void btn_Buscar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
