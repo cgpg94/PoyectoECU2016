@@ -51,13 +51,14 @@
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_Buscar = new System.Windows.Forms.PictureBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
-            this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
+            this.datePFecha = new MetroFramework.Controls.MetroDateTime();
+            this.txtApellido = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
+            this.txt_nombre = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.txt_Cedula = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
@@ -66,6 +67,7 @@
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -200,6 +202,7 @@
             // 
             // metroTextBox5
             // 
+            this.metroTextBox5.Enabled = false;
             this.metroTextBox5.Lines = new string[0];
             this.metroTextBox5.Location = new System.Drawing.Point(442, 69);
             this.metroTextBox5.MaxLength = 32767;
@@ -213,6 +216,7 @@
             // 
             // metroTextBox4
             // 
+            this.metroTextBox4.Enabled = false;
             this.metroTextBox4.Lines = new string[0];
             this.metroTextBox4.Location = new System.Drawing.Point(442, 32);
             this.metroTextBox4.MaxLength = 32767;
@@ -244,6 +248,7 @@
             // 
             // metroComboBox2
             // 
+            this.metroComboBox2.Enabled = false;
             this.metroComboBox2.FormattingEnabled = true;
             this.metroComboBox2.ItemHeight = 23;
             this.metroComboBox2.Location = new System.Drawing.Point(138, 63);
@@ -254,6 +259,7 @@
             // 
             // metroComboBox1
             // 
+            this.metroComboBox1.Enabled = false;
             this.metroComboBox1.FormattingEnabled = true;
             this.metroComboBox1.ItemHeight = 23;
             this.metroComboBox1.Location = new System.Drawing.Point(138, 26);
@@ -282,13 +288,14 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btn_Buscar);
             this.groupBox1.Controls.Add(this.metroLabel5);
-            this.groupBox1.Controls.Add(this.metroDateTime1);
-            this.groupBox1.Controls.Add(this.metroTextBox3);
+            this.groupBox1.Controls.Add(this.datePFecha);
+            this.groupBox1.Controls.Add(this.txtApellido);
             this.groupBox1.Controls.Add(this.metroLabel4);
-            this.groupBox1.Controls.Add(this.metroTextBox2);
+            this.groupBox1.Controls.Add(this.txt_nombre);
             this.groupBox1.Controls.Add(this.metroLabel3);
-            this.groupBox1.Controls.Add(this.metroTextBox1);
+            this.groupBox1.Controls.Add(this.txt_Cedula);
             this.groupBox1.Controls.Add(this.metroLabel2);
             this.groupBox1.Location = new System.Drawing.Point(23, 98);
             this.groupBox1.Name = "groupBox1";
@@ -296,6 +303,17 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información del estudiante";
+            // 
+            // btn_Buscar
+            // 
+            this.btn_Buscar.Image = global::ProyectoECU.Properties.Resources._1473809674_Play01;
+            this.btn_Buscar.Location = new System.Drawing.Point(179, 32);
+            this.btn_Buscar.Name = "btn_Buscar";
+            this.btn_Buscar.Size = new System.Drawing.Size(25, 23);
+            this.btn_Buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_Buscar.TabIndex = 8;
+            this.btn_Buscar.TabStop = false;
+            this.btn_Buscar.Click += new System.EventHandler(this.btn_Buscar_Click);
             // 
             // metroLabel5
             // 
@@ -306,26 +324,28 @@
             this.metroLabel5.TabIndex = 7;
             this.metroLabel5.Text = "Fecha de Matriculación";
             // 
-            // metroDateTime1
+            // datePFecha
             // 
-            this.metroDateTime1.Location = new System.Drawing.Point(405, 32);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(185, 29);
-            this.metroDateTime1.TabIndex = 6;
+            this.datePFecha.Enabled = false;
+            this.datePFecha.Location = new System.Drawing.Point(405, 32);
+            this.datePFecha.MinimumSize = new System.Drawing.Size(0, 29);
+            this.datePFecha.Name = "datePFecha";
+            this.datePFecha.Size = new System.Drawing.Size(185, 29);
+            this.datePFecha.TabIndex = 6;
             // 
-            // metroTextBox3
+            // txtApellido
             // 
-            this.metroTextBox3.Lines = new string[0];
-            this.metroTextBox3.Location = new System.Drawing.Point(97, 107);
-            this.metroTextBox3.MaxLength = 32767;
-            this.metroTextBox3.Name = "metroTextBox3";
-            this.metroTextBox3.PasswordChar = '\0';
-            this.metroTextBox3.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox3.SelectedText = "";
-            this.metroTextBox3.Size = new System.Drawing.Size(143, 23);
-            this.metroTextBox3.TabIndex = 5;
-            this.metroTextBox3.UseSelectable = true;
+            this.txtApellido.Enabled = false;
+            this.txtApellido.Lines = new string[0];
+            this.txtApellido.Location = new System.Drawing.Point(97, 107);
+            this.txtApellido.MaxLength = 32767;
+            this.txtApellido.Name = "txtApellido";
+            this.txtApellido.PasswordChar = '\0';
+            this.txtApellido.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txtApellido.SelectedText = "";
+            this.txtApellido.Size = new System.Drawing.Size(143, 23);
+            this.txtApellido.TabIndex = 5;
+            this.txtApellido.UseSelectable = true;
             // 
             // metroLabel4
             // 
@@ -336,18 +356,19 @@
             this.metroLabel4.TabIndex = 4;
             this.metroLabel4.Text = "Apellido";
             // 
-            // metroTextBox2
+            // txt_nombre
             // 
-            this.metroTextBox2.Lines = new string[0];
-            this.metroTextBox2.Location = new System.Drawing.Point(97, 69);
-            this.metroTextBox2.MaxLength = 32767;
-            this.metroTextBox2.Name = "metroTextBox2";
-            this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox2.SelectedText = "";
-            this.metroTextBox2.Size = new System.Drawing.Size(143, 23);
-            this.metroTextBox2.TabIndex = 3;
-            this.metroTextBox2.UseSelectable = true;
+            this.txt_nombre.Enabled = false;
+            this.txt_nombre.Lines = new string[0];
+            this.txt_nombre.Location = new System.Drawing.Point(97, 69);
+            this.txt_nombre.MaxLength = 32767;
+            this.txt_nombre.Name = "txt_nombre";
+            this.txt_nombre.PasswordChar = '\0';
+            this.txt_nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_nombre.SelectedText = "";
+            this.txt_nombre.Size = new System.Drawing.Size(143, 23);
+            this.txt_nombre.TabIndex = 3;
+            this.txt_nombre.UseSelectable = true;
             // 
             // metroLabel3
             // 
@@ -358,18 +379,18 @@
             this.metroLabel3.TabIndex = 2;
             this.metroLabel3.Text = "Nombre";
             // 
-            // metroTextBox1
+            // txt_Cedula
             // 
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(97, 32);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.Size = new System.Drawing.Size(75, 23);
-            this.metroTextBox1.TabIndex = 1;
-            this.metroTextBox1.UseSelectable = true;
+            this.txt_Cedula.Lines = new string[0];
+            this.txt_Cedula.Location = new System.Drawing.Point(97, 32);
+            this.txt_Cedula.MaxLength = 32767;
+            this.txt_Cedula.Name = "txt_Cedula";
+            this.txt_Cedula.PasswordChar = '\0';
+            this.txt_Cedula.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_Cedula.SelectedText = "";
+            this.txt_Cedula.Size = new System.Drawing.Size(75, 23);
+            this.txt_Cedula.TabIndex = 1;
+            this.txt_Cedula.UseSelectable = true;
             // 
             // metroLabel2
             // 
@@ -400,7 +421,6 @@
             this.metroTile1.Size = new System.Drawing.Size(10, 147);
             this.metroTile1.TabIndex = 41;
             this.metroTile1.UseSelectable = true;
-            this.metroTile1.Click += new System.EventHandler(this.metroTile1_Click);
             // 
             // metroTile2
             // 
@@ -435,6 +455,7 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -466,15 +487,16 @@
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private System.Windows.Forms.GroupBox groupBox1;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
-        private MetroFramework.Controls.MetroTextBox metroTextBox3;
+        private MetroFramework.Controls.MetroDateTime datePFecha;
+        private MetroFramework.Controls.MetroTextBox txtApellido;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroTextBox metroTextBox2;
+        private MetroFramework.Controls.MetroTextBox txt_nombre;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox txt_Cedula;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile metroTile2;
+        private System.Windows.Forms.PictureBox btn_Buscar;
     }
 }

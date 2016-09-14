@@ -37,34 +37,34 @@
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.btn_guardar = new System.Windows.Forms.ToolStripButton();
+            this.btn_buscarBarra = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.btn_Eliminar = new System.Windows.Forms.ToolStripButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
-            this.metroTextBox5 = new MetroFramework.Controls.MetroTextBox();
-            this.metroTextBox4 = new MetroFramework.Controls.MetroTextBox();
-            this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
-            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
+            this.btnBuscar = new System.Windows.Forms.PictureBox();
+            this.datetime_fecha_fin = new MetroFramework.Controls.MetroDateTime();
+            this.datetime_fecha_inic = new MetroFramework.Controls.MetroDateTime();
+            this.txt_costo = new MetroFramework.Controls.MetroTextBox();
+            this.txt_Duracion_curso = new MetroFramework.Controls.MetroTextBox();
+            this.txt_descrp_curso = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.txt_codCur = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
+            this.comb_tipHor = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.comb_tipLic = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.metroPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -96,6 +96,7 @@
             this.guardarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.G)));
             this.guardarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.guardarToolStripMenuItem.Text = "Guardar";
+            this.guardarToolStripMenuItem.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // nuevoToolStripMenuItem
             // 
@@ -110,6 +111,7 @@
             this.buscarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.buscarToolStripMenuItem.Text = "Buscar";
+            this.buscarToolStripMenuItem.Click += new System.EventHandler(this.btn_buscarBarra_Click);
             // 
             // eliminarToolStripMenuItem
             // 
@@ -117,6 +119,7 @@
             this.eliminarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
             // consultarToolStripMenuItem
             // 
@@ -134,10 +137,10 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton3,
+            this.btn_guardar,
+            this.btn_buscarBarra,
             this.toolStripButton2,
-            this.toolStripButton4});
+            this.btn_Eliminar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -145,24 +148,25 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripButton1
+            // btn_guardar
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::ProyectoECU.Properties.Resources.save;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.btn_guardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_guardar.Image = global::ProyectoECU.Properties.Resources.save;
+            this.btn_guardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_guardar.Name = "btn_guardar";
+            this.btn_guardar.Size = new System.Drawing.Size(23, 22);
+            this.btn_guardar.Text = "toolStripButton1";
+            this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
-            // toolStripButton3
+            // btn_buscarBarra
             // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::ProyectoECU.Properties.Resources.search;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "toolStripButton3";
+            this.btn_buscarBarra.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_buscarBarra.Image = global::ProyectoECU.Properties.Resources.search;
+            this.btn_buscarBarra.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_buscarBarra.Name = "btn_buscarBarra";
+            this.btn_buscarBarra.Size = new System.Drawing.Size(23, 22);
+            this.btn_buscarBarra.Text = "toolStripButton3";
+            this.btn_buscarBarra.Click += new System.EventHandler(this.btn_buscarBarra_Click);
             // 
             // toolStripButton2
             // 
@@ -172,15 +176,17 @@
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton2.Text = "toolStripButton2";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // toolStripButton4
+            // btn_Eliminar
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::ProyectoECU.Properties.Resources.cancel;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.btn_Eliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_Eliminar.Image = global::ProyectoECU.Properties.Resources.cancel;
+            this.btn_Eliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_Eliminar.Name = "btn_Eliminar";
+            this.btn_Eliminar.Size = new System.Drawing.Size(23, 22);
+            this.btn_Eliminar.Text = "toolStripButton4";
+            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
             // metroLabel1
             // 
@@ -197,23 +203,22 @@
             // metroPanel1
             // 
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.metroPanel1.Controls.Add(this.metroDateTime2);
-            this.metroPanel1.Controls.Add(this.metroDateTime1);
-            this.metroPanel1.Controls.Add(this.metroTextBox5);
-            this.metroPanel1.Controls.Add(this.metroTextBox4);
-            this.metroPanel1.Controls.Add(this.metroTextBox3);
-            this.metroPanel1.Controls.Add(this.metroTextBox2);
+            this.metroPanel1.Controls.Add(this.btnBuscar);
+            this.metroPanel1.Controls.Add(this.datetime_fecha_fin);
+            this.metroPanel1.Controls.Add(this.datetime_fecha_inic);
+            this.metroPanel1.Controls.Add(this.txt_costo);
+            this.metroPanel1.Controls.Add(this.txt_Duracion_curso);
+            this.metroPanel1.Controls.Add(this.txt_descrp_curso);
             this.metroPanel1.Controls.Add(this.metroLabel10);
-            this.metroPanel1.Controls.Add(this.metroLabel9);
             this.metroPanel1.Controls.Add(this.metroLabel8);
             this.metroPanel1.Controls.Add(this.metroLabel7);
             this.metroPanel1.Controls.Add(this.metroLabel6);
             this.metroPanel1.Controls.Add(this.metroLabel5);
-            this.metroPanel1.Controls.Add(this.metroTextBox1);
+            this.metroPanel1.Controls.Add(this.txt_codCur);
             this.metroPanel1.Controls.Add(this.metroLabel4);
-            this.metroPanel1.Controls.Add(this.metroComboBox2);
+            this.metroPanel1.Controls.Add(this.comb_tipHor);
             this.metroPanel1.Controls.Add(this.metroLabel3);
-            this.metroPanel1.Controls.Add(this.metroComboBox1);
+            this.metroPanel1.Controls.Add(this.comb_tipLic);
             this.metroPanel1.Controls.Add(this.metroLabel2);
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
@@ -226,82 +231,85 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // metroDateTime2
+            // btnBuscar
             // 
-            this.metroDateTime2.CustomFormat = "";
-            this.metroDateTime2.Location = new System.Drawing.Point(398, 97);
-            this.metroDateTime2.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
-            this.metroDateTime2.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
-            this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime2.Name = "metroDateTime2";
-            this.metroDateTime2.Size = new System.Drawing.Size(200, 29);
-            this.metroDateTime2.TabIndex = 39;
-            this.metroDateTime2.Value = new System.DateTime(2016, 9, 12, 14, 56, 0, 0);
+            this.btnBuscar.Image = global::ProyectoECU.Properties.Resources._1473809674_Play01;
+            this.btnBuscar.Location = new System.Drawing.Point(228, 13);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(24, 23);
+            this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnBuscar.TabIndex = 40;
+            this.btnBuscar.TabStop = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
-            // metroDateTime1
+            // datetime_fecha_fin
             // 
-            this.metroDateTime1.CustomFormat = "";
-            this.metroDateTime1.Location = new System.Drawing.Point(398, 61);
-            this.metroDateTime1.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
-            this.metroDateTime1.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
-            this.metroDateTime1.TabIndex = 38;
-            this.metroDateTime1.Value = new System.DateTime(2016, 9, 12, 14, 56, 0, 0);
+            this.datetime_fecha_fin.CustomFormat = "";
+            this.datetime_fecha_fin.Enabled = false;
+            this.datetime_fecha_fin.Location = new System.Drawing.Point(398, 97);
+            this.datetime_fecha_fin.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
+            this.datetime_fecha_fin.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
+            this.datetime_fecha_fin.MinimumSize = new System.Drawing.Size(0, 29);
+            this.datetime_fecha_fin.Name = "datetime_fecha_fin";
+            this.datetime_fecha_fin.Size = new System.Drawing.Size(200, 29);
+            this.datetime_fecha_fin.TabIndex = 39;
+            this.datetime_fecha_fin.Value = new System.DateTime(2016, 9, 12, 14, 56, 0, 0);
             // 
-            // metroTextBox5
+            // datetime_fecha_inic
             // 
-            this.metroTextBox5.Lines = new string[0];
-            this.metroTextBox5.Location = new System.Drawing.Point(440, 225);
-            this.metroTextBox5.MaxLength = 32767;
-            this.metroTextBox5.Name = "metroTextBox5";
-            this.metroTextBox5.PasswordChar = '\0';
-            this.metroTextBox5.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox5.SelectedText = "";
-            this.metroTextBox5.Size = new System.Drawing.Size(76, 23);
-            this.metroTextBox5.TabIndex = 37;
-            this.metroTextBox5.UseSelectable = true;
+            this.datetime_fecha_inic.CustomFormat = "";
+            this.datetime_fecha_inic.Enabled = false;
+            this.datetime_fecha_inic.Location = new System.Drawing.Point(398, 61);
+            this.datetime_fecha_inic.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
+            this.datetime_fecha_inic.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
+            this.datetime_fecha_inic.MinimumSize = new System.Drawing.Size(0, 29);
+            this.datetime_fecha_inic.Name = "datetime_fecha_inic";
+            this.datetime_fecha_inic.Size = new System.Drawing.Size(200, 29);
+            this.datetime_fecha_inic.TabIndex = 38;
+            this.datetime_fecha_inic.Value = new System.DateTime(2016, 9, 14, 12, 4, 14, 0);
             // 
-            // metroTextBox4
+            // txt_costo
             // 
-            this.metroTextBox4.Lines = new string[0];
-            this.metroTextBox4.Location = new System.Drawing.Point(440, 186);
-            this.metroTextBox4.MaxLength = 32767;
-            this.metroTextBox4.Name = "metroTextBox4";
-            this.metroTextBox4.PasswordChar = '\0';
-            this.metroTextBox4.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox4.SelectedText = "";
-            this.metroTextBox4.Size = new System.Drawing.Size(158, 23);
-            this.metroTextBox4.TabIndex = 36;
-            this.metroTextBox4.UseSelectable = true;
+            this.txt_costo.Enabled = false;
+            this.txt_costo.Lines = new string[0];
+            this.txt_costo.Location = new System.Drawing.Point(440, 225);
+            this.txt_costo.MaxLength = 32767;
+            this.txt_costo.Name = "txt_costo";
+            this.txt_costo.PasswordChar = '\0';
+            this.txt_costo.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_costo.SelectedText = "";
+            this.txt_costo.Size = new System.Drawing.Size(76, 23);
+            this.txt_costo.TabIndex = 37;
+            this.txt_costo.UseSelectable = true;
             // 
-            // metroTextBox3
+            // txt_Duracion_curso
             // 
-            this.metroTextBox3.Lines = new string[0];
-            this.metroTextBox3.Location = new System.Drawing.Point(440, 147);
-            this.metroTextBox3.MaxLength = 32767;
-            this.metroTextBox3.Name = "metroTextBox3";
-            this.metroTextBox3.PasswordChar = '\0';
-            this.metroTextBox3.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox3.SelectedText = "";
-            this.metroTextBox3.Size = new System.Drawing.Size(65, 23);
-            this.metroTextBox3.TabIndex = 35;
-            this.metroTextBox3.UseSelectable = true;
+            this.txt_Duracion_curso.Enabled = false;
+            this.txt_Duracion_curso.Lines = new string[0];
+            this.txt_Duracion_curso.Location = new System.Drawing.Point(440, 181);
+            this.txt_Duracion_curso.MaxLength = 32767;
+            this.txt_Duracion_curso.Name = "txt_Duracion_curso";
+            this.txt_Duracion_curso.PasswordChar = '\0';
+            this.txt_Duracion_curso.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_Duracion_curso.SelectedText = "";
+            this.txt_Duracion_curso.Size = new System.Drawing.Size(76, 23);
+            this.txt_Duracion_curso.TabIndex = 35;
+            this.txt_Duracion_curso.UseSelectable = true;
             // 
-            // metroTextBox2
+            // txt_descrp_curso
             // 
-            this.metroTextBox2.Lines = new string[0];
-            this.metroTextBox2.Location = new System.Drawing.Point(43, 181);
-            this.metroTextBox2.MaxLength = 32767;
-            this.metroTextBox2.Multiline = true;
-            this.metroTextBox2.Name = "metroTextBox2";
-            this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox2.SelectedText = "";
-            this.metroTextBox2.Size = new System.Drawing.Size(235, 67);
-            this.metroTextBox2.TabIndex = 34;
-            this.metroTextBox2.UseSelectable = true;
+            this.txt_descrp_curso.Enabled = false;
+            this.txt_descrp_curso.Lines = new string[0];
+            this.txt_descrp_curso.Location = new System.Drawing.Point(43, 181);
+            this.txt_descrp_curso.MaxLength = 32767;
+            this.txt_descrp_curso.Multiline = true;
+            this.txt_descrp_curso.Name = "txt_descrp_curso";
+            this.txt_descrp_curso.PasswordChar = '\0';
+            this.txt_descrp_curso.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_descrp_curso.SelectedText = "";
+            this.txt_descrp_curso.Size = new System.Drawing.Size(235, 67);
+            this.txt_descrp_curso.TabIndex = 34;
+            this.txt_descrp_curso.UseSelectable = true;
             // 
             // metroLabel10
             // 
@@ -311,15 +319,6 @@
             this.metroLabel10.Size = new System.Drawing.Size(136, 19);
             this.metroLabel10.TabIndex = 33;
             this.metroLabel10.Text = "Descripción del Curso";
-            // 
-            // metroLabel9
-            // 
-            this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(313, 190);
-            this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(63, 19);
-            this.metroLabel9.TabIndex = 32;
-            this.metroLabel9.Text = "Instructor";
             // 
             // metroLabel8
             // 
@@ -333,7 +332,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(313, 151);
+            this.metroLabel7.Location = new System.Drawing.Point(313, 185);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(121, 19);
             this.metroLabel7.TabIndex = 30;
@@ -357,18 +356,18 @@
             this.metroLabel5.TabIndex = 28;
             this.metroLabel5.Text = "Fecha Inicial";
             // 
-            // metroTextBox1
+            // txt_codCur
             // 
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(146, 13);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.Size = new System.Drawing.Size(76, 23);
-            this.metroTextBox1.TabIndex = 27;
-            this.metroTextBox1.UseSelectable = true;
+            this.txt_codCur.Lines = new string[0];
+            this.txt_codCur.Location = new System.Drawing.Point(146, 13);
+            this.txt_codCur.MaxLength = 32767;
+            this.txt_codCur.Name = "txt_codCur";
+            this.txt_codCur.PasswordChar = '\0';
+            this.txt_codCur.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_codCur.SelectedText = "";
+            this.txt_codCur.Size = new System.Drawing.Size(76, 23);
+            this.txt_codCur.TabIndex = 27;
+            this.txt_codCur.UseSelectable = true;
             // 
             // metroLabel4
             // 
@@ -379,15 +378,16 @@
             this.metroLabel4.TabIndex = 26;
             this.metroLabel4.Text = "Código de Curso";
             // 
-            // metroComboBox2
+            // comb_tipHor
             // 
-            this.metroComboBox2.FormattingEnabled = true;
-            this.metroComboBox2.ItemHeight = 23;
-            this.metroComboBox2.Location = new System.Drawing.Point(146, 97);
-            this.metroComboBox2.Name = "metroComboBox2";
-            this.metroComboBox2.Size = new System.Drawing.Size(132, 29);
-            this.metroComboBox2.TabIndex = 25;
-            this.metroComboBox2.UseSelectable = true;
+            this.comb_tipHor.Enabled = false;
+            this.comb_tipHor.FormattingEnabled = true;
+            this.comb_tipHor.ItemHeight = 23;
+            this.comb_tipHor.Location = new System.Drawing.Point(146, 97);
+            this.comb_tipHor.Name = "comb_tipHor";
+            this.comb_tipHor.Size = new System.Drawing.Size(132, 29);
+            this.comb_tipHor.TabIndex = 25;
+            this.comb_tipHor.UseSelectable = true;
             // 
             // metroLabel3
             // 
@@ -398,15 +398,16 @@
             this.metroLabel3.TabIndex = 24;
             this.metroLabel3.Text = "Tipo de Horario";
             // 
-            // metroComboBox1
+            // comb_tipLic
             // 
-            this.metroComboBox1.FormattingEnabled = true;
-            this.metroComboBox1.ItemHeight = 23;
-            this.metroComboBox1.Location = new System.Drawing.Point(146, 61);
-            this.metroComboBox1.Name = "metroComboBox1";
-            this.metroComboBox1.Size = new System.Drawing.Size(65, 29);
-            this.metroComboBox1.TabIndex = 23;
-            this.metroComboBox1.UseSelectable = true;
+            this.comb_tipLic.Enabled = false;
+            this.comb_tipLic.FormattingEnabled = true;
+            this.comb_tipLic.ItemHeight = 23;
+            this.comb_tipLic.Location = new System.Drawing.Point(146, 61);
+            this.comb_tipLic.Name = "comb_tipLic";
+            this.comb_tipLic.Size = new System.Drawing.Size(132, 29);
+            this.comb_tipLic.TabIndex = 23;
+            this.comb_tipLic.UseSelectable = true;
             // 
             // metroLabel2
             // 
@@ -448,6 +449,7 @@
             this.toolStrip1.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -464,30 +466,29 @@
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btn_guardar;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton btn_buscarBarra;
+        private System.Windows.Forms.ToolStripButton btn_Eliminar;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroDateTime metroDateTime2;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
-        private MetroFramework.Controls.MetroTextBox metroTextBox5;
-        private MetroFramework.Controls.MetroTextBox metroTextBox4;
-        private MetroFramework.Controls.MetroTextBox metroTextBox3;
-        private MetroFramework.Controls.MetroTextBox metroTextBox2;
+        private MetroFramework.Controls.MetroDateTime datetime_fecha_fin;
+        private MetroFramework.Controls.MetroDateTime datetime_fecha_inic;
+        private MetroFramework.Controls.MetroTextBox txt_costo;
+        private MetroFramework.Controls.MetroTextBox txt_Duracion_curso;
+        private MetroFramework.Controls.MetroTextBox txt_descrp_curso;
         private MetroFramework.Controls.MetroLabel metroLabel10;
-        private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox txt_codCur;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroComboBox metroComboBox2;
+        private MetroFramework.Controls.MetroComboBox comb_tipHor;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox comb_tipLic;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTile metroTile1;
+        private System.Windows.Forms.PictureBox btnBuscar;
     }
 }

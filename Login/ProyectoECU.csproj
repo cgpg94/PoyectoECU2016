@@ -66,6 +66,10 @@
     <Reference Include="MetroFramework.Fonts">
       <HintPath>..\..\..\..\..\Downloads\Compressed\METRO DLL_2\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Npgsql">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\PostgreSQL\Npgsql\bin\Npgsql.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -149,6 +153,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validaciones\Validaciones.cs" />
     <EmbeddedResource Include="ECU_Ayuda\ECU_Ayuda.resx">
       <DependentUpon>ECU_Ayuda.cs</DependentUpon>
     </EmbeddedResource>
