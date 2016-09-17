@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ECU_GestionCurso));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,8 +40,8 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btn_guardar = new System.Windows.Forms.ToolStripButton();
             this.btn_buscarBarra = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.btn_Eliminar = new System.Windows.Forms.ToolStripButton();
+            this.btn_nuevoBarra = new System.Windows.Forms.ToolStripButton();
+            this.btn_EliminarBarra = new System.Windows.Forms.ToolStripButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.btnBuscar = new System.Windows.Forms.PictureBox();
@@ -75,7 +76,7 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(669, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(792, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -139,62 +140,67 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btn_guardar,
             this.btn_buscarBarra,
-            this.toolStripButton2,
-            this.btn_Eliminar});
+            this.btn_nuevoBarra,
+            this.btn_EliminarBarra});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(669, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(792, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // btn_guardar
             // 
             this.btn_guardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_guardar.Image = global::ProyectoECU.Properties.Resources.save;
+            this.btn_guardar.Image = ((System.Drawing.Image)(resources.GetObject("btn_guardar.Image")));
             this.btn_guardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_guardar.Name = "btn_guardar";
             this.btn_guardar.Size = new System.Drawing.Size(23, 22);
             this.btn_guardar.Text = "toolStripButton1";
+            this.btn_guardar.ToolTipText = "Guardar";
             this.btn_guardar.Click += new System.EventHandler(this.btn_guardar_Click);
             // 
             // btn_buscarBarra
             // 
             this.btn_buscarBarra.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_buscarBarra.Image = global::ProyectoECU.Properties.Resources.search;
+            this.btn_buscarBarra.Image = ((System.Drawing.Image)(resources.GetObject("btn_buscarBarra.Image")));
             this.btn_buscarBarra.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_buscarBarra.Name = "btn_buscarBarra";
             this.btn_buscarBarra.Size = new System.Drawing.Size(23, 22);
             this.btn_buscarBarra.Text = "toolStripButton3";
+            this.btn_buscarBarra.ToolTipText = "Buscar";
             this.btn_buscarBarra.Click += new System.EventHandler(this.btn_buscarBarra_Click);
             // 
-            // toolStripButton2
+            // btn_nuevoBarra
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::ProyectoECU.Properties.Resources.file;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "toolStripButton2";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.btn_nuevoBarra.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_nuevoBarra.Image = ((System.Drawing.Image)(resources.GetObject("btn_nuevoBarra.Image")));
+            this.btn_nuevoBarra.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_nuevoBarra.Name = "btn_nuevoBarra";
+            this.btn_nuevoBarra.Size = new System.Drawing.Size(23, 22);
+            this.btn_nuevoBarra.Text = "toolStripButton2";
+            this.btn_nuevoBarra.ToolTipText = "Nuevo";
+            this.btn_nuevoBarra.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
-            // btn_Eliminar
+            // btn_EliminarBarra
             // 
-            this.btn_Eliminar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.btn_Eliminar.Image = global::ProyectoECU.Properties.Resources.cancel;
-            this.btn_Eliminar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btn_Eliminar.Name = "btn_Eliminar";
-            this.btn_Eliminar.Size = new System.Drawing.Size(23, 22);
-            this.btn_Eliminar.Text = "toolStripButton4";
-            this.btn_Eliminar.Click += new System.EventHandler(this.btn_Eliminar_Click);
+            this.btn_EliminarBarra.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_EliminarBarra.Image = ((System.Drawing.Image)(resources.GetObject("btn_EliminarBarra.Image")));
+            this.btn_EliminarBarra.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btn_EliminarBarra.Name = "btn_EliminarBarra";
+            this.btn_EliminarBarra.Size = new System.Drawing.Size(23, 22);
+            this.btn_EliminarBarra.Text = "toolStripButton4";
+            this.btn_EliminarBarra.ToolTipText = "Eliminar";
+            this.btn_EliminarBarra.Click += new System.EventHandler(this.btn_Eliminar_Click);
             // 
             // metroLabel1
             // 
+            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(250, 57);
+            this.metroLabel1.Location = new System.Drawing.Point(325, 92);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(148, 25);
             this.metroLabel1.TabIndex = 2;
@@ -202,6 +208,7 @@
             // 
             // metroPanel1
             // 
+            this.metroPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroPanel1.Controls.Add(this.btnBuscar);
             this.metroPanel1.Controls.Add(this.datetime_fecha_fin);
@@ -223,7 +230,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(12, 91);
+            this.metroPanel1.Location = new System.Drawing.Point(80, 146);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(645, 283);
             this.metroPanel1.TabIndex = 3;
@@ -233,7 +240,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Image = global::ProyectoECU.Properties.Resources._1473809674_Play01;
+            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
             this.btnBuscar.Location = new System.Drawing.Point(228, 13);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(24, 23);
@@ -367,6 +374,7 @@
             this.txt_codCur.SelectedText = "";
             this.txt_codCur.Size = new System.Drawing.Size(76, 23);
             this.txt_codCur.TabIndex = 27;
+            this.txt_codCur.TabStop = false;
             this.txt_codCur.UseSelectable = true;
             // 
             // metroLabel4
@@ -421,7 +429,8 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(12, 91);
+            this.metroTile1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroTile1.Location = new System.Drawing.Point(80, 146);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(10, 283);
             this.metroTile1.TabIndex = 40;
@@ -432,7 +441,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(669, 386);
+            this.ClientSize = new System.Drawing.Size(792, 511);
             this.ControlBox = false;
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroPanel1);
@@ -443,6 +452,9 @@
             this.Name = "ECU_GestionCurso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de Curso";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ECU_GestionCurso_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ECU_GestionCurso_KeyPress);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ECU_GestionCurso_KeyUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -467,9 +479,9 @@
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btn_guardar;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton btn_nuevoBarra;
         private System.Windows.Forms.ToolStripButton btn_buscarBarra;
-        private System.Windows.Forms.ToolStripButton btn_Eliminar;
+        private System.Windows.Forms.ToolStripButton btn_EliminarBarra;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroDateTime datetime_fecha_fin;

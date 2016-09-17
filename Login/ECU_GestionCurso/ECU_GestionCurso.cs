@@ -15,7 +15,7 @@ namespace ProyectoECU.Interfaces
 {
     public partial class ECU_GestionCurso : Form 
     {
-        ECU_ConsultaCurso consultaCurso = new ECU_ConsultaCurso();
+        
         public static bool ModificarRegistro = false;
         public static object id_curo_Modificar=0;
         public ECU_GestionCurso()
@@ -29,7 +29,8 @@ namespace ProyectoECU.Interfaces
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            consultaCurso.Show();   
+            ECU_ConsultaCurso consultaCurso = new ECU_ConsultaCurso();
+            consultaCurso.ShowDialog(); 
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -382,18 +383,60 @@ namespace ProyectoECU.Interfaces
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
+            //mensaje de dialogo
+            DialogResult respuesta = MessageBox.Show("Desea agregar un nuevo registro?","Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //si es si entonces llena los texbox
+            if (respuesta == DialogResult.Yes)
+            {
+
+
+                txt_codCur.Clear();
+                txt_costo.Clear();
+                txt_descrp_curso.Clear();
+                txt_Duracion_curso.Clear();
+                comb_tipHor.SelectedIndex = 1;
+                comb_tipLic.SelectedIndex = 1;
+                datetime_fecha_fin.Value = DateTime.Now;
+                datetime_fecha_fin.Value = DateTime.Now;
+                desactivarcontroles();
+               
+            }
+
+
+        }
+
+        private void ECU_GestionCurso_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt && e.KeyCode == Keys.F4)
+            {
+                //cuadro de dialogo
+                DialogResult rs = MessageBox.Show("¿ Desea cerrar esta ventana ?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rs == DialogResult.Yes)
+                {
+                    //cierra el formulario
+                    Close();
+                }
+                else
+                {
+                    //no lo cierra
+                    e.Handled = true;
+                    MessageBox.Show("¿ Desea cerrar esta ventana ?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                }
+
+            }
+        }
+
+        private void ECU_GestionCurso_KeyPress(object sender, KeyPressEventArgs e)
+        {
            
-            txt_codCur.Clear();
-            txt_costo.Clear();
-            txt_descrp_curso.Clear();
-            txt_Duracion_curso.Clear();
-            comb_tipHor.SelectedIndex=1;
-            comb_tipLic.SelectedIndex = 1;
-            datetime_fecha_fin.Value = DateTime.Now;
-            datetime_fecha_fin.Value = DateTime.Now;
-            desactivarcontroles();
 
+            
 
+        }
+
+        private void ECU_GestionCurso_KeyUp(object sender, KeyEventArgs e)
+        {
         }
 
       

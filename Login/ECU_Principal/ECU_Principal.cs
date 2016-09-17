@@ -60,6 +60,26 @@ namespace ProyectoECU.Interfaces
             gestionAyuda.ShowDialog();//Mostramos 
         }
 
+        private void ECU_Principal_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Alt || e.KeyCode == Keys.F4)
+            {
+                //cuadro de dialogo
+                DialogResult rs = MessageBox.Show("¿ Desea cerrar esta ventana ?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (rs == DialogResult.Yes)
+                {
+                    //cierra el formulario
+                    Close();
+                }
+                else
+                {
+                    //no lo cierra
+                    e.Handled = true;
+                }
+
+            }
+        }
+
        
     
        
