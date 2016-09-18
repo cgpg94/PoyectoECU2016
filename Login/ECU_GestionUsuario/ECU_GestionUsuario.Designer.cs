@@ -67,6 +67,8 @@
             this.brn_guardarBarra = new System.Windows.Forms.ToolStripButton();
             this.btn_nuevoBarra = new System.Windows.Forms.ToolStripButton();
             this.btn_eliminarBarra = new System.Windows.Forms.ToolStripButton();
+            this.btn_salir = new System.Windows.Forms.PictureBox();
+            this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.TabControl.SuspendLayout();
             this.metroIngresar.SuspendLayout();
             this.metroModificar.SuspendLayout();
@@ -75,13 +77,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGrid)).BeginInit();
             this.menuStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
             this.SuspendLayout();
             // 
             // TabControl
             // 
             this.TabControl.Controls.Add(this.metroIngresar);
             this.TabControl.Controls.Add(this.metroModificar);
-            this.TabControl.Location = new System.Drawing.Point(36, 52);
+            this.TabControl.Location = new System.Drawing.Point(20, 77);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(689, 202);
@@ -337,7 +340,7 @@
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(40, 299);
+            this.metroGrid1.Location = new System.Drawing.Point(16, 327);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -350,13 +353,13 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(689, 187);
+            this.metroGrid1.Size = new System.Drawing.Size(689, 138);
             this.metroGrid1.TabIndex = 1;
             // 
             // txtBuscar
             // 
             this.txtBuscar.Lines = new string[0];
-            this.txtBuscar.Location = new System.Drawing.Point(563, 270);
+            this.txtBuscar.Location = new System.Drawing.Point(547, 295);
             this.txtBuscar.MaxLength = 32767;
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.PasswordChar = '\0';
@@ -370,7 +373,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(506, 272);
+            this.metroLabel1.Location = new System.Drawing.Point(490, 297);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(51, 19);
             this.metroLabel1.TabIndex = 3;
@@ -379,7 +382,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(36, 279);
+            this.metroLabel2.Location = new System.Drawing.Point(20, 304);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(75, 19);
             this.metroLabel2.TabIndex = 4;
@@ -388,7 +391,7 @@
             // btn_buscar
             // 
             this.btn_buscar.Image = global::ProyectoECU.Properties.Resources.search;
-            this.btn_buscar.Location = new System.Drawing.Point(697, 266);
+            this.btn_buscar.Location = new System.Drawing.Point(681, 291);
             this.btn_buscar.Name = "btn_buscar";
             this.btn_buscar.Size = new System.Drawing.Size(28, 30);
             this.btn_buscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -400,7 +403,7 @@
             // dataGrid
             // 
             this.dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGrid.Location = new System.Drawing.Point(502, 279);
+            this.dataGrid.Location = new System.Drawing.Point(486, 304);
             this.dataGrid.Name = "dataGrid";
             this.dataGrid.Size = new System.Drawing.Size(10, 10);
             this.dataGrid.TabIndex = 9;
@@ -413,7 +416,7 @@
             this.toolStripMenuItem2});
             this.menuStrip2.Location = new System.Drawing.Point(0, 0);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Size = new System.Drawing.Size(768, 24);
+            this.menuStrip2.Size = new System.Drawing.Size(743, 24);
             this.menuStrip2.TabIndex = 10;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -454,8 +457,10 @@
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.toolStripMenuItem2.Size = new System.Drawing.Size(53, 20);
             this.toolStripMenuItem2.Text = "Ayuda";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStrip1
             // 
@@ -465,7 +470,7 @@
             this.btn_eliminarBarra});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(768, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(743, 25);
             this.toolStrip1.TabIndex = 11;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -501,12 +506,36 @@
             this.btn_eliminarBarra.ToolTipText = "Eliminar";
             this.btn_eliminarBarra.Click += new System.EventHandler(this.btn_eliminarBarra_Click);
             // 
+            // btn_salir
+            // 
+            this.btn_salir.Image = global::ProyectoECU.Properties.Resources._54097;
+            this.btn_salir.Location = new System.Drawing.Point(669, 476);
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(40, 30);
+            this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_salir.TabIndex = 46;
+            this.btn_salir.TabStop = false;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
+            // 
+            // metroLabel10
+            // 
+            this.metroLabel10.AutoSize = true;
+            this.metroLabel10.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel10.Location = new System.Drawing.Point(269, 52);
+            this.metroLabel10.Name = "metroLabel10";
+            this.metroLabel10.Size = new System.Drawing.Size(181, 25);
+            this.metroLabel10.TabIndex = 47;
+            this.metroLabel10.Text = "Gestión de Usuarios";
+            // 
             // ECU_GestionUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(768, 498);
+            this.ClientSize = new System.Drawing.Size(743, 511);
+            this.Controls.Add(this.metroLabel10);
+            this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.dataGrid);
@@ -516,6 +545,8 @@
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.metroGrid1);
             this.Controls.Add(this.TabControl);
+            this.MaximumSize = new System.Drawing.Size(759, 550);
+            this.MinimumSize = new System.Drawing.Size(759, 550);
             this.Name = "ECU_GestionUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de Usuarios";
@@ -532,6 +563,7 @@
             this.menuStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -574,5 +606,7 @@
         private System.Windows.Forms.ToolStripButton brn_guardarBarra;
         private System.Windows.Forms.ToolStripButton btn_nuevoBarra;
         private System.Windows.Forms.ToolStripButton btn_eliminarBarra;
+        private System.Windows.Forms.PictureBox btn_salir;
+        private MetroFramework.Controls.MetroLabel metroLabel10;
     }
 }

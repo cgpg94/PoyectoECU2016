@@ -1,4 +1,4 @@
-﻿namespace ProyectoECU.Interfaces
+﻿namespace ProyectoECU.ECU_Ayuda
 {
     partial class ECU_Ayuda
     {
@@ -28,32 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.pdfViewer1 = new DevExpress.XtraPdfViewer.PdfViewer();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ECU_Ayuda));
+            this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
             this.SuspendLayout();
             // 
-            // pdfViewer1
+            // axAcroPDF1
             // 
-            this.pdfViewer1.Location = new System.Drawing.Point(458, 134);
-            this.pdfViewer1.Name = "pdfViewer1";
-            this.pdfViewer1.Size = new System.Drawing.Size(8, 8);
-            this.pdfViewer1.TabIndex = 0;
+            this.axAcroPDF1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.axAcroPDF1.Enabled = true;
+            this.axAcroPDF1.Location = new System.Drawing.Point(-2, -5);
+            this.axAcroPDF1.Name = "axAcroPDF1";
+            this.axAcroPDF1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axAcroPDF1.OcxState")));
+            this.axAcroPDF1.Size = new System.Drawing.Size(391, 562);
+            this.axAcroPDF1.TabIndex = 0;
+            this.axAcroPDF1.Enter += new System.EventHandler(this.axAcroPDF1_Enter);
             // 
             // ECU_Ayuda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 382);
-            this.Controls.Add(this.pdfViewer1);
+            this.ClientSize = new System.Drawing.Size(385, 553);
+            this.Controls.Add(this.axAcroPDF1);
             this.Name = "ECU_Ayuda";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Ayuda";
+            this.Text = "ECU_Ayuda";
+            this.Load += new System.EventHandler(this.ECU_Ayuda_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private DevExpress.XtraPdfViewer.PdfViewer pdfViewer1;
+        private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

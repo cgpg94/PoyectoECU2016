@@ -432,5 +432,11 @@ namespace ProyectoECU.Interfaces
                 this.Close();
             }  
         }
+
+        private void aYUDAToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProyectoECU.ECU_Ayuda.ECU_Ayuda gestionAyuda = new ProyectoECU.ECU_Ayuda.ECU_Ayuda();//Instanciamos
+            gestionAyuda.Show();//Mostramos 
+        }
     }
 }

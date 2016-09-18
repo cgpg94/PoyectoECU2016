@@ -114,7 +114,9 @@ namespace ProyectoECU
                         if (respuesta == DialogResult.Yes)
                         {
                             ECU_ConexionPostgres.coneccion.Close();
-                            
+                            Interfaces.ECU_GestionEstudiante EC = new Interfaces.ECU_GestionEstudiante();
+                            EC.ShowDialog();
+
                         }
 
                         ECU_ConexionPostgres.coneccion.Close();
@@ -497,9 +499,10 @@ namespace ProyectoECU
                 {
                     ECU_ConexionPostgres.coneccion.Close();
                     MessageBox.Show("La matricula con cdigo: " + txt_codMatri.Text + " no se encuentra registrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
+
+
                 }
-                
+
 
             }
             catch (Exception)
@@ -512,12 +515,66 @@ namespace ProyectoECU
 
         private void btn_buscarBarra_Click(object sender, EventArgs e)
         {
-            this.buscarMatriCodi(); 
+            this.buscarMatriCodi();
         }
 
+        //BOTTON ELIMINAR
         private void btn_EliminarBarra_Click(object sender, EventArgs e)
         {
-           
+
+            if (txt_codMatri.Text != "")
+            {
+                try
+                {
+                    //abrir la conexion
+                    ECU_ConexionPostgres.coneccion.Open();
+                    NpgsqlCommand comando1 = new NpgsqlCommand("select * from Pro_Con_Matr_Num_2('" + txt_codMatri.Text + "');", ECU_ConexionPostgres.coneccion);
+                    //ejecutar comando
+                    NpgsqlDataReader resultado = comando1.ExecuteReader();
+                    //  ECU_ConexionPostgres.coneccion.Close();
+                    if (resultado.Read())
+                    {
+                        //mensaje de dialogo
+                        DialogResult respuesta = MessageBox.Show("Desea eliminar el curso: " + txt_codMatri.Text + "", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        //si es si entonces llena los texbox
+                        if (respuesta == DialogResult.Yes)
+                        {
+                            ECU_ConexionPostgres.coneccion.Close();
+                            ECU_ConexionPostgres.coneccion.Open();
+                            NpgsqlCommand comando2 = new NpgsqlCommand("SELECT Pro_Eli_Mat_Cod ('" + txt_codMatri.Text + "');", ECU_ConexionPostgres.coneccion);
+                            //ejecutar comando
+                            NpgsqlDataReader resultado2 = comando2.ExecuteReader();
+                            ECU_ConexionPostgres.coneccion.Close();
+                            MessageBox.Show("La matrícula  a sido eliminado correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            reiniciarControles();
+                            desactivarcontroles();
+                        }
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("La matricula " + txt_codMatri.Text + " no esta registrada, no se puede eliminar ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ECU_ConexionPostgres.coneccion.Close();
+                    }
+                    ECU_ConexionPostgres.coneccion.Close();
+                }
+                catch (Exception)
+                {
+                    ECU_ConexionPostgres.coneccion.Close();
+                    throw;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese el código para poder eliminar el curso ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProyectoECU.ECU_Ayuda.ECU_Ayuda gestionAyuda = new ProyectoECU.ECU_Ayuda.ECU_Ayuda();//Instanciamos
+            gestionAyuda.Show();//Mostramos 
         }
     }
 }

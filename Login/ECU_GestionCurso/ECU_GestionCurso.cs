@@ -13,11 +13,11 @@ using Npgsql;
 
 namespace ProyectoECU.Interfaces
 {
-    public partial class ECU_GestionCurso : Form 
+    public partial class ECU_GestionCurso : Form
     {
-        
+
         public static bool ModificarRegistro = false;
-        public static object id_curo_Modificar=0;
+        public static object id_curo_Modificar = 0;
         public ECU_GestionCurso()
         {
             InitializeComponent();
@@ -25,20 +25,21 @@ namespace ProyectoECU.Interfaces
 
         }
 
-       
+
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ECU_ConsultaCurso consultaCurso = new ECU_ConsultaCurso();
-            consultaCurso.ShowDialog(); 
+            consultaCurso.ShowDialog();
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (txt_codCur.Text.Equals(""))
             {
-                MessageBox.Show("Ingresar código para evaluar","Aviso", MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
-            }else
+                MessageBox.Show("Ingresar código para evaluar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
             {
                 try
                 {
@@ -52,7 +53,7 @@ namespace ProyectoECU.Interfaces
                     NpgsqlDataReader resultado = comando.ExecuteReader();
                     if (resultado.Read())
                     {   //resultado de la consulta
-                        id_curo_Modificar=resultado[0];
+                        id_curo_Modificar = resultado[0];
                         object cod_curs = resultado[1];
                         object id_tipo_licencia = resultado[2];
                         object tipo_licencia = resultado[3];
@@ -68,7 +69,7 @@ namespace ProyectoECU.Interfaces
                         //compara resultado con el dato ingresado
                         if (cod_curs.ToString() == txt_codCur.Text)
                         {
-                            
+
                             //mensaje de dialogo
                             DialogResult respuesta = MessageBox.Show("El curso ya existe,¿Desea modificarlo?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             //si es si entonces llena los texbox
@@ -84,13 +85,13 @@ namespace ProyectoECU.Interfaces
                                 txt_costo.Text = costo_curso.ToString();
 
                                 activarControles();
-                                ModificarRegistro  =true; 
+                                ModificarRegistro = true;
                             }
 
                             else if (respuesta == DialogResult.No)
                             {
                                 desactivarcontroles();
-                                ModificarRegistro = false; 
+                                ModificarRegistro = false;
                             }
 
                             ECU_ConexionPostgres.coneccion.Close();
@@ -98,27 +99,27 @@ namespace ProyectoECU.Interfaces
 
                         ECU_ConexionPostgres.coneccion.Close();
                     }
-                        
+
                     else
                     {
-                        MessageBox.Show("El curso no se encuentra registrado, proceda a ingresar los datos","Aviso",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("El curso no se encuentra registrado, proceda a ingresar los datos", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         txt_codCur.Text = "";
                         txt_codCur.Enabled = false;
                         activarControles();
                         ECU_ConexionPostgres.coneccion.Close();
                     }
-                    
+
 
                 }
                 catch (Exception)
                 {
-                    
+
                     throw;
                 }
 
             }
-            
-           
+
+
         }
 
 
@@ -202,8 +203,8 @@ namespace ProyectoECU.Interfaces
 
 
                 }
-                
-                
+
+
             }
             catch (Exception)
             {
@@ -215,58 +216,58 @@ namespace ProyectoECU.Interfaces
 
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
-            if (txt_codCur.Text!="")
-	{
-        try
-        {
-            //abrir la conexion
-            ECU_ConexionPostgres.coneccion.Open();
-            NpgsqlCommand comando1 = new NpgsqlCommand("select * from Pro_cons_Cur('" + txt_codCur.Text + "');", ECU_ConexionPostgres.coneccion);
-            //ejecutar comando
-            NpgsqlDataReader resultado = comando1.ExecuteReader();
-            //  ECU_ConexionPostgres.coneccion.Close();
-            if (resultado.Read())
-            {   //resultado de la consulta
-                id_curo_Modificar = resultado[0];
-                //mensaje de dialogo
-                DialogResult respuesta = MessageBox.Show("Desea eliminar el curso: " + txt_codCur.Text + "", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                //si es si entonces llena los texbox
-                if (respuesta == DialogResult.Yes)
+            if (txt_codCur.Text != "")
+            {
+                try
+                {
+                    //abrir la conexion
+                    ECU_ConexionPostgres.coneccion.Open();
+                    NpgsqlCommand comando1 = new NpgsqlCommand("select * from Pro_cons_Cur('" + txt_codCur.Text + "');", ECU_ConexionPostgres.coneccion);
+                    //ejecutar comando
+                    NpgsqlDataReader resultado = comando1.ExecuteReader();
+                    //  ECU_ConexionPostgres.coneccion.Close();
+                    if (resultado.Read())
+                    {   //resultado de la consulta
+                        id_curo_Modificar = resultado[0];
+                        //mensaje de dialogo
+                        DialogResult respuesta = MessageBox.Show("Desea eliminar el curso: " + txt_codCur.Text + "", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        //si es si entonces llena los texbox
+                        if (respuesta == DialogResult.Yes)
+                        {
+                            ECU_ConexionPostgres.coneccion.Close();
+                            ECU_ConexionPostgres.coneccion.Open();
+                            NpgsqlCommand comando2 = new NpgsqlCommand("SELECT Pro_Eli_Cur_Codigo ('" + id_curo_Modificar.ToString() + "');", ECU_ConexionPostgres.coneccion);
+                            MessageBox.Show("" + id_curo_Modificar.ToString() + "");
+                            //ejecutar comando
+                            NpgsqlDataReader resultado2 = comando2.ExecuteReader();
+                            ECU_ConexionPostgres.coneccion.Close();
+                            MessageBox.Show("El curso a sido eliminado correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            reiniciarControles();
+                            desactivarcontroles();
+
+                        }
+
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("El curso " + txt_codCur.Text + " no esta registrado, no se puede eliminar ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ECU_ConexionPostgres.coneccion.Close();
+                    }
+                    ECU_ConexionPostgres.coneccion.Close();
+                }
+                catch (Exception)
                 {
                     ECU_ConexionPostgres.coneccion.Close();
-                    ECU_ConexionPostgres.coneccion.Open();
-                    NpgsqlCommand comando2 = new NpgsqlCommand("SELECT Pro_Eli_Cur_Codigo ('" + id_curo_Modificar.ToString() + "');", ECU_ConexionPostgres.coneccion);
-                    MessageBox.Show("" + id_curo_Modificar.ToString() + "");
-                    //ejecutar comando
-                    NpgsqlDataReader resultado2 = comando2.ExecuteReader();
-                    ECU_ConexionPostgres.coneccion.Close();
-                    MessageBox.Show("El curso a sido eliminado correctamente", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    reiniciarControles();
-                    desactivarcontroles();
-
+                    throw;
                 }
-
-
             }
-            else
-            {
-                MessageBox.Show("El curso " + txt_codCur.Text + " no esta registrado, no se puede eliminar ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ECU_ConexionPostgres.coneccion.Close();
-            }
-            ECU_ConexionPostgres.coneccion.Close();
-        }
-        catch (Exception)
-        {
-            ECU_ConexionPostgres.coneccion.Close();
-            throw;
-        }
-    }
             else
             {
                 MessageBox.Show("Ingrese el código para poder eliminar el curso ", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            
+
         }
 
         //desactiva los controles
@@ -279,7 +280,7 @@ namespace ProyectoECU.Interfaces
             txt_costo.Enabled = false;
             txt_descrp_curso.Enabled = false;
             txt_Duracion_curso.Enabled = false;
-            ModificarRegistro = false; 
+            ModificarRegistro = false;
         }
 
         //activa los controles 
@@ -297,12 +298,13 @@ namespace ProyectoECU.Interfaces
         public void reiniciarControles()
         {
             txt_codCur.Text = "";
-            txt_costo.Text="";
+            txt_costo.Text = "";
             txt_descrp_curso.Text = "";
             txt_Duracion_curso.Text = "";
         }
         //verifica los campos vacios
-        public bool camposVacios() {
+        public bool camposVacios()
+        {
             bool estado = false;
             if (txt_descrp_curso.Text.Equals(""))
             {
@@ -314,81 +316,81 @@ namespace ProyectoECU.Interfaces
             }
             return estado;
         }
-        
 
 
-        
-       
+
+
+
         private void btn_buscarBarra_Click(object sender, EventArgs e)
         {
 
-                
-                try
+
+            try
+            {
+                string texto = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el código del curso", "Consulta por código", "");
+                if (texto != "")
                 {
-                    string texto = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el código del curso", "Consulta por código","");
-                  if (texto!="")
+                    //abrir la conexion
+                    ECU_ConexionPostgres.coneccion.Open();
+                    //consulta de usuario
+                    NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_cons_Cur('" + texto.ToString() + "');", ECU_ConexionPostgres.coneccion);
+
+                    //ejecutar comando
+                    NpgsqlDataReader resultado = comando.ExecuteReader();
+                    if (resultado.Read())
+                    {   //resultado de la consulta
+                        id_curo_Modificar = resultado[0];
+                        object cod_curs = resultado[1];
+                        object id_tipo_licencia = resultado[2];
+                        object tipo_licencia = resultado[3];
+                        object id_horario = resultado[4];
+                        object horario = resultado[5];
+                        object fecha_inicio = resultado[6];
+                        object fecha_fin = resultado[7];
+                        object descripcion_curso = resultado[8];
+                        object duracion_curso = resultado[9];
+                        object costo_curso = resultado[10];
+
+                        //llena los valores del cuaro en el formulario
+                        txt_codCur.Text = cod_curs.ToString();
+                        comb_tipLic.SelectedValue = id_tipo_licencia.ToString();
+                        comb_tipHor.SelectedValue = id_horario.ToString();
+                        datetime_fecha_inic.Text = fecha_inicio.ToString();
+                        datetime_fecha_fin.Text = fecha_fin.ToString();
+                        txt_descrp_curso.Text = descripcion_curso.ToString();
+                        txt_Duracion_curso.Text = duracion_curso.ToString();
+                        txt_costo.Text = costo_curso.ToString();
+                        activarControles();
+                        ModificarRegistro = true;
+                        //cierra la conexion
+                        ECU_ConexionPostgres.coneccion.Close();
+                    }
+
+                    else
                     {
-                        //abrir la conexion
-                        ECU_ConexionPostgres.coneccion.Open();
-                        //consulta de usuario
-                        NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_cons_Cur('" + texto.ToString() + "');", ECU_ConexionPostgres.coneccion);
-
-                        //ejecutar comando
-                        NpgsqlDataReader resultado = comando.ExecuteReader();
-                        if (resultado.Read())
-                        {   //resultado de la consulta
-                            id_curo_Modificar = resultado[0];
-                            object cod_curs = resultado[1];
-                            object id_tipo_licencia = resultado[2];
-                            object tipo_licencia = resultado[3];
-                            object id_horario = resultado[4];
-                            object horario = resultado[5];
-                            object fecha_inicio = resultado[6];
-                            object fecha_fin = resultado[7];
-                            object descripcion_curso = resultado[8];
-                            object duracion_curso = resultado[9];
-                            object costo_curso = resultado[10];
-
-                            //llena los valores del cuaro en el formulario
-                            txt_codCur.Text = cod_curs.ToString();
-                            comb_tipLic.SelectedValue = id_tipo_licencia.ToString();
-                            comb_tipHor.SelectedValue = id_horario.ToString();
-                            datetime_fecha_inic.Text = fecha_inicio.ToString();
-                            datetime_fecha_fin.Text = fecha_fin.ToString();
-                            txt_descrp_curso.Text = descripcion_curso.ToString();
-                            txt_Duracion_curso.Text = duracion_curso.ToString();
-                            txt_costo.Text = costo_curso.ToString();
-                            activarControles();
-                            ModificarRegistro = true;
-                            //cierra la conexion
-                            ECU_ConexionPostgres.coneccion.Close();
-                        }
-
-                        else
-                        {
-                            MessageBox.Show("El curso " + texto + " no esta registrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ECU_ConexionPostgres.coneccion.Close();
-                        }
-
-
+                        MessageBox.Show("El curso " + texto + " no esta registrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ECU_ConexionPostgres.coneccion.Close();
                     }
 
 
                 }
-                catch (Exception)
-                {
 
-                    throw;
-                }
 
-            
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
 
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             //mensaje de dialogo
-            DialogResult respuesta = MessageBox.Show("Desea agregar un nuevo registro?","Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult respuesta = MessageBox.Show("Desea agregar un nuevo registro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             //si es si entonces llena los texbox
             if (respuesta == DialogResult.Yes)
             {
@@ -403,7 +405,7 @@ namespace ProyectoECU.Interfaces
                 datetime_fecha_fin.Value = DateTime.Now;
                 datetime_fecha_fin.Value = DateTime.Now;
                 desactivarcontroles();
-               
+
             }
 
 
@@ -439,10 +441,10 @@ namespace ProyectoECU.Interfaces
             if (MessageBox.Show("Estas seguro que deseas Salir?", "Estas Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 this.Close();
-            }  
+            }
         }
 
-        
+
 
         public static decimal MonthDifference(DateTime FechaFin, DateTime FechaInicio)
         {
@@ -451,9 +453,15 @@ namespace ProyectoECU.Interfaces
         }
         private void datetime_fecha_fin_CloseUp(object sender, EventArgs e)
         {
-            txt_Duracion_curso.Enabled=false;
-            txt_Duracion_curso.Text = (MonthDifference(datetime_fecha_fin.Value, datetime_fecha_inic.Value)).ToString()+" meses ";
-            
+            txt_Duracion_curso.Enabled = false;
+            txt_Duracion_curso.Text = (MonthDifference(datetime_fecha_fin.Value, datetime_fecha_inic.Value)).ToString() + " meses ";
+
+        }
+
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProyectoECU.ECU_Ayuda.ECU_Ayuda gestionAyuda = new ProyectoECU.ECU_Ayuda.ECU_Ayuda();//Instanciamos
+            gestionAyuda.Show();//Mostramos 
         }
     }
 }

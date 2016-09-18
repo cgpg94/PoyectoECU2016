@@ -178,8 +178,10 @@
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
+            this.ayudaToolStripMenuItem.Click += new System.EventHandler(this.ayudaToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -409,7 +411,7 @@
             this.groupBox2.Controls.Add(this.metroTextBox9);
             this.groupBox2.Controls.Add(this.metroLabel9);
             this.groupBox2.Controls.Add(this.metroLabel10);
-            this.groupBox2.Location = new System.Drawing.Point(44, 362);
+            this.groupBox2.Location = new System.Drawing.Point(44, 361);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(433, 67);
             this.groupBox2.TabIndex = 5;
@@ -462,7 +464,7 @@
             // 
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel11.Location = new System.Drawing.Point(222, 58);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(60, 25);
@@ -496,6 +498,7 @@
             this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btn_salir.TabIndex = 48;
             this.btn_salir.TabStop = false;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
             // 
             // ECU_GestionPago
             // 
@@ -503,6 +506,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(511, 465);
+            this.ControlBox = false;
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);

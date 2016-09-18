@@ -152,8 +152,10 @@
             // ayudaToolStripMenuItem
             // 
             this.ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            this.ayudaToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
             this.ayudaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
             this.ayudaToolStripMenuItem.Text = "Ayuda";
+            this.ayudaToolStripMenuItem.Click += new System.EventHandler(this.ayudaToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -228,7 +230,7 @@
             this.groupBox2.Controls.Add(this.comb_Cod_Curso);
             this.groupBox2.Controls.Add(this.metroLabel8);
             this.groupBox2.Controls.Add(this.metroLabel9);
-            this.groupBox2.Location = new System.Drawing.Point(21, 327);
+            this.groupBox2.Location = new System.Drawing.Point(25, 307);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(739, 199);
             this.groupBox2.TabIndex = 11;
@@ -331,7 +333,7 @@
             // 
             this.datePFecha.Enabled = false;
             this.datePFecha.Location = new System.Drawing.Point(463, 145);
-            this.datePFecha.MinimumSize = new System.Drawing.Size(0, 29);
+            this.datePFecha.MinimumSize = new System.Drawing.Size(4, 29);
             this.datePFecha.Name = "datePFecha";
             this.datePFecha.Size = new System.Drawing.Size(243, 29);
             this.datePFecha.TabIndex = 6;
@@ -401,7 +403,7 @@
             this.groupBox1.Controls.Add(this.metroLabel12);
             this.groupBox1.Controls.Add(this.metroLabel2);
             this.groupBox1.Controls.Add(this.dateP_fecha_nacim);
-            this.groupBox1.Location = new System.Drawing.Point(21, 142);
+            this.groupBox1.Location = new System.Drawing.Point(25, 122);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(739, 179);
             this.groupBox1.TabIndex = 10;
@@ -577,7 +579,7 @@
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(21, 78);
+            this.metroLabel1.Location = new System.Drawing.Point(25, 58);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(163, 25);
             this.metroLabel1.TabIndex = 9;
@@ -586,7 +588,7 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(13, 148);
+            this.metroTile1.Location = new System.Drawing.Point(17, 128);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(10, 172);
             this.metroTile1.TabIndex = 41;
@@ -595,7 +597,7 @@
             // metroTile2
             // 
             this.metroTile2.ActiveControl = null;
-            this.metroTile2.Location = new System.Drawing.Point(13, 333);
+            this.metroTile2.Location = new System.Drawing.Point(17, 313);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(10, 190);
             this.metroTile2.TabIndex = 44;
@@ -604,7 +606,7 @@
             // btn_salir
             // 
             this.btn_salir.Image = global::ProyectoECU.Properties.Resources._54097;
-            this.btn_salir.Location = new System.Drawing.Point(687, 526);
+            this.btn_salir.Location = new System.Drawing.Point(691, 519);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(40, 30);
             this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -641,7 +643,7 @@
             // 
             this.groupBox3.Controls.Add(this.txt_codMatri);
             this.groupBox3.Controls.Add(this.metroLabel16);
-            this.groupBox3.Location = new System.Drawing.Point(484, 88);
+            this.groupBox3.Location = new System.Drawing.Point(488, 68);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(276, 59);
             this.groupBox3.TabIndex = 49;
@@ -653,7 +655,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(792, 561);
+            this.ClientSize = new System.Drawing.Size(792, 571);
+            this.ControlBox = false;
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.metroTile2);
@@ -663,8 +666,8 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.MaximumSize = new System.Drawing.Size(808, 600);
-            this.MinimumSize = new System.Drawing.Size(808, 560);
+            this.MaximumSize = new System.Drawing.Size(808, 610);
+            this.MinimumSize = new System.Drawing.Size(808, 600);
             this.Name = "ECU_GestionMatricula";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Matrícula";

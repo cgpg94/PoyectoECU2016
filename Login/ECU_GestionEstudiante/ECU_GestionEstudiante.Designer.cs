@@ -398,9 +398,10 @@
             // 
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel7.Location = new System.Drawing.Point(194, 59);
+            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel7.Location = new System.Drawing.Point(182, 59);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(183, 25);
+            this.metroLabel7.Size = new System.Drawing.Size(206, 25);
             this.metroLabel7.TabIndex = 32;
             this.metroLabel7.Text = "Gestión de Estudiantes";
             // 

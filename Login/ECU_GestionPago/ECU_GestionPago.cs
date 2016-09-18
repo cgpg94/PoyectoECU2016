@@ -21,5 +21,19 @@ namespace ProyectoECU.Interfaces
         {
 
         }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Estas seguro que deseas Salir?", "Estas Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProyectoECU.ECU_Ayuda.ECU_Ayuda gestionAyuda = new ProyectoECU.ECU_Ayuda.ECU_Ayuda();//Instanciamos
+            gestionAyuda.Show();//Mostramos 
+        }
     }
 }

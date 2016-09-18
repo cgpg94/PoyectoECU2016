@@ -84,13 +84,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ECU_ConexionDB\ECU_ConexionPostgres.cs" />
     <Compile Include="ECU_Ayuda\ECU_Ayuda.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ECU_Ayuda\ECU_Ayuda.Designer.cs">
       <DependentUpon>ECU_Ayuda.cs</DependentUpon>
     </Compile>
+    <Compile Include="ECU_ConexionDB\ECU_ConexionPostgres.cs" />
     <Compile Include="ECU_GestionCurso\ECU_ConsultaCurso.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -281,6 +281,25 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="AxAcroPDFLib">
+      <Guid>{05BFD3F1-6319-4F30-B752-C7A22889BCC4}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

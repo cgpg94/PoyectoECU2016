@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ProyectoECU.ECU_Ayuda;
 
 namespace ProyectoECU.Interfaces
 {
@@ -56,8 +57,8 @@ namespace ProyectoECU.Interfaces
 
         private void tab_Ayuda_Click(object sender, EventArgs e)
         {
-            Form gestionAyuda = new ECU_Ayuda();//Instanciamos
-            gestionAyuda.ShowDialog();//Mostramos 
+            ProyectoECU.ECU_Ayuda.ECU_Ayuda gestionAyuda = new ProyectoECU.ECU_Ayuda.ECU_Ayuda();//Instanciamos
+            gestionAyuda.Show();//Mostramos 
         }
 
         private void ECU_Principal_KeyDown(object sender, KeyEventArgs e)
