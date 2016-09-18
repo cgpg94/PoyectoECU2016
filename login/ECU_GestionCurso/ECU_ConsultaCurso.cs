@@ -145,14 +145,10 @@ namespace ProyectoECU
 
         }
 
-        private void grid_datos_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
 
-        private void txt_codigo_cur_Click(object sender, EventArgs e)
+        private void btn_salir_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
 

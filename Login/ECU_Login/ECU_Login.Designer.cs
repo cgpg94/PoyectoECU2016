@@ -35,7 +35,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.txt_Usuario = new MetroFramework.Controls.MetroTextBox();
-            this.txt_Contraceña = new MetroFramework.Controls.MetroTextBox();
+            this.txt_Contraseña = new MetroFramework.Controls.MetroTextBox();
             this.btn_Entrar = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -55,9 +55,9 @@
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.Location = new System.Drawing.Point(103, 9);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(106, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(111, 25);
             this.metroLabel1.TabIndex = 1;
-            this.metroLabel1.Text = "Inicio Sesión";
+            this.metroLabel1.Text = "Iniciar Sesión";
             // 
             // metroLabel2
             // 
@@ -73,13 +73,14 @@
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.Location = new System.Drawing.Point(121, 203);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(76, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(75, 19);
             this.metroLabel3.TabIndex = 3;
-            this.metroLabel3.Text = "Contraceña";
+            this.metroLabel3.Text = "Contraseña";
             // 
             // txt_Usuario
             // 
-            this.txt_Usuario.Lines = new string[0];
+            this.txt_Usuario.Lines = new string[] {
+        "admin"};
             this.txt_Usuario.Location = new System.Drawing.Point(86, 177);
             this.txt_Usuario.MaxLength = 32767;
             this.txt_Usuario.Name = "txt_Usuario";
@@ -88,20 +89,27 @@
             this.txt_Usuario.SelectedText = "";
             this.txt_Usuario.Size = new System.Drawing.Size(141, 23);
             this.txt_Usuario.TabIndex = 4;
+            this.txt_Usuario.Text = "admin";
+            this.txt_Usuario.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txt_Usuario.UseSelectable = true;
+            this.txt_Usuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Usuario_KeyPress);
             // 
-            // txt_Contraceña
+            // txt_Contraseña
             // 
-            this.txt_Contraceña.Lines = new string[0];
-            this.txt_Contraceña.Location = new System.Drawing.Point(86, 225);
-            this.txt_Contraceña.MaxLength = 32767;
-            this.txt_Contraceña.Name = "txt_Contraceña";
-            this.txt_Contraceña.PasswordChar = '*';
-            this.txt_Contraceña.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.txt_Contraceña.SelectedText = "";
-            this.txt_Contraceña.Size = new System.Drawing.Size(141, 23);
-            this.txt_Contraceña.TabIndex = 5;
-            this.txt_Contraceña.UseSelectable = true;
+            this.txt_Contraseña.Lines = new string[] {
+        "123456"};
+            this.txt_Contraseña.Location = new System.Drawing.Point(86, 225);
+            this.txt_Contraseña.MaxLength = 32767;
+            this.txt_Contraseña.Name = "txt_Contraseña";
+            this.txt_Contraseña.PasswordChar = '*';
+            this.txt_Contraseña.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_Contraseña.SelectedText = "";
+            this.txt_Contraseña.Size = new System.Drawing.Size(141, 23);
+            this.txt_Contraseña.TabIndex = 5;
+            this.txt_Contraseña.Text = "123456";
+            this.txt_Contraseña.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txt_Contraseña.UseSelectable = true;
+            this.txt_Contraseña.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_Contraseña_KeyPress);
             // 
             // btn_Entrar
             // 
@@ -120,7 +128,7 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(314, 311);
             this.Controls.Add(this.btn_Entrar);
-            this.Controls.Add(this.txt_Contraceña);
+            this.Controls.Add(this.txt_Contraseña);
             this.Controls.Add(this.txt_Usuario);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
@@ -147,7 +155,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroTextBox txt_Usuario;
-        private MetroFramework.Controls.MetroTextBox txt_Contraceña;
+        private MetroFramework.Controls.MetroTextBox txt_Contraseña;
         private MetroFramework.Controls.MetroButton btn_Entrar;
 
 

@@ -15,29 +15,31 @@ namespace ProyectoECU
 {
     public partial class ECU_GestionMatricula : Form
     {
-        public static bool ModificarRegistro = false;
+        public static int ModificarRegistro = 0;
         public static object id_persona;
         public static object id_curso;
+        public static object codi_matri;
+
         public ECU_GestionMatricula()
         {
             InitializeComponent();
             this.cargar_combos();
         }
 
-        
+
 
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
-            this.buscarEstudiante();
-            
+            buscarEstudiante(txt_Cedula.Text);
+
         }
 
 
 
         //metodo buscar estudiante
-        public void buscarEstudiante()
+        public void buscarEstudiante(string cedula)
         {
-            if (txt_Cedula.Text.Equals(""))
+            if (cedula.Equals(""))
             {
                 MessageBox.Show("Ingresar cédula para evaluar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
@@ -48,7 +50,7 @@ namespace ProyectoECU
                     //abrir la conexion
                     ECU_ConexionPostgres.coneccion.Open();
                     //consulta de usuario
-                    NpgsqlCommand comando = new NpgsqlCommand("SELECT * FROM Pro_Con_Per_Est_Cedula_2 ('" + txt_Cedula.Text + "')", ECU_ConexionPostgres.coneccion);
+                    NpgsqlCommand comando = new NpgsqlCommand("SELECT * FROM Pro_Con_Per_Est_Cedula_2 ('" + cedula + "')", ECU_ConexionPostgres.coneccion);
                     //ejecutar comando
                     NpgsqlDataReader resultado = comando.ExecuteReader();
 
@@ -63,10 +65,10 @@ namespace ProyectoECU
                         object telef_estu = resultado[6];
                         object tip_sangre_estu = resultado[7];
                         //compara resultado con el dato ingresado
-                        if (ced_Est.Equals(txt_Cedula.Text))
+                        if (ced_Est.Equals(cedula))
                         {
                             //mensaje de dialogo
-                            DialogResult respuesta = MessageBox.Show("El estudiante ya existe,¿Desea modificarlo?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            DialogResult respuesta = MessageBox.Show("El estudiante ya existe, ¿Desea modificarlo?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             //si es si entonces llena los texbox
                             if (respuesta == DialogResult.Yes)
                             {
@@ -78,7 +80,7 @@ namespace ProyectoECU
                                 comb_tip_sangre.SelectedIndex = Int32.Parse(tip_sangre_estu.ToString());
                                 txt_direcion.Text = direc_estu.ToString();
                                 this.activarControles();
-                                ModificarRegistro = true;
+                                ModificarRegistro = 1;
                             }
                             else if (respuesta == DialogResult.No)
                             {
@@ -90,7 +92,7 @@ namespace ProyectoECU
                                 comb_tip_sangre.SelectedIndex = Int32.Parse(tip_sangre_estu.ToString());
                                 txt_direcion.Text = direc_estu.ToString();
                                 this.activarControles();
-                                ModificarRegistro = false;
+                                ModificarRegistro = 2;
                                 txt_nombre.Enabled = false;
                                 txtApellido.Enabled = false;
                                 dateP_fecha_nacim.Enabled = false;
@@ -106,8 +108,16 @@ namespace ProyectoECU
                     {
                         this.activarControles();
                         this.reiniciarControles();
-                        MessageBox.Show("El estudiante no se encuentra registrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //mensaje de dialogo
+                        DialogResult respuesta = MessageBox.Show("El estudiante no se encuentra registrado, ¿Desea agregar uno nuevo?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        //si es si entonces llena los texbox
+                        if (respuesta == DialogResult.Yes)
+                        {
+                            ECU_ConexionPostgres.coneccion.Close();
+                            
+                        }
 
+                        ECU_ConexionPostgres.coneccion.Close();
                     }
                     ECU_ConexionPostgres.coneccion.Close();
 
@@ -139,7 +149,7 @@ namespace ProyectoECU
             comb_Instructor.Enabled = false;
             datePFecha.Enabled = false;
 
-            
+
         }
 
         //activa los controles 
@@ -161,12 +171,12 @@ namespace ProyectoECU
 
         public void reiniciarControles()
         {
-            txt_Cedula.Text="";
-            txt_nombre.Text="";
+            txt_Cedula.Text = "";
+            txt_nombre.Text = "";
             txtApellido.Text = "";
             dateP_fecha_nacim.Value = DateTime.Now;
             txt_telefono.Text = "";
-            comb_tip_sangre.SelectedValue= 1;
+            comb_tip_sangre.SelectedValue = 1;
             comb_Cod_Curso.SelectedValue = 1;
             txt_tipo_lic.Text = "";
             txt_horario_cur.Text = "";
@@ -175,6 +185,8 @@ namespace ProyectoECU
             txt_prec_curso.Text = "";
             datePFecha.Value = DateTime.Now;
             txt_direcion.Text = "";
+            txt_codMatri.Text = "";
+            txx_precio_Matri.Text = "";
         }
         public void cargar_combos()
         {
@@ -224,14 +236,16 @@ namespace ProyectoECU
         }
         private void btn_nuevoBarra_Click(object sender, EventArgs e)
         {
-             //mensaje de dialogo
-            DialogResult respuesta = MessageBox.Show("Desea agregar un nuevo registro?","Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //mensaje de dialogo
+            DialogResult respuesta = MessageBox.Show("Desea agregar un nuevo registro?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             //si es si entonces llena los texbox
             if (respuesta == DialogResult.Yes)
             {
 
                 this.reiniciarControles();
                 this.desactivarcontroles();
+                txt_Cedula.Enabled = true;
+                btn_guardar.Enabled = true;
             }
         }
 
@@ -262,16 +276,12 @@ namespace ProyectoECU
                     //compara resultado con el dato ingresado
                     txt_tipo_lic.Text = tipo_licencia.ToString();
                     txt_horario_cur.Text = horario.ToString();
-                    txt_prec_curso.Text = cod_curs.ToString();
+                    txt_prec_curso.Text = costo_curso.ToString();
                 }
                 ECU_ConexionPostgres.coneccion.Close();
-                
+
             }
-                   
 
-
-            
-            
         }
 
         private void btn_guardar_Click(object sender, EventArgs e)
@@ -279,13 +289,13 @@ namespace ProyectoECU
             try
             {
 
-                if (ModificarRegistro == true)
+                if (ModificarRegistro == 1)
                 {
                     if (camposVacios() == false)
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
-                        NpgsqlCommand comando1 = new NpgsqlCommand("SELECT Pro_Act_Per_Est_Cedula ('"+txt_Cedula.Text+"', '"+txt_nombre.Text+"', '"+txtApellido.Text+"','"+dateP_fecha_nacim.Value+"','"+txt_direcion.Text+"','"+txt_telefono.Text+"',"+comb_tip_sangre.SelectedValue+");", ECU_ConexionPostgres.coneccion);
+                        NpgsqlCommand comando1 = new NpgsqlCommand("SELECT Pro_Act_Per_Est_Cedula ('" + txt_Cedula.Text + "', '" + txt_nombre.Text + "', '" + txtApellido.Text + "','" + dateP_fecha_nacim.Value + "','" + txt_direcion.Text + "','" + txt_telefono.Text + "'," + comb_tip_sangre.SelectedValue + ");", ECU_ConexionPostgres.coneccion);
                         //ejecutar comando
                         NpgsqlDataReader resultado1 = comando1.ExecuteReader();
                         ECU_ConexionPostgres.coneccion.Close();
@@ -293,7 +303,7 @@ namespace ProyectoECU
 
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
-                        NpgsqlCommand comando2 = new NpgsqlCommand("select from Pro_Ins_Matri("+id_persona.ToString()+","+id_curso.ToString()+","+comb_Instructor.SelectedValue+",'"+datePFecha.Text+"',"+txx_precio_Matri.Text+");", ECU_ConexionPostgres.coneccion);
+                        NpgsqlCommand comando2 = new NpgsqlCommand("select from Pro_Ins_Mat(" + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
                         //ejecutar comando
                         NpgsqlDataReader resultado2 = comando2.ExecuteReader();
                         ECU_ConexionPostgres.coneccion.Close();
@@ -301,15 +311,19 @@ namespace ProyectoECU
                         reiniciarControles();
                         desactivarcontroles();
                     }
-
+                    else
+                    {
+                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK);
+                    }
                 }
-                else
+
+                if (ModificarRegistro == 2)
                 {
                     if (camposVacios() == false)
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
-                        NpgsqlCommand comando2 = new NpgsqlCommand("select from Pro_Ins_Matri(" + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + ",'" + datePFecha.Value + "'," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
+                        NpgsqlCommand comando2 = new NpgsqlCommand("select from Pro_Ins_Mat(" + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
                         //ejecutar comando
                         NpgsqlDataReader resultado2 = comando2.ExecuteReader();
                         ECU_ConexionPostgres.coneccion.Close();
@@ -317,9 +331,33 @@ namespace ProyectoECU
                         reiniciarControles();
                         desactivarcontroles();
                     }
-
+                    else
+                    {
+                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK);
+                    }
 
                 }
+                if (ModificarRegistro == 3)
+                {
+                    if (camposVacios() == false)
+                    {
+                        //abrir la conexion
+                        ECU_ConexionPostgres.coneccion.Open();
+                        NpgsqlCommand comando2 = new NpgsqlCommand("select from Pro_Ins_Mat(" + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
+                        //ejecutar comando
+                        NpgsqlDataReader resultado2 = comando2.ExecuteReader();
+                        ECU_ConexionPostgres.coneccion.Close();
+                        MessageBox.Show("Los datos an sido guardados correctamente");
+                        reiniciarControles();
+                        desactivarcontroles();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK);
+                    }
+
+                }
+
 
 
             }
@@ -359,7 +397,127 @@ namespace ProyectoECU
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ECU_ConsultaMatricula consultaMatricula = new ECU_ConsultaMatricula();
-            consultaMatricula.ShowDialog(); 
+            consultaMatricula.ShowDialog();
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Estas seguro que deseas Salir?", "Estas Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        //buscar por codigo de matricula
+        public void buscarMatriCodi()
+        {
+            try
+            {
+
+                //abrir la conexion
+                ECU_ConexionPostgres.coneccion.Open();
+                //consulta de usuario
+                NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_Con_Matr_Num_2('" + txt_codMatri.Text + "');", ECU_ConexionPostgres.coneccion);
+                //ejecutar comando
+                NpgsqlDataReader resultado = comando.ExecuteReader();
+
+                if (resultado.Read())
+                {   //resultado de la consulta
+                    codi_matri = resultado[0];
+                    object ced_Est = resultado[1];
+                    object nomb_estu = resultado[2];
+                    object apel_estu = resultado[3];
+                    object fech_nacim_estu = resultado[4];
+                    object direcion_estud = resultado[5];
+                    object telefono_estu = resultado[6];
+                    object fecha_matricula = resultado[7];
+                    id_curso = resultado[8];
+                    object id_instructor = resultado[9];
+                    object precio_matricula = resultado[10];
+                    object id_tipo_sangre = resultado[11];
+                    object cost_curso = resultado[12];
+                    object horario_curso = resultado[13];
+                    object tip_licen = resultado[14];
+                    id_persona = resultado[15];
+                    //compara resultado con el dato ingresado
+                    if (codi_matri.Equals(txt_codMatri.Text))
+                    {
+                        //mensaje de dialogo
+                        DialogResult respuesta = MessageBox.Show("La matrícula ya existe, ¿Desea modificarlo?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        //si es si entonces llena los texbox
+                        if (respuesta == DialogResult.Yes)
+                        {
+                            ECU_ConexionPostgres.coneccion.Close();
+                            txt_Cedula.Text = ced_Est.ToString();
+                            txt_nombre.Text = nomb_estu.ToString();
+                            txtApellido.Text = apel_estu.ToString();
+                            dateP_fecha_nacim.Text = fech_nacim_estu.ToString();
+                            txt_direcion.Text = direcion_estud.ToString();
+                            txt_telefono.Text = telefono_estu.ToString();
+                            comb_tip_sangre.SelectedIndex = Int32.Parse(id_tipo_sangre.ToString());
+                            datePFecha.Text = fecha_matricula.ToString();
+                            comb_Cod_Curso.SelectedValue = Int32.Parse(id_curso.ToString());
+                            comb_Instructor.SelectedValue = Int32.Parse(id_instructor.ToString());
+                            txt_prec_curso.Text = cost_curso.ToString();
+                            txx_precio_Matri.Text = precio_matricula.ToString();
+                            txt_tipo_lic.Text = tip_licen.ToString();
+                            txt_horario_cur.Text = horario_curso.ToString();
+                            activarControles();
+                            ModificarRegistro = 3;
+                            btn_guardar.Enabled = true;
+
+
+                        }
+                        else if (respuesta == DialogResult.No)
+                        {
+                            ECU_ConexionPostgres.coneccion.Close();
+                            txt_Cedula.Text = ced_Est.ToString();
+                            txt_nombre.Text = nomb_estu.ToString();
+                            txtApellido.Text = apel_estu.ToString();
+                            dateP_fecha_nacim.Text = fech_nacim_estu.ToString();
+                            txt_direcion.Text = direcion_estud.ToString();
+                            txt_telefono.Text = telefono_estu.ToString();
+                            comb_tip_sangre.SelectedIndex = Int32.Parse(id_tipo_sangre.ToString());
+                            datePFecha.Text = fecha_matricula.ToString();
+                            comb_Cod_Curso.SelectedValue = Int32.Parse(id_curso.ToString());
+                            comb_Instructor.SelectedValue = Int32.Parse(id_instructor.ToString());
+                            txt_prec_curso.Text = cost_curso.ToString();
+                            txx_precio_Matri.Text = precio_matricula.ToString();
+                            txt_tipo_lic.Text = tip_licen.ToString();
+                            txt_horario_cur.Text = horario_curso.ToString();
+                            desactivarcontroles();
+                            btn_guardar.Enabled = false;
+                            txt_Cedula.Enabled = false;
+
+                        }
+
+                    }
+                }
+                else
+                {
+                    ECU_ConexionPostgres.coneccion.Close();
+                    MessageBox.Show("La matricula con cdigo: " + txt_codMatri.Text + " no se encuentra registrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                }
+                
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        private void btn_buscarBarra_Click(object sender, EventArgs e)
+        {
+            this.buscarMatriCodi(); 
+        }
+
+        private void btn_EliminarBarra_Click(object sender, EventArgs e)
+        {
+           
         }
     }
 }

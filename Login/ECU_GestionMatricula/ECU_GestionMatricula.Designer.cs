@@ -76,11 +76,17 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.btn_salir = new System.Windows.Forms.PictureBox();
+            this.txt_codMatri = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -182,6 +188,7 @@
             this.btn_buscarBarra.Size = new System.Drawing.Size(23, 22);
             this.btn_buscarBarra.Text = "toolStripButton3";
             this.btn_buscarBarra.ToolTipText = "Buscar";
+            this.btn_buscarBarra.Click += new System.EventHandler(this.btn_buscarBarra_Click);
             // 
             // btn_nuevoBarra
             // 
@@ -203,6 +210,7 @@
             this.btn_EliminarBarra.Size = new System.Drawing.Size(23, 22);
             this.btn_EliminarBarra.Text = "toolStripButton4";
             this.btn_EliminarBarra.ToolTipText = "Eliminar";
+            this.btn_EliminarBarra.Click += new System.EventHandler(this.btn_EliminarBarra_Click);
             // 
             // groupBox2
             // 
@@ -220,7 +228,7 @@
             this.groupBox2.Controls.Add(this.comb_Cod_Curso);
             this.groupBox2.Controls.Add(this.metroLabel8);
             this.groupBox2.Controls.Add(this.metroLabel9);
-            this.groupBox2.Location = new System.Drawing.Point(28, 282);
+            this.groupBox2.Location = new System.Drawing.Point(21, 327);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(739, 199);
             this.groupBox2.TabIndex = 11;
@@ -393,7 +401,7 @@
             this.groupBox1.Controls.Add(this.metroLabel12);
             this.groupBox1.Controls.Add(this.metroLabel2);
             this.groupBox1.Controls.Add(this.dateP_fecha_nacim);
-            this.groupBox1.Location = new System.Drawing.Point(28, 97);
+            this.groupBox1.Location = new System.Drawing.Point(21, 142);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(739, 179);
             this.groupBox1.TabIndex = 10;
@@ -454,7 +462,7 @@
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Image = ((System.Drawing.Image)(resources.GetObject("btn_Buscar.Image")));
+            this.btn_Buscar.Image = global::ProyectoECU.Properties.Resources.search;
             this.btn_Buscar.Location = new System.Drawing.Point(249, 32);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(25, 23);
@@ -568,17 +576,17 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(314, 59);
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.Location = new System.Drawing.Point(21, 78);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(149, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(163, 25);
             this.metroLabel1.TabIndex = 9;
             this.metroLabel1.Text = "Gestión Matrícula";
             // 
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(20, 103);
+            this.metroTile1.Location = new System.Drawing.Point(13, 148);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(10, 172);
             this.metroTile1.TabIndex = 41;
@@ -587,18 +595,67 @@
             // metroTile2
             // 
             this.metroTile2.ActiveControl = null;
-            this.metroTile2.Location = new System.Drawing.Point(20, 288);
+            this.metroTile2.Location = new System.Drawing.Point(13, 333);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(10, 190);
             this.metroTile2.TabIndex = 44;
             this.metroTile2.UseSelectable = true;
+            // 
+            // btn_salir
+            // 
+            this.btn_salir.Image = global::ProyectoECU.Properties.Resources._54097;
+            this.btn_salir.Location = new System.Drawing.Point(687, 526);
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(40, 30);
+            this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_salir.TabIndex = 46;
+            this.btn_salir.TabStop = false;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
+            // 
+            // txt_codMatri
+            // 
+            this.txt_codMatri.Lines = new string[] {
+        "MECU-004"};
+            this.txt_codMatri.Location = new System.Drawing.Point(158, 24);
+            this.txt_codMatri.MaxLength = 32767;
+            this.txt_codMatri.Name = "txt_codMatri";
+            this.txt_codMatri.PasswordChar = '\0';
+            this.txt_codMatri.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.txt_codMatri.SelectedText = "";
+            this.txt_codMatri.Size = new System.Drawing.Size(112, 23);
+            this.txt_codMatri.TabIndex = 48;
+            this.txt_codMatri.TabStop = false;
+            this.txt_codMatri.Text = "MECU-004";
+            this.txt_codMatri.UseSelectable = true;
+            // 
+            // metroLabel16
+            // 
+            this.metroLabel16.AutoSize = true;
+            this.metroLabel16.Location = new System.Drawing.Point(22, 24);
+            this.metroLabel16.Name = "metroLabel16";
+            this.metroLabel16.Size = new System.Drawing.Size(130, 19);
+            this.metroLabel16.TabIndex = 47;
+            this.metroLabel16.Text = "Código de Matrícula";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.txt_codMatri);
+            this.groupBox3.Controls.Add(this.metroLabel16);
+            this.groupBox3.Location = new System.Drawing.Point(484, 88);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(276, 59);
+            this.groupBox3.TabIndex = 49;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Consulta/Eliminación";
             // 
             // ECU_GestionMatricula
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(792, 511);
+            this.ClientSize = new System.Drawing.Size(792, 561);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.groupBox2);
@@ -606,8 +663,8 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.MaximumSize = new System.Drawing.Size(808, 550);
-            this.MinimumSize = new System.Drawing.Size(808, 550);
+            this.MaximumSize = new System.Drawing.Size(808, 600);
+            this.MinimumSize = new System.Drawing.Size(808, 560);
             this.Name = "ECU_GestionMatricula";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Matrícula";
@@ -620,6 +677,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -637,7 +697,6 @@
         private System.Windows.Forms.ToolStripMenuItem ayudaToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btn_guardar;
-        private System.Windows.Forms.ToolStripButton btn_buscarBarra;
         private System.Windows.Forms.ToolStripButton btn_nuevoBarra;
         private System.Windows.Forms.ToolStripButton btn_EliminarBarra;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -674,5 +733,10 @@
         private MetroFramework.Controls.MetroLabel metroLabel13;
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroTextBox txt_direcion;
+        private System.Windows.Forms.ToolStripButton btn_buscarBarra;
+        private System.Windows.Forms.PictureBox btn_salir;
+        private MetroFramework.Controls.MetroTextBox txt_codMatri;
+        private MetroFramework.Controls.MetroLabel metroLabel16;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

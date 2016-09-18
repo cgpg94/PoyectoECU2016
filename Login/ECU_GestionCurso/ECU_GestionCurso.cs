@@ -46,7 +46,7 @@ namespace ProyectoECU.Interfaces
                     //abrir la conexion
                     ECU_ConexionPostgres.coneccion.Open();
                     //consulta de usuario
-                    NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_cons_Cur(" + txt_codCur.Text + ");", ECU_ConexionPostgres.coneccion);
+                    NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_cons_Cur('" + txt_codCur.Text + "');", ECU_ConexionPostgres.coneccion);
 
                     //ejecutar comando
                     NpgsqlDataReader resultado = comando.ExecuteReader();
@@ -101,7 +101,9 @@ namespace ProyectoECU.Interfaces
                         
                     else
                     {
-                        
+                        MessageBox.Show("El curso no se encuentra registrado, proceda a ingresar los datos","Aviso",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        txt_codCur.Text = "";
+                        txt_codCur.Enabled = false;
                         activarControles();
                         ECU_ConexionPostgres.coneccion.Close();
                     }
@@ -157,9 +159,10 @@ namespace ProyectoECU.Interfaces
             try
             {
 
-                if (ModificarRegistro==true)
+                if (ModificarRegistro == true)
                 {
-                    if (camposVacios()== false)
+
+                    if (camposVacios() == false)
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
@@ -171,15 +174,20 @@ namespace ProyectoECU.Interfaces
                         reiniciarControles();
                         desactivarcontroles();
                     }
+                    else
+                    {
+                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK);
 
+
+                    }
                 }
                 else
                 {
-                    if (camposVacios()==false)
+                    if (camposVacios() == false)
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
-                        NpgsqlCommand comando = new NpgsqlCommand("SELECT Pro_Ins_Cur(" + comb_tipLic.SelectedValue + "," + comb_tipHor.SelectedValue + "," + txt_codCur.Text + ",'" + txt_descrp_curso.Text + "','" + datetime_fecha_inic.Value + "','" + datetime_fecha_fin.Value + "','" + txt_Duracion_curso.Text + "'," + txt_costo.Text + ");", ECU_ConexionPostgres.coneccion);
+                        NpgsqlCommand comando = new NpgsqlCommand("SELECT Pro_Ins_Cur(" + comb_tipLic.SelectedValue + "," + comb_tipHor.SelectedValue + ",'" + txt_descrp_curso.Text + "','" + datetime_fecha_inic.Value + "','" + datetime_fecha_fin.Value + "','" + txt_Duracion_curso.Text + "'," + txt_costo.Text + ");", ECU_ConexionPostgres.coneccion);
                         //ejecutar comando
                         NpgsqlDataReader resultado = comando.ExecuteReader();
                         ECU_ConexionPostgres.coneccion.Close();
@@ -187,8 +195,12 @@ namespace ProyectoECU.Interfaces
                         reiniciarControles();
                         desactivarcontroles();
                     }
-                    
-                    
+                    else
+                    {
+                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK);
+                    }
+
+
                 }
                 
                 
@@ -209,7 +221,7 @@ namespace ProyectoECU.Interfaces
         {
             //abrir la conexion
             ECU_ConexionPostgres.coneccion.Open();
-            NpgsqlCommand comando1 = new NpgsqlCommand("select * from Pro_cons_Cur(" + txt_codCur.Text + ");", ECU_ConexionPostgres.coneccion);
+            NpgsqlCommand comando1 = new NpgsqlCommand("select * from Pro_cons_Cur('" + txt_codCur.Text + "');", ECU_ConexionPostgres.coneccion);
             //ejecutar comando
             NpgsqlDataReader resultado = comando1.ExecuteReader();
             //  ECU_ConexionPostgres.coneccion.Close();
@@ -223,7 +235,7 @@ namespace ProyectoECU.Interfaces
                 {
                     ECU_ConexionPostgres.coneccion.Close();
                     ECU_ConexionPostgres.coneccion.Open();
-                    NpgsqlCommand comando2 = new NpgsqlCommand("SELECT Pro_Eli_Cur (" + id_curo_Modificar.ToString() + ");", ECU_ConexionPostgres.coneccion);
+                    NpgsqlCommand comando2 = new NpgsqlCommand("SELECT Pro_Eli_Cur_Codigo ('" + id_curo_Modificar.ToString() + "');", ECU_ConexionPostgres.coneccion);
                     MessageBox.Show("" + id_curo_Modificar.ToString() + "");
                     //ejecutar comando
                     NpgsqlDataReader resultado2 = comando2.ExecuteReader();
@@ -292,14 +304,6 @@ namespace ProyectoECU.Interfaces
         //verifica los campos vacios
         public bool camposVacios() {
             bool estado = false;
-            if (txt_codCur.Text.Equals(""))
-            {
-                estado = true;
-            }
-            if (txt_codCur.Text.Equals(""))
-            {
-                estado = true;
-            }
             if (txt_descrp_curso.Text.Equals(""))
             {
                 estado = true;
@@ -321,13 +325,13 @@ namespace ProyectoECU.Interfaces
                 
                 try
                 {
-                    string texto = Microsoft.VisualBasic.Interaction.InputBox("Texto de la pregunta", "Titulo del diálogo","");
+                    string texto = Microsoft.VisualBasic.Interaction.InputBox("Ingrese el código del curso", "Consulta por código","");
                   if (texto!="")
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
                         //consulta de usuario
-                        NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_cons_Cur(" + texto.ToString() + ");", ECU_ConexionPostgres.coneccion);
+                        NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_cons_Cur('" + texto.ToString() + "');", ECU_ConexionPostgres.coneccion);
 
                         //ejecutar comando
                         NpgsqlDataReader resultado = comando.ExecuteReader();
@@ -426,19 +430,30 @@ namespace ProyectoECU.Interfaces
 
             }
         }
-
-        private void ECU_GestionCurso_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           
-
-            
-
-        }
-
         private void ECU_GestionCurso_KeyUp(object sender, KeyEventArgs e)
         {
         }
 
-      
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Estas seguro que deseas Salir?", "Estas Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }  
+        }
+
+        
+
+        public static decimal MonthDifference(DateTime FechaFin, DateTime FechaInicio)
+        {
+            return Math.Abs((FechaFin.Month - FechaInicio.Month) + 12 * (FechaFin.Year - FechaInicio.Year));
+
+        }
+        private void datetime_fecha_fin_CloseUp(object sender, EventArgs e)
+        {
+            txt_Duracion_curso.Enabled=false;
+            txt_Duracion_curso.Text = (MonthDifference(datetime_fecha_fin.Value, datetime_fecha_inic.Value)).ToString()+" meses ";
+            
+        }
     }
 }

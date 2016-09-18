@@ -44,6 +44,7 @@
             this.btn_EliminarBarra = new System.Windows.Forms.ToolStripButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.btnBuscar = new System.Windows.Forms.PictureBox();
             this.datetime_fecha_fin = new MetroFramework.Controls.MetroDateTime();
             this.datetime_fecha_inic = new MetroFramework.Controls.MetroDateTime();
@@ -61,11 +62,12 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.comb_tipLic = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.btn_salir = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -105,6 +107,7 @@
             this.nuevoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
+            this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // buscarToolStripMenuItem
             // 
@@ -200,7 +203,7 @@
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel1.Location = new System.Drawing.Point(325, 92);
+            this.metroLabel1.Location = new System.Drawing.Point(307, 72);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(148, 25);
             this.metroLabel1.TabIndex = 2;
@@ -210,6 +213,7 @@
             // 
             this.metroPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.metroPanel1.Controls.Add(this.metroTile1);
             this.metroPanel1.Controls.Add(this.btnBuscar);
             this.metroPanel1.Controls.Add(this.datetime_fecha_fin);
             this.metroPanel1.Controls.Add(this.datetime_fecha_inic);
@@ -230,18 +234,28 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(80, 146);
+            this.metroPanel1.Location = new System.Drawing.Point(43, 146);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(645, 283);
+            this.metroPanel1.Size = new System.Drawing.Size(696, 283);
             this.metroPanel1.TabIndex = 3;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // metroTile1
+            // 
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.metroTile1.Location = new System.Drawing.Point(-14, -1);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(10, 287);
+            this.metroTile1.TabIndex = 40;
+            this.metroTile1.UseSelectable = true;
+            // 
             // btnBuscar
             // 
-            this.btnBuscar.Image = ((System.Drawing.Image)(resources.GetObject("btnBuscar.Image")));
-            this.btnBuscar.Location = new System.Drawing.Point(228, 13);
+            this.btnBuscar.Image = global::ProyectoECU.Properties.Resources.search;
+            this.btnBuscar.Location = new System.Drawing.Point(254, 13);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(24, 23);
             this.btnBuscar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -258,9 +272,10 @@
             this.datetime_fecha_fin.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
             this.datetime_fecha_fin.MinimumSize = new System.Drawing.Size(0, 29);
             this.datetime_fecha_fin.Name = "datetime_fecha_fin";
-            this.datetime_fecha_fin.Size = new System.Drawing.Size(200, 29);
+            this.datetime_fecha_fin.Size = new System.Drawing.Size(230, 29);
             this.datetime_fecha_fin.TabIndex = 39;
             this.datetime_fecha_fin.Value = new System.DateTime(2016, 9, 12, 14, 56, 0, 0);
+            this.datetime_fecha_fin.CloseUp += new System.EventHandler(this.datetime_fecha_fin_CloseUp);
             // 
             // datetime_fecha_inic
             // 
@@ -271,7 +286,7 @@
             this.datetime_fecha_inic.MinDate = new System.DateTime(1940, 1, 1, 0, 0, 0, 0);
             this.datetime_fecha_inic.MinimumSize = new System.Drawing.Size(0, 29);
             this.datetime_fecha_inic.Name = "datetime_fecha_inic";
-            this.datetime_fecha_inic.Size = new System.Drawing.Size(200, 29);
+            this.datetime_fecha_inic.Size = new System.Drawing.Size(230, 29);
             this.datetime_fecha_inic.TabIndex = 38;
             this.datetime_fecha_inic.Value = new System.DateTime(2016, 9, 14, 12, 4, 14, 0);
             // 
@@ -285,7 +300,7 @@
             this.txt_costo.PasswordChar = '\0';
             this.txt_costo.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txt_costo.SelectedText = "";
-            this.txt_costo.Size = new System.Drawing.Size(76, 23);
+            this.txt_costo.Size = new System.Drawing.Size(188, 23);
             this.txt_costo.TabIndex = 37;
             this.txt_costo.UseSelectable = true;
             // 
@@ -299,7 +314,7 @@
             this.txt_Duracion_curso.PasswordChar = '\0';
             this.txt_Duracion_curso.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txt_Duracion_curso.SelectedText = "";
-            this.txt_Duracion_curso.Size = new System.Drawing.Size(76, 23);
+            this.txt_Duracion_curso.Size = new System.Drawing.Size(188, 23);
             this.txt_Duracion_curso.TabIndex = 35;
             this.txt_Duracion_curso.UseSelectable = true;
             // 
@@ -372,7 +387,7 @@
             this.txt_codCur.PasswordChar = '\0';
             this.txt_codCur.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txt_codCur.SelectedText = "";
-            this.txt_codCur.Size = new System.Drawing.Size(76, 23);
+            this.txt_codCur.Size = new System.Drawing.Size(102, 23);
             this.txt_codCur.TabIndex = 27;
             this.txt_codCur.TabStop = false;
             this.txt_codCur.UseSelectable = true;
@@ -426,15 +441,16 @@
             this.metroLabel2.TabIndex = 22;
             this.metroLabel2.Text = "Tipo de Licencia";
             // 
-            // metroTile1
+            // btn_salir
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.metroTile1.Location = new System.Drawing.Point(80, 146);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(10, 283);
-            this.metroTile1.TabIndex = 40;
-            this.metroTile1.UseSelectable = true;
+            this.btn_salir.Image = global::ProyectoECU.Properties.Resources._54097;
+            this.btn_salir.Location = new System.Drawing.Point(699, 460);
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(40, 30);
+            this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_salir.TabIndex = 46;
+            this.btn_salir.TabStop = false;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
             // 
             // ECU_GestionCurso
             // 
@@ -442,18 +458,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(792, 511);
-            this.ControlBox = false;
-            this.Controls.Add(this.metroTile1);
+            this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximumSize = new System.Drawing.Size(808, 550);
+            this.MinimumSize = new System.Drawing.Size(808, 550);
             this.Name = "ECU_GestionCurso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de Curso";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ECU_GestionCurso_KeyDown);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ECU_GestionCurso_KeyPress);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ECU_GestionCurso_KeyUp);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -462,6 +478,7 @@
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnBuscar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -502,5 +519,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTile metroTile1;
         private System.Windows.Forms.PictureBox btnBuscar;
+        private System.Windows.Forms.PictureBox btn_salir;
     }
 }

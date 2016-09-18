@@ -66,11 +66,13 @@
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.btn_salir = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).BeginInit();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -199,7 +201,7 @@
             this.groupBox1.Controls.Add(this.metroLabel3);
             this.groupBox1.Controls.Add(this.metroLabel2);
             this.groupBox1.Controls.Add(this.metroLabel1);
-            this.groupBox1.Location = new System.Drawing.Point(38, 96);
+            this.groupBox1.Location = new System.Drawing.Point(44, 86);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(433, 270);
             this.groupBox1.TabIndex = 4;
@@ -208,7 +210,7 @@
             // 
             // btn_Buscar
             // 
-            this.btn_Buscar.Image = global::ProyectoECU.Properties.Resources._1473809674_Play01;
+            this.btn_Buscar.Image = global::ProyectoECU.Properties.Resources.search;
             this.btn_Buscar.Location = new System.Drawing.Point(220, 20);
             this.btn_Buscar.Name = "btn_Buscar";
             this.btn_Buscar.Size = new System.Drawing.Size(21, 23);
@@ -407,7 +409,7 @@
             this.groupBox2.Controls.Add(this.metroTextBox9);
             this.groupBox2.Controls.Add(this.metroLabel9);
             this.groupBox2.Controls.Add(this.metroLabel10);
-            this.groupBox2.Location = new System.Drawing.Point(38, 372);
+            this.groupBox2.Location = new System.Drawing.Point(44, 362);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(433, 67);
             this.groupBox2.TabIndex = 5;
@@ -470,7 +472,7 @@
             // metroTile1
             // 
             this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(28, 102);
+            this.metroTile1.Location = new System.Drawing.Point(34, 92);
             this.metroTile1.Name = "metroTile1";
             this.metroTile1.Size = new System.Drawing.Size(10, 264);
             this.metroTile1.TabIndex = 7;
@@ -479,11 +481,21 @@
             // metroTile2
             // 
             this.metroTile2.ActiveControl = null;
-            this.metroTile2.Location = new System.Drawing.Point(28, 377);
+            this.metroTile2.Location = new System.Drawing.Point(34, 367);
             this.metroTile2.Name = "metroTile2";
             this.metroTile2.Size = new System.Drawing.Size(10, 61);
             this.metroTile2.TabIndex = 8;
             this.metroTile2.UseSelectable = true;
+            // 
+            // btn_salir
+            // 
+            this.btn_salir.Image = global::ProyectoECU.Properties.Resources._54097;
+            this.btn_salir.Location = new System.Drawing.Point(431, 433);
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(40, 30);
+            this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_salir.TabIndex = 48;
+            this.btn_salir.TabStop = false;
             // 
             // ECU_GestionPago
             // 
@@ -491,6 +503,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(511, 465);
+            this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.groupBox2);
@@ -513,6 +526,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btn_Buscar)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -558,5 +572,6 @@
         private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile metroTile2;
+        private System.Windows.Forms.PictureBox btn_salir;
     }
 }
