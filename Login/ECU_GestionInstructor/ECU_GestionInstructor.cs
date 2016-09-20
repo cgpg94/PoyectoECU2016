@@ -182,7 +182,7 @@ namespace ProyectoECU.Interfaces
                 nombre = dr[0].ToString();
                 apellido = dr[1].ToString();
                 codigo = dr[2].ToString();
-                MessageBox.Show("El Instructor "+nombre+" "+apellido+" fue guardado correctamente con el codigo "+codigo , "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("El Instructor  "+nombre+ " "+apellido+" fue guardado correctamente con el codigo "+codigo , "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -194,6 +194,7 @@ namespace ProyectoECU.Interfaces
 
         private void btnguardar_Click(object sender, EventArgs e)
         {
+
             //cracion de instancia para validar
             Validaciones valida = new Validaciones();
             //declaramos las variables que vamos a utilizar el los tex boxes
@@ -204,7 +205,7 @@ namespace ProyectoECU.Interfaces
             string direccion = txt_direccion.Text;
             string telefono = txt_telefono.Text;
             string fecha_contrato = dtp_fecha_contrato.Text;
-           
+
             //validar si hay campos vacios al insertar
             if ((txt_nombre.Text == "") && (txt_apellido.Text == "") && (txt_direccion.Text == "") && (txt_telefono.Text == ""))
             {
@@ -228,7 +229,6 @@ namespace ProyectoECU.Interfaces
                             if (contador == -1)
                             {
                                 mostrarMensajeGuardado(cedula);
-                                MessageBox.Show("Datos guardados correctamente", "Guardado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 desbloquear_verificar();
                             }
                             else
@@ -277,7 +277,7 @@ namespace ProyectoECU.Interfaces
                 }
                 else
                 {
-                    MessageBox.Show("Nope", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Campos Incorrectos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -300,7 +300,7 @@ namespace ProyectoECU.Interfaces
             {
                 if (siExiste(cedula))
                 {
-                    if (MessageBox.Show("El Intructor ya existe, desea Modificarlo ", "Actualizar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("El instructor ya existe, desea modificarlo ", "Actualizar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         desbloquear_botones();
                         cargarModificar(cedula);
@@ -423,7 +423,38 @@ namespace ProyectoECU.Interfaces
 
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
-
+             //verificamos si la cedula no esta vacia
+            if (txt_cedula.Text != "")
+            {
+                //prefuntamos si deseamos eliminar el Estudiante
+                if (MessageBox.Show("Desea eliminar el instructor?", "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        ECU_ConexionPostgres.coneccion.Open();
+                        string SQL = "SELECT Pro_Eli_Per_Ins_Ced('" + txt_cedula.Text + "')";
+                        // Execute command
+                        NpgsqlCommand command = new NpgsqlCommand(SQL, ECU_ConexionPostgres.coneccion);
+                        int contador = command.ExecuteNonQuery();
+                        ECU_ConexionPostgres.coneccion.Close();
+                        MessageBox.Show("Eliminado Correctamente", "Registro Eliminado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        desbloquear_verificar();
+                        bloquear();
+                        limpiar();
+                        txt_cedula.Focus();
+                    }
+                    catch (Exception ec)
+                    {
+                        MessageBox.Show("" + ec);
+                        ECU_ConexionPostgres.coneccion.Close();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ingrese el número de cédula a eliminar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }   
+        
         }
 
         private void btn_salir_Click(object sender, EventArgs e)

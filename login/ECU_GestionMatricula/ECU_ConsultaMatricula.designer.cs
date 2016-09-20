@@ -56,6 +56,7 @@
             this.g_datos.AllowUserToResizeRows = false;
             this.g_datos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.g_datos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.g_datos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.g_datos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.g_datos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -78,7 +79,7 @@
             this.g_datos.EnableHeadersVisualStyles = false;
             this.g_datos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.g_datos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.g_datos.Location = new System.Drawing.Point(12, 148);
+            this.g_datos.Location = new System.Drawing.Point(12, 137);
             this.g_datos.Name = "g_datos";
             this.g_datos.ReadOnly = true;
             this.g_datos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -106,7 +107,7 @@
             this.groupBox1.Controls.Add(this.rbtn_nomEstudiante);
             this.groupBox1.Controls.Add(this.rbtn_numMatricula);
             this.groupBox1.Controls.Add(this.rbtn_todo);
-            this.groupBox1.Location = new System.Drawing.Point(12, 42);
+            this.groupBox1.Location = new System.Drawing.Point(12, 31);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(848, 100);
             this.groupBox1.TabIndex = 7;
@@ -217,7 +218,7 @@
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(346, 14);
+            this.metroLabel1.Location = new System.Drawing.Point(346, 3);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(198, 25);
             this.metroLabel1.TabIndex = 6;
