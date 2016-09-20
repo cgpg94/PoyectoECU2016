@@ -141,7 +141,6 @@
             this.dgv_estudiante.AllowUserToDeleteRows = false;
             this.dgv_estudiante.AllowUserToResizeRows = false;
             this.dgv_estudiante.BackgroundColor = System.Drawing.Color.White;
-            this.dgv_estudiante.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_estudiante.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.dgv_estudiante.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dgv_estudiante.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
