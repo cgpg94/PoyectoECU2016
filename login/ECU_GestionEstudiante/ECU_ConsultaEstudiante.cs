@@ -195,7 +195,7 @@ namespace ProyectoECU.ECU_GestionEstudiante
                         }
                         else
                         {
-                            MessageBox.Show("Ingrese un número de cedula válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Ingrese un nombre válido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         }
                     }

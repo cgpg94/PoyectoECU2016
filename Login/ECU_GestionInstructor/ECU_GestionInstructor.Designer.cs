@@ -154,8 +154,8 @@
             this.buscarCtrlBToolStripMenuItem,
             this.eliminarCtrlEToolStripMenuItem});
             this.menu_archivo.Name = "menu_archivo";
-            this.menu_archivo.Size = new System.Drawing.Size(53, 20);
-            this.menu_archivo.Text = "Ayuda";
+            this.menu_archivo.Size = new System.Drawing.Size(60, 20);
+            this.menu_archivo.Text = "Archivo";
             // 
             // nuevoCtrlGToolStripMenuItem
             // 

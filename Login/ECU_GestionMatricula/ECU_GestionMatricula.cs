@@ -78,7 +78,7 @@ namespace ProyectoECU
                                 //si es si entonces llena los texbox
                                 txt_nombre.Text = nomb_estu.ToString();
                                 txtApellido.Text = apel_estu.ToString();
-                                dateP_fecha_nacim.Text = fech_naci.ToString();
+                                datePFecha.Text = fech_naci.ToString();
                                 txt_telefono.Text = telef_estu.ToString();
                                 comb_tip_sangre.SelectedIndex = Int32.Parse(tip_sangre_estu.ToString());
                                 txt_direcion.Text = direc_estu.ToString();
@@ -287,7 +287,6 @@ namespace ProyectoECU
                     txt_horario_cur.Text = horario.ToString();
                     txt_prec_curso.Text = costo_curso.ToString();
                     btn_guardar.Enabled = true;
-
                 }
                 ECU_ConexionPostgres.coneccion.Close();
 
@@ -374,7 +373,7 @@ namespace ProyectoECU
             }
             catch (Exception ex)
             {
-                MessageBox.Show(""+ex);
+                MessageBox.Show(""+ex+"      "+id_persona.ToString()+"     "+id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + "");
                 ECU_ConexionPostgres.coneccion.Close();
                 throw;
             }

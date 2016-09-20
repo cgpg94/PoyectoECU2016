@@ -168,7 +168,7 @@ namespace ProyectoECU.Interfaces
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
-                        NpgsqlCommand comando = new NpgsqlCommand("SELECT Pro_Act_Cur(" + id_curo_Modificar.ToString() + "," + comb_tipLic.SelectedValue + "," + comb_tipHor.SelectedValue + "," + txt_codCur.Text + ",'" + txt_descrp_curso.Text + "','" + datetime_fecha_inic.Value + "','" + datetime_fecha_fin.Value + "','" + txt_Duracion_curso.Text + "'," + txt_costo.Text + ");", ECU_ConexionPostgres.coneccion);
+                        NpgsqlCommand comando = new NpgsqlCommand("SELECT Pro_Act_Cur(" + id_curo_Modificar.ToString() + "," + comb_tipLic.SelectedValue + "," + comb_tipHor.SelectedValue + ",'" + txt_descrp_curso.Text + "','" + datetime_fecha_inic.Value + "','" + datetime_fecha_fin.Value + "','" + txt_Duracion_curso.Text + "'," + txt_costo.Text + ");", ECU_ConexionPostgres.coneccion);
                         //ejecutar comando
                         NpgsqlDataReader resultado = comando.ExecuteReader();
                         ECU_ConexionPostgres.coneccion.Close();
@@ -196,6 +196,8 @@ namespace ProyectoECU.Interfaces
                         MessageBox.Show("Los datos an sido ingresados correctamente");
                         reiniciarControles();
                         desactivarcontroles();
+                        datetime_fecha_fin.Value = DateTime.Now;
+                        datetime_fecha_fin.Value = DateTime.Now;
                     }
                     else
                     {
@@ -207,8 +209,9 @@ namespace ProyectoECU.Interfaces
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show("Test"+ ex);
                 ECU_ConexionPostgres.coneccion.Close();
                 throw;
             }
@@ -407,6 +410,8 @@ namespace ProyectoECU.Interfaces
                 datetime_fecha_fin.Value = DateTime.Now;
                 datetime_fecha_fin.Value = DateTime.Now;
                 desactivarcontroles();
+                btn_nuevoBarra.Enabled=true;
+                
 
             }
 

@@ -43,6 +43,8 @@
             this.btn_nuevo = new System.Windows.Forms.ToolStripButton();
             this.btn_eliminar = new System.Windows.Forms.ToolStripButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btn_salir = new System.Windows.Forms.PictureBox();
+            this.btn_verificar = new System.Windows.Forms.PictureBox();
             this.txt_direccion = new MetroFramework.Controls.MetroTextBox();
             this.lbl_direccion = new MetroFramework.Controls.MetroLabel();
             this.cbx_tipoSangre = new MetroFramework.Controls.MetroComboBox();
@@ -59,13 +61,11 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.btn_verificar = new System.Windows.Forms.PictureBox();
-            this.btn_salir = new System.Windows.Forms.PictureBox();
             this.menu.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.metroPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_verificar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_verificar)).BeginInit();
             this.SuspendLayout();
             // 
             // menu
@@ -218,6 +218,28 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // btn_salir
+            // 
+            this.btn_salir.Image = global::ProyectoECU.Properties.Resources._54097;
+            this.btn_salir.Location = new System.Drawing.Point(466, 197);
+            this.btn_salir.Name = "btn_salir";
+            this.btn_salir.Size = new System.Drawing.Size(40, 30);
+            this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_salir.TabIndex = 47;
+            this.btn_salir.TabStop = false;
+            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
+            // 
+            // btn_verificar
+            // 
+            this.btn_verificar.Image = global::ProyectoECU.Properties.Resources.search;
+            this.btn_verificar.Location = new System.Drawing.Point(257, 37);
+            this.btn_verificar.Name = "btn_verificar";
+            this.btn_verificar.Size = new System.Drawing.Size(25, 23);
+            this.btn_verificar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_verificar.TabIndex = 44;
+            this.btn_verificar.TabStop = false;
+            this.btn_verificar.Click += new System.EventHandler(this.btn_verificar_Click);
             // 
             // txt_direccion
             // 
@@ -388,28 +410,6 @@
             this.metroLabel7.TabIndex = 32;
             this.metroLabel7.Text = "Gestión de Estudiantes";
             // 
-            // btn_verificar
-            // 
-            this.btn_verificar.Image = global::ProyectoECU.Properties.Resources.search;
-            this.btn_verificar.Location = new System.Drawing.Point(257, 37);
-            this.btn_verificar.Name = "btn_verificar";
-            this.btn_verificar.Size = new System.Drawing.Size(25, 23);
-            this.btn_verificar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btn_verificar.TabIndex = 44;
-            this.btn_verificar.TabStop = false;
-            this.btn_verificar.Click += new System.EventHandler(this.btn_verificar_Click);
-            // 
-            // btn_salir
-            // 
-            this.btn_salir.Image = global::ProyectoECU.Properties.Resources._54097;
-            this.btn_salir.Location = new System.Drawing.Point(466, 197);
-            this.btn_salir.Name = "btn_salir";
-            this.btn_salir.Size = new System.Drawing.Size(40, 30);
-            this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btn_salir.TabIndex = 47;
-            this.btn_salir.TabStop = false;
-            this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
-            // 
             // ECU_GestionEstudiante
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -435,8 +435,8 @@
             this.toolStrip1.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_verificar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_verificar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

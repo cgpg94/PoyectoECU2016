@@ -205,7 +205,7 @@
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(291, 65);
+            this.metroLabel1.Location = new System.Drawing.Point(290, 67);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(156, 25);
             this.metroLabel1.TabIndex = 2;
@@ -236,7 +236,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(12, 106);
+            this.metroPanel1.Location = new System.Drawing.Point(11, 108);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(696, 283);
             this.metroPanel1.TabIndex = 3;
@@ -384,7 +384,7 @@
             // 
             this.txt_codCur.Lines = new string[0];
             this.txt_codCur.Location = new System.Drawing.Point(146, 13);
-            this.txt_codCur.MaxLength = 32767;
+            this.txt_codCur.MaxLength = 25;
             this.txt_codCur.Name = "txt_codCur";
             this.txt_codCur.PasswordChar = '\0';
             this.txt_codCur.ScrollBars = System.Windows.Forms.ScrollBars.None;

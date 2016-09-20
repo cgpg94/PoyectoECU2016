@@ -329,7 +329,7 @@ namespace ProyectoECU.Interfaces
             {
                 if (siExiste(cedula))
                 {
-                    if (MessageBox.Show("El Estudiante ya existe, desea Modificarlo ", "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("El Estudiante ya existe, desea Modificarlo ? ", "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         desbloquear_botones();
                         cargarModificar(cedula);

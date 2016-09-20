@@ -341,6 +341,7 @@ namespace ProyectoECU.Interfaces
             bloquear();
             btn_buscar.Enabled = true;
 
+           
         }
 
 
@@ -354,7 +355,7 @@ namespace ProyectoECU.Interfaces
             inputBox.StartPosition = FormStartPosition.CenterParent;
             inputBox.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             inputBox.ClientSize = size;
-            inputBox.Text = "Buscar Estudiante";
+            inputBox.Text = "Buscar Instructor";
 
             System.Windows.Forms.Label label = new Label();
             label.Text = "Cedula";

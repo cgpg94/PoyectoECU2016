@@ -56,6 +56,8 @@
     <Reference Include="MetroFramework.Fonts">
       <HintPath>..\..\..\..\..\Downloads\Compressed\METRO DLL_2\MetroFramework.Fonts.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Npgsql">
       <HintPath>..\..\..\..\..\..\Program Files (x86)\PostgreSQL\Npgsql\bin\Npgsql.dll</HintPath>
@@ -64,6 +66,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -111,6 +114,12 @@
     <Compile Include="ECU_GestionInstructor\ECU_ConsultaInstructor.Designer.cs">
       <DependentUpon>ECU_ConsultaInstructor.cs</DependentUpon>
     </Compile>
+    <Compile Include="ECU_GestionMatricula\ECU_GestionMatricula.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ECU_GestionMatricula\ECU_GestionMatricula.designer.cs">
+      <DependentUpon>ECU_GestionMatricula.cs</DependentUpon>
+    </Compile>
     <Compile Include="ECU_GestionUsuario\ECU_GestionUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,12 +144,6 @@
     </Compile>
     <Compile Include="ECU_GestionMatricula\ECU_ConsultaMatricula.designer.cs">
       <DependentUpon>ECU_ConsultaMatricula.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ECU_GestionMatricula\ECU_GestionMatricula.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ECU_GestionMatricula\ECU_GestionMatricula.designer.cs">
-      <DependentUpon>ECU_GestionMatricula.cs</DependentUpon>
     </Compile>
     <Compile Include="ECU_GestionPago\ECU_GestionPago.cs">
       <SubType>Form</SubType>
