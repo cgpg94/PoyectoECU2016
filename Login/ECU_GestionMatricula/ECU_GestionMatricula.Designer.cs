@@ -134,6 +134,7 @@
             this.buscarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
             this.buscarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.buscarToolStripMenuItem.Text = "Buscar";
+            this.buscarToolStripMenuItem.Click += new System.EventHandler(this.btn_buscarBarra_Click);
             // 
             // eliminarToolStripMenuItem
             // 
@@ -141,6 +142,7 @@
             this.eliminarToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.btn_EliminarBarra_Click);
             // 
             // consultarToolStripMenuItem
             // 
@@ -174,6 +176,7 @@
             // btn_guardar
             // 
             this.btn_guardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.btn_guardar.Enabled = false;
             this.btn_guardar.Image = ((System.Drawing.Image)(resources.GetObject("btn_guardar.Image")));
             this.btn_guardar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btn_guardar.Name = "btn_guardar";
@@ -297,7 +300,7 @@
             this.txx_precio_Matri.Enabled = false;
             this.txx_precio_Matri.Lines = new string[0];
             this.txx_precio_Matri.Location = new System.Drawing.Point(463, 105);
-            this.txx_precio_Matri.MaxLength = 32767;
+            this.txx_precio_Matri.MaxLength = 100;
             this.txx_precio_Matri.Name = "txx_precio_Matri";
             this.txx_precio_Matri.PasswordChar = '\0';
             this.txx_precio_Matri.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -333,7 +336,7 @@
             // 
             this.datePFecha.Enabled = false;
             this.datePFecha.Location = new System.Drawing.Point(463, 145);
-            this.datePFecha.MinimumSize = new System.Drawing.Size(4, 29);
+            this.datePFecha.MinimumSize = new System.Drawing.Size(0, 29);
             this.datePFecha.Name = "datePFecha";
             this.datePFecha.Size = new System.Drawing.Size(243, 29);
             this.datePFecha.TabIndex = 6;
@@ -444,7 +447,7 @@
             this.txt_telefono.Enabled = false;
             this.txt_telefono.Lines = new string[0];
             this.txt_telefono.Location = new System.Drawing.Point(385, 107);
-            this.txt_telefono.MaxLength = 32767;
+            this.txt_telefono.MaxLength = 10;
             this.txt_telefono.Name = "txt_telefono";
             this.txt_telefono.PasswordChar = '\0';
             this.txt_telefono.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -452,6 +455,7 @@
             this.txt_telefono.Size = new System.Drawing.Size(153, 23);
             this.txt_telefono.TabIndex = 10;
             this.txt_telefono.UseSelectable = true;
+            this.txt_telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_telefono_KeyPress);
             // 
             // metroLabel13
             // 
@@ -478,7 +482,7 @@
             this.txt_direcion.Enabled = false;
             this.txt_direcion.Lines = new string[0];
             this.txt_direcion.Location = new System.Drawing.Point(97, 143);
-            this.txt_direcion.MaxLength = 32767;
+            this.txt_direcion.MaxLength = 25;
             this.txt_direcion.Name = "txt_direcion";
             this.txt_direcion.PasswordChar = '\0';
             this.txt_direcion.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -492,7 +496,7 @@
             this.txtApellido.Enabled = false;
             this.txtApellido.Lines = new string[0];
             this.txtApellido.Location = new System.Drawing.Point(97, 107);
-            this.txtApellido.MaxLength = 32767;
+            this.txtApellido.MaxLength = 25;
             this.txtApellido.Name = "txtApellido";
             this.txtApellido.PasswordChar = '\0';
             this.txtApellido.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -515,7 +519,7 @@
             this.txt_nombre.Enabled = false;
             this.txt_nombre.Lines = new string[0];
             this.txt_nombre.Location = new System.Drawing.Point(97, 69);
-            this.txt_nombre.MaxLength = 32767;
+            this.txt_nombre.MaxLength = 25;
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.PasswordChar = '\0';
             this.txt_nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -537,7 +541,7 @@
             // 
             this.txt_Cedula.Lines = new string[0];
             this.txt_Cedula.Location = new System.Drawing.Point(97, 32);
-            this.txt_Cedula.MaxLength = 32767;
+            this.txt_Cedula.MaxLength = 10;
             this.txt_Cedula.Name = "txt_Cedula";
             this.txt_Cedula.PasswordChar = '\0';
             this.txt_Cedula.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -671,6 +675,7 @@
             this.Name = "ECU_GestionMatricula";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Matrícula";
+            this.Load += new System.EventHandler(this.ECU_GestionMatricula_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

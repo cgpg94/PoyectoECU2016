@@ -82,7 +82,7 @@
             this.txt_Usuario.Lines = new string[] {
         "admin"};
             this.txt_Usuario.Location = new System.Drawing.Point(86, 177);
-            this.txt_Usuario.MaxLength = 32767;
+            this.txt_Usuario.MaxLength = 50;
             this.txt_Usuario.Name = "txt_Usuario";
             this.txt_Usuario.PasswordChar = '\0';
             this.txt_Usuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -99,7 +99,7 @@
             this.txt_Contraseña.Lines = new string[] {
         "123456"};
             this.txt_Contraseña.Location = new System.Drawing.Point(86, 225);
-            this.txt_Contraseña.MaxLength = 32767;
+            this.txt_Contraseña.MaxLength = 50;
             this.txt_Contraseña.Name = "txt_Contraseña";
             this.txt_Contraseña.PasswordChar = '*';
             this.txt_Contraseña.ScrollBars = System.Windows.Forms.ScrollBars.None;

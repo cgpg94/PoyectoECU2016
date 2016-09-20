@@ -18,6 +18,7 @@ namespace ProyectoECU
         {
             InitializeComponent();
             this.cargar_combo();
+            this.cargarTodoVCurso();
         }
 
         private void ECU_ConsultaCurso_KeyDown(object sender, KeyEventArgs e)
@@ -61,19 +62,47 @@ namespace ProyectoECU
         }
 
 
-        private void ECU_ConsultaCurso_Load(object sender, EventArgs e)
+
+
+        private void rbtn_cod_cur_CheckedChanged(object sender, EventArgs e)
         {
-            //this.llenarDataGridCursos();
+
+            if (rbtn_cod_cur.Checked)
+            {
+                txt_codigo_cur.Enabled = true;
+                comb_tip_lic.Enabled = false;
+            }
         }
 
-        private void rbtn_todo_CheckedChanged(object sender, EventArgs e)
+
+
+        private void rbtn_ti_lic_CheckedChanged(object sender, EventArgs e)
+        {
+            if (rbtn_ti_lic.Checked)
+            {
+                comb_tip_lic.Enabled = true;
+                txt_codigo_cur.Text = "";
+            }
+           
+        }
+
+        private void btn_salir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btn_verificar_Click(object sender, EventArgs e)
         {
             if (rbtn_todo.Checked)
+            {
+                cargarTodoVCurso();
+            }
+            if (txt_codigo_cur.Text != ""&& rbtn_cod_cur.Checked)
             {
                 //abre la base de datos
                 ECU_ConexionPostgres.coneccion.Open();
                 //llamar el procedimiento almacenadoa
-                string SQL = "select* from Pro_cons_tod_Cur();";
+                string SQL = "select * from Pro_cons_Cur_Cons_form('" + txt_codigo_cur.Text + "');";
                 // Ejecuta el comando
                 NpgsqlDataAdapter comando = new NpgsqlDataAdapter(SQL, ECU_ConexionPostgres.coneccion);
                 DataSet ds = new DataSet();
@@ -83,46 +112,7 @@ namespace ProyectoECU
                 //cierra la coneccion
                 ECU_ConexionPostgres.coneccion.Close();
             }
-                
-        }
-
-        private void rbtn_cod_cur_CheckedChanged(object sender, EventArgs e)
-        {
-
-            if (rbtn_cod_cur.Checked)
-            {
-                txt_codigo_cur.Enabled = true;
-            }
-        }
-
-        private void txt_codigo_cur_TextChanged(object sender, EventArgs e)
-        {
-            if (txt_codigo_cur.Text!="")
-            {
-                //abre la base de datos
-                ECU_ConexionPostgres.coneccion.Open();
-                //llamar el procedimiento almacenadoa
-                string SQL = "select * from Pro_cons_Cur_Cons_form(" + txt_codigo_cur.Text + ");";
-                // Ejecuta el comando
-                NpgsqlDataAdapter comando = new NpgsqlDataAdapter(SQL, ECU_ConexionPostgres.coneccion);
-                DataSet ds = new DataSet();
-                //agrega los datos a una tabla
-                comando.Fill(ds);
-                grid_datos.DataSource = ds.Tables[0];
-                //cierra la coneccion
-                ECU_ConexionPostgres.coneccion.Close(); 
-            }
-            
-        }
-
-        private void rbtn_ti_lic_CheckedChanged(object sender, EventArgs e)
-        {
-            comb_tip_lic.Enabled = true;
-        }
-
-        private void comb_tip_lic_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comb_tip_lic.Enabled)
+            if (comb_tip_lic.Enabled&&rbtn_ti_lic.Checked)
             {
                 //abre la base de datos
                 ECU_ConexionPostgres.coneccion.Close();
@@ -139,18 +129,32 @@ namespace ProyectoECU
                 //cierra la coneccion
                 ECU_ConexionPostgres.coneccion.Close();
             }
-                
-                
             
 
         }
 
-
-        private void btn_salir_Click(object sender, EventArgs e)
+        private void rbtn_todo_CheckedChanged(object sender, EventArgs e)
         {
-            this.Close();
+            
         }
-
+        public void cargarTodoVCurso()
+        {
+            if (rbtn_todo.Checked)
+            {
+                //abre la base de datos
+                ECU_ConexionPostgres.coneccion.Open();
+                //llamar el procedimiento almacenadoa
+                string SQL = "select* from Pro_cons_tod_Cur();";
+                // Ejecuta el comando
+                NpgsqlDataAdapter comando = new NpgsqlDataAdapter(SQL, ECU_ConexionPostgres.coneccion);
+                DataSet ds = new DataSet();
+                //agrega los datos a una tabla
+                comando.Fill(ds);
+                grid_datos.DataSource = ds.Tables[0];
+                //cierra la coneccion
+                ECU_ConexionPostgres.coneccion.Close();
+            }
+        }
 
 
     }

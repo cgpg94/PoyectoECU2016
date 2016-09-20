@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.g_datos = new MetroFramework.Controls.MetroGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_verificar = new System.Windows.Forms.PictureBox();
             this.txt_nombreEstud = new MetroFramework.Controls.MetroTextBox();
             this.txt_cedula = new MetroFramework.Controls.MetroTextBox();
             this.rbtn_numCedula = new MetroFramework.Controls.MetroRadioButton();
@@ -41,10 +42,10 @@
             this.rbtn_numMatricula = new MetroFramework.Controls.MetroRadioButton();
             this.rbtn_todo = new MetroFramework.Controls.MetroRadioButton();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.btn_salir = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.g_datos)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_verificar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +56,6 @@
             this.g_datos.AllowUserToResizeRows = false;
             this.g_datos.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.g_datos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.g_datos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.g_datos.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.g_datos.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -78,9 +78,7 @@
             this.g_datos.EnableHeadersVisualStyles = false;
             this.g_datos.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.g_datos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.g_datos.Location = new System.Drawing.Point(202, 40);
-            this.g_datos.MaximumSize = new System.Drawing.Size(597, 298);
-            this.g_datos.MinimumSize = new System.Drawing.Size(597, 298);
+            this.g_datos.Location = new System.Drawing.Point(12, 148);
             this.g_datos.Name = "g_datos";
             this.g_datos.ReadOnly = true;
             this.g_datos.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -94,12 +92,13 @@
             this.g_datos.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.g_datos.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.g_datos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.g_datos.Size = new System.Drawing.Size(597, 298);
+            this.g_datos.Size = new System.Drawing.Size(848, 210);
             this.g_datos.TabIndex = 8;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.btn_verificar);
             this.groupBox1.Controls.Add(this.txt_nombreEstud);
             this.groupBox1.Controls.Add(this.txt_cedula);
             this.groupBox1.Controls.Add(this.rbtn_numCedula);
@@ -107,19 +106,30 @@
             this.groupBox1.Controls.Add(this.rbtn_nomEstudiante);
             this.groupBox1.Controls.Add(this.rbtn_numMatricula);
             this.groupBox1.Controls.Add(this.rbtn_todo);
-            this.groupBox1.Location = new System.Drawing.Point(12, 32);
+            this.groupBox1.Location = new System.Drawing.Point(12, 42);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(184, 306);
+            this.groupBox1.Size = new System.Drawing.Size(848, 100);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
+            // 
+            // btn_verificar
+            // 
+            this.btn_verificar.Image = global::ProyectoECU.Properties.Resources.search;
+            this.btn_verificar.Location = new System.Drawing.Point(758, 44);
+            this.btn_verificar.Name = "btn_verificar";
+            this.btn_verificar.Size = new System.Drawing.Size(25, 23);
+            this.btn_verificar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_verificar.TabIndex = 67;
+            this.btn_verificar.TabStop = false;
+            this.btn_verificar.Click += new System.EventHandler(this.btn_verificar_Click);
             // 
             // txt_nombreEstud
             // 
             this.txt_nombreEstud.Enabled = false;
             this.txt_nombreEstud.Lines = new string[0];
-            this.txt_nombreEstud.Location = new System.Drawing.Point(26, 217);
-            this.txt_nombreEstud.MaxLength = 32767;
+            this.txt_nombreEstud.Location = new System.Drawing.Point(178, 44);
+            this.txt_nombreEstud.MaxLength = 25;
             this.txt_nombreEstud.Name = "txt_nombreEstud";
             this.txt_nombreEstud.PasswordChar = '\0';
             this.txt_nombreEstud.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -127,14 +137,13 @@
             this.txt_nombreEstud.Size = new System.Drawing.Size(140, 23);
             this.txt_nombreEstud.TabIndex = 7;
             this.txt_nombreEstud.UseSelectable = true;
-            this.txt_nombreEstud.Click += new System.EventHandler(this.txt_nombreEstud_Click);
             // 
             // txt_cedula
             // 
             this.txt_cedula.Enabled = false;
             this.txt_cedula.Lines = new string[0];
-            this.txt_cedula.Location = new System.Drawing.Point(26, 161);
-            this.txt_cedula.MaxLength = 32767;
+            this.txt_cedula.Location = new System.Drawing.Point(565, 44);
+            this.txt_cedula.MaxLength = 10;
             this.txt_cedula.Name = "txt_cedula";
             this.txt_cedula.PasswordChar = '\0';
             this.txt_cedula.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -142,12 +151,11 @@
             this.txt_cedula.Size = new System.Drawing.Size(140, 23);
             this.txt_cedula.TabIndex = 6;
             this.txt_cedula.UseSelectable = true;
-            this.txt_cedula.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_cedula_KeyUp);
             // 
             // rbtn_numCedula
             // 
             this.rbtn_numCedula.AutoSize = true;
-            this.rbtn_numCedula.Location = new System.Drawing.Point(6, 140);
+            this.rbtn_numCedula.Location = new System.Drawing.Point(547, 26);
             this.rbtn_numCedula.Name = "rbtn_numCedula";
             this.rbtn_numCedula.Size = new System.Drawing.Size(134, 15);
             this.rbtn_numCedula.TabIndex = 5;
@@ -159,8 +167,8 @@
             // 
             this.txt_CodMatricula.Enabled = false;
             this.txt_CodMatricula.Lines = new string[0];
-            this.txt_CodMatricula.Location = new System.Drawing.Point(26, 106);
-            this.txt_CodMatricula.MaxLength = 32767;
+            this.txt_CodMatricula.Location = new System.Drawing.Point(373, 44);
+            this.txt_CodMatricula.MaxLength = 25;
             this.txt_CodMatricula.Name = "txt_CodMatricula";
             this.txt_CodMatricula.PasswordChar = '\0';
             this.txt_CodMatricula.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -168,12 +176,11 @@
             this.txt_CodMatricula.Size = new System.Drawing.Size(140, 23);
             this.txt_CodMatricula.TabIndex = 3;
             this.txt_CodMatricula.UseSelectable = true;
-            this.txt_CodMatricula.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_CodMatricula_KeyUp);
             // 
             // rbtn_nomEstudiante
             // 
             this.rbtn_nomEstudiante.AutoSize = true;
-            this.rbtn_nomEstudiante.Location = new System.Drawing.Point(6, 196);
+            this.rbtn_nomEstudiante.Location = new System.Drawing.Point(159, 26);
             this.rbtn_nomEstudiante.Name = "rbtn_nomEstudiante";
             this.rbtn_nomEstudiante.Size = new System.Drawing.Size(141, 15);
             this.rbtn_nomEstudiante.TabIndex = 2;
@@ -184,7 +191,7 @@
             // rbtn_numMatricula
             // 
             this.rbtn_numMatricula.AutoSize = true;
-            this.rbtn_numMatricula.Location = new System.Drawing.Point(6, 85);
+            this.rbtn_numMatricula.Location = new System.Drawing.Point(351, 23);
             this.rbtn_numMatricula.Name = "rbtn_numMatricula";
             this.rbtn_numMatricula.Size = new System.Drawing.Size(131, 15);
             this.rbtn_numMatricula.TabIndex = 1;
@@ -195,7 +202,7 @@
             // rbtn_todo
             // 
             this.rbtn_todo.AutoSize = true;
-            this.rbtn_todo.Location = new System.Drawing.Point(6, 34);
+            this.rbtn_todo.Location = new System.Drawing.Point(56, 26);
             this.rbtn_todo.Name = "rbtn_todo";
             this.rbtn_todo.Size = new System.Drawing.Size(50, 15);
             this.rbtn_todo.TabIndex = 0;
@@ -210,25 +217,16 @@
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(316, 9);
+            this.metroLabel1.Location = new System.Drawing.Point(346, 14);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(198, 25);
             this.metroLabel1.TabIndex = 6;
             this.metroLabel1.Text = "Consulta de Matrícula";
             // 
-            // metroTile2
-            // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.Location = new System.Drawing.Point(2, 50);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(10, 298);
-            this.metroTile2.TabIndex = 45;
-            this.metroTile2.UseSelectable = true;
-            // 
             // btn_salir
             // 
             this.btn_salir.Image = global::ProyectoECU.Properties.Resources._54097;
-            this.btn_salir.Location = new System.Drawing.Point(735, 353);
+            this.btn_salir.Location = new System.Drawing.Point(820, 364);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(40, 30);
             this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -241,21 +239,21 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(811, 391);
+            this.ClientSize = new System.Drawing.Size(875, 406);
             this.ControlBox = false;
             this.Controls.Add(this.btn_salir);
-            this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.g_datos);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.metroLabel1);
-            this.MaximumSize = new System.Drawing.Size(827, 430);
-            this.MinimumSize = new System.Drawing.Size(827, 430);
+            this.MaximumSize = new System.Drawing.Size(891, 445);
+            this.MinimumSize = new System.Drawing.Size(891, 445);
             this.Name = "ECU_ConsultaMatricula";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta de Matrícula";
             ((System.ComponentModel.ISupportInitialize)(this.g_datos)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_verificar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -274,7 +272,7 @@
         private MetroFramework.Controls.MetroTextBox txt_nombreEstud;
         private MetroFramework.Controls.MetroTextBox txt_cedula;
         private MetroFramework.Controls.MetroRadioButton rbtn_numCedula;
-        private MetroFramework.Controls.MetroTile metroTile2;
         private System.Windows.Forms.PictureBox btn_salir;
+        private System.Windows.Forms.PictureBox btn_verificar;
     }
 }

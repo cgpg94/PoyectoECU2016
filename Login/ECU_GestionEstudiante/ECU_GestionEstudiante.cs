@@ -22,7 +22,6 @@ namespace ProyectoECU.Interfaces
 
         // variable para que al momento de presionar el boton guardar determine si se inserta o se actualiza
         static int modificar=0;
-        private System.Windows.Forms.DialogResult result;
         public ECU_GestionEstudiante()
         {
             InitializeComponent();
@@ -122,7 +121,7 @@ namespace ProyectoECU.Interfaces
         }
 
         //metodo que verifica si existe un Estudiante
-        private bool siExiste(string cedula){
+        public bool siExiste(string cedula){
             int count =0;
             // sentencia try catch para verificar los errores
             try
@@ -186,7 +185,7 @@ namespace ProyectoECU.Interfaces
                 }
                 else
                 {
-                    MessageBox.Show("No hay nada que mostrar");
+                    MessageBox.Show("El estudiante no esta registrado ");
                 }
                 //cerramos la conexion
                 ECU_ConexionPostgres.coneccion.Close();
@@ -280,7 +279,7 @@ namespace ProyectoECU.Interfaces
                     }
                 }
                 else {
-                    MessageBox.Show("Nope", "Actualizado", MessageBoxButtons.OK, MessageBoxIcon.Information);     
+                    MessageBox.Show("Campos Incorrectos", "No se puede guardar", MessageBoxButtons.OK, MessageBoxIcon.Error);     
                 }    
            } 
         }
@@ -317,7 +316,7 @@ namespace ProyectoECU.Interfaces
                 }
             }
             else {
-                MessageBox.Show("Ingrese el numero de cédula a eliminar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Ingrese el número de cédula a eliminar", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }     
         }
 
@@ -359,7 +358,7 @@ namespace ProyectoECU.Interfaces
                 }
             }
             else {
-                MessageBox.Show("Debe insertar un numero de cedula valido", "Campo Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Debe insertar un número de cédula valido", "Campo Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txt_cedula.Focus();
             }       
         }
@@ -406,19 +405,61 @@ namespace ProyectoECU.Interfaces
             return dialogResult;
         }
 
-
-
         private void btn_buscar_Click(object sender, EventArgs e)
         {
-            string value = "";
-            if (InputBox("Consulta cedula", "Ingrese el nmero de cedula:", ref value) == DialogResult.OK)
+            string cedula = "";
+            if (InputBox("Consulta cedula", "Ingrese el número de cedula:", ref cedula) == DialogResult.OK)
             {
-                cargarModificar(value);
+                if (validar.cedula_valida(cedula))
+                {
+                    if (siExiste(cedula))
+                    {
+                        if (MessageBox.Show("El Estudiante ya existe, desea Modificarlo ", "Eliminar Registro", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            desbloquear_botones();
+                            cargarModificar(cedula);
+                            modificar = 1;
+                            txt_cedula.Enabled = true;
+                            btn_verificar.Enabled = false;
+                        }
+                        else
+                        {
+                            
+                            desbloquear_verificar();
+                            limpiar();
+                            txt_cedula.Focus();
+                        }
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("El estudiante no existe ahora procedera a insertar uno nuevo", "Nuevo Registro", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                       
+                        btn_verificar.Enabled = false;
+                        desbloquear();
+                        txt_cedula.Focus();
+                        desbloquear_botones();
+                        btn_eliminar.Enabled = false;
+                        txt_cedula.Enabled = true;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Debe insertar un número de cédula valido", "Campo Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    txt_cedula.Focus();
+                }      
+                //cargarModificar(cedula);
+               
             }
+        }
+        private void ECU_GestionEstudiante_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validar.soloNumeros(e);
+        }
+
            
 
 
-        }
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
             modificar = 0;
@@ -435,9 +476,23 @@ namespace ProyectoECU.Interfaces
              if (MessageBox.Show("Estas seguro que deseas Salir?", "Estas Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
              {
                  this.Close();
-             }
+             }                    
         }
 
-          
+        private void nuevoCtrlGToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Test " + validar.nombre_valido(txt_nombre.Text));
+        }
+
+        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            validar.soloNumeros(e);
+        
+        }         
     }
 }

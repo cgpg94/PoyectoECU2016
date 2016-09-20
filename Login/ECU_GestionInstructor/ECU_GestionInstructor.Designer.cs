@@ -41,9 +41,10 @@
             this.guardarCtrlGToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarCtrlBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarCtrlEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cONSULTARToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btn_Consultar = new System.Windows.Forms.ToolStripMenuItem();
             this.aYUDAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.btn_verificar = new System.Windows.Forms.PictureBox();
             this.txt_codigo = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.txt_telefono = new MetroFramework.Controls.MetroTextBox();
@@ -62,12 +63,11 @@
             this.txt_cedula = new MetroFramework.Controls.MetroTextBox();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.btn_salir = new System.Windows.Forms.PictureBox();
-            this.btn_verificar = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             this.menu.SuspendLayout();
             this.metroPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_verificar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel7
@@ -138,7 +138,7 @@
             // 
             this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menu_archivo,
-            this.cONSULTARToolStripMenuItem,
+            this.btn_Consultar,
             this.aYUDAToolStripMenuItem});
             this.menu.Location = new System.Drawing.Point(0, 0);
             this.menu.Name = "menu";
@@ -181,11 +181,12 @@
             this.eliminarCtrlEToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.eliminarCtrlEToolStripMenuItem.Text = "Eliminar Ctrl + E";
             // 
-            // cONSULTARToolStripMenuItem
+            // btn_Consultar
             // 
-            this.cONSULTARToolStripMenuItem.Name = "cONSULTARToolStripMenuItem";
-            this.cONSULTARToolStripMenuItem.Size = new System.Drawing.Size(66, 20);
-            this.cONSULTARToolStripMenuItem.Text = "Consulta";
+            this.btn_Consultar.Name = "btn_Consultar";
+            this.btn_Consultar.Size = new System.Drawing.Size(66, 20);
+            this.btn_Consultar.Text = "Consulta";
+            this.btn_Consultar.Click += new System.EventHandler(this.btn_Consultar_Click);
             // 
             // aYUDAToolStripMenuItem
             // 
@@ -226,6 +227,17 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // btn_verificar
+            // 
+            this.btn_verificar.Image = global::ProyectoECU.Properties.Resources.search;
+            this.btn_verificar.Location = new System.Drawing.Point(226, 27);
+            this.btn_verificar.Name = "btn_verificar";
+            this.btn_verificar.Size = new System.Drawing.Size(25, 23);
+            this.btn_verificar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_verificar.TabIndex = 65;
+            this.btn_verificar.TabStop = false;
+            this.btn_verificar.Click += new System.EventHandler(this.btn_verificar_Click);
+            // 
             // txt_codigo
             // 
             this.txt_codigo.Enabled = false;
@@ -261,12 +273,13 @@
             this.txt_telefono.Size = new System.Drawing.Size(156, 23);
             this.txt_telefono.TabIndex = 60;
             this.txt_telefono.UseSelectable = true;
+            this.txt_telefono.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_telefono_KeyPress);
             // 
             // txt_direccion
             // 
             this.txt_direccion.Lines = new string[0];
             this.txt_direccion.Location = new System.Drawing.Point(354, 13);
-            this.txt_direccion.MaxLength = 32767;
+            this.txt_direccion.MaxLength = 25;
             this.txt_direccion.Multiline = true;
             this.txt_direccion.Name = "txt_direccion";
             this.txt_direccion.PasswordChar = '\0';
@@ -298,7 +311,7 @@
             // 
             this.txt_apellido.Lines = new string[0];
             this.txt_apellido.Location = new System.Drawing.Point(90, 135);
-            this.txt_apellido.MaxLength = 32767;
+            this.txt_apellido.MaxLength = 25;
             this.txt_apellido.Name = "txt_apellido";
             this.txt_apellido.PasswordChar = '\0';
             this.txt_apellido.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -376,7 +389,7 @@
             // 
             this.txt_nombre.Lines = new string[0];
             this.txt_nombre.Location = new System.Drawing.Point(91, 100);
-            this.txt_nombre.MaxLength = 32767;
+            this.txt_nombre.MaxLength = 25;
             this.txt_nombre.Name = "txt_nombre";
             this.txt_nombre.PasswordChar = '\0';
             this.txt_nombre.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -419,17 +432,6 @@
             this.btn_salir.TabStop = false;
             this.btn_salir.Click += new System.EventHandler(this.btn_salir_Click);
             // 
-            // btn_verificar
-            // 
-            this.btn_verificar.Image = global::ProyectoECU.Properties.Resources.search;
-            this.btn_verificar.Location = new System.Drawing.Point(226, 27);
-            this.btn_verificar.Name = "btn_verificar";
-            this.btn_verificar.Size = new System.Drawing.Size(25, 23);
-            this.btn_verificar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.btn_verificar.TabIndex = 65;
-            this.btn_verificar.TabStop = false;
-            this.btn_verificar.Click += new System.EventHandler(this.btn_verificar_Click);
-            // 
             // ECU_GestionInstructor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,6 +445,8 @@
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menu);
+            this.MaximumSize = new System.Drawing.Size(592, 415);
+            this.MinimumSize = new System.Drawing.Size(592, 415);
             this.Name = "ECU_GestionInstructor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión Instructor";
@@ -453,8 +457,8 @@
             this.menu.PerformLayout();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btn_verificar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_salir)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -474,7 +478,7 @@
         private System.Windows.Forms.ToolStripMenuItem guardarCtrlGToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarCtrlBToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarCtrlEToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cONSULTARToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem btn_Consultar;
         private System.Windows.Forms.ToolStripMenuItem aYUDAToolStripMenuItem;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroTextBox txt_cedula;

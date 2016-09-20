@@ -18,6 +18,7 @@ namespace ProyectoECU.Interfaces
     {
         // variable para que al momento de presionar el boton guardar determine si se inserta o se actualiza
         static int modificar = 0;
+        ProyectoECU.ECU_GestionEstudiante.Validaciones valida = new  ProyectoECU.ECU_GestionEstudiante.Validaciones();
         public ECU_GestionInstructor()
         {
             InitializeComponent();
@@ -437,6 +438,18 @@ namespace ProyectoECU.Interfaces
         {
             ProyectoECU.ECU_Ayuda.ECU_Ayuda gestionAyuda = new ProyectoECU.ECU_Ayuda.ECU_Ayuda();//Instanciamos
             gestionAyuda.Show();//Mostramos 
+        }
+
+        private void btn_Consultar_Click(object sender, EventArgs e)
+        {
+            ProyectoECU.ECU_GestionInstructor.ECU_ConsultaInstructor consIntructor =new ProyectoECU.ECU_GestionInstructor.ECU_ConsultaInstructor();
+            consIntructor.ShowDialog();
+
+        }
+
+        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valida.soloNumeros(e);
         }
     }
 }

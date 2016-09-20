@@ -78,7 +78,7 @@
             this.ayudaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(792, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(718, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -150,7 +150,7 @@
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.toolStrip1.Size = new System.Drawing.Size(792, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(718, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -205,7 +205,7 @@
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(322, 64);
+            this.metroLabel1.Location = new System.Drawing.Point(279, 49);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(156, 25);
             this.metroLabel1.TabIndex = 2;
@@ -236,7 +236,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(43, 110);
+            this.metroPanel1.Location = new System.Drawing.Point(9, 87);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(696, 283);
             this.metroPanel1.TabIndex = 3;
@@ -297,7 +297,7 @@
             this.txt_costo.Enabled = false;
             this.txt_costo.Lines = new string[0];
             this.txt_costo.Location = new System.Drawing.Point(440, 225);
-            this.txt_costo.MaxLength = 32767;
+            this.txt_costo.MaxLength = 10;
             this.txt_costo.Name = "txt_costo";
             this.txt_costo.PasswordChar = '\0';
             this.txt_costo.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -311,7 +311,7 @@
             this.txt_Duracion_curso.Enabled = false;
             this.txt_Duracion_curso.Lines = new string[0];
             this.txt_Duracion_curso.Location = new System.Drawing.Point(440, 181);
-            this.txt_Duracion_curso.MaxLength = 32767;
+            this.txt_Duracion_curso.MaxLength = 10;
             this.txt_Duracion_curso.Name = "txt_Duracion_curso";
             this.txt_Duracion_curso.PasswordChar = '\0';
             this.txt_Duracion_curso.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -325,7 +325,7 @@
             this.txt_descrp_curso.Enabled = false;
             this.txt_descrp_curso.Lines = new string[0];
             this.txt_descrp_curso.Location = new System.Drawing.Point(43, 181);
-            this.txt_descrp_curso.MaxLength = 32767;
+            this.txt_descrp_curso.MaxLength = 100;
             this.txt_descrp_curso.Multiline = true;
             this.txt_descrp_curso.Name = "txt_descrp_curso";
             this.txt_descrp_curso.PasswordChar = '\0';
@@ -446,7 +446,7 @@
             // btn_salir
             // 
             this.btn_salir.Image = global::ProyectoECU.Properties.Resources._54097;
-            this.btn_salir.Location = new System.Drawing.Point(699, 460);
+            this.btn_salir.Location = new System.Drawing.Point(665, 395);
             this.btn_salir.Name = "btn_salir";
             this.btn_salir.Size = new System.Drawing.Size(40, 30);
             this.btn_salir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -459,7 +459,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(792, 511);
+            this.ClientSize = new System.Drawing.Size(718, 437);
             this.ControlBox = false;
             this.Controls.Add(this.btn_salir);
             this.Controls.Add(this.metroPanel1);
@@ -467,11 +467,12 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(808, 550);
-            this.MinimumSize = new System.Drawing.Size(808, 550);
+            this.MaximumSize = new System.Drawing.Size(734, 476);
+            this.MinimumSize = new System.Drawing.Size(734, 476);
             this.Name = "ECU_GestionCurso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de Curso";
+            this.Load += new System.EventHandler(this.ECU_GestionCurso_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ECU_GestionCurso_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ECU_GestionCurso_KeyUp);
             this.menuStrip1.ResumeLayout(false);

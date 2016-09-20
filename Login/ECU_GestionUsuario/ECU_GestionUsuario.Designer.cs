@@ -86,7 +86,7 @@
             this.TabControl.Controls.Add(this.metroModificar);
             this.TabControl.Location = new System.Drawing.Point(20, 77);
             this.TabControl.Name = "TabControl";
-            this.TabControl.SelectedIndex = 0;
+            this.TabControl.SelectedIndex = 1;
             this.TabControl.Size = new System.Drawing.Size(689, 202);
             this.TabControl.TabIndex = 0;
             this.TabControl.UseSelectable = true;
@@ -150,7 +150,7 @@
             // 
             this.txtContrasena.Lines = new string[0];
             this.txtContrasena.Location = new System.Drawing.Point(37, 101);
-            this.txtContrasena.MaxLength = 32767;
+            this.txtContrasena.MaxLength = 50;
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '*';
             this.txtContrasena.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -172,7 +172,7 @@
             // 
             this.txtUsuario.Lines = new string[0];
             this.txtUsuario.Location = new System.Drawing.Point(37, 38);
-            this.txtUsuario.MaxLength = 32767;
+            this.txtUsuario.MaxLength = 50;
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.PasswordChar = '\0';
             this.txtUsuario.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -251,7 +251,7 @@
             // 
             this.txtNuevaContrasena.Lines = new string[0];
             this.txtNuevaContrasena.Location = new System.Drawing.Point(39, 126);
-            this.txtNuevaContrasena.MaxLength = 32767;
+            this.txtNuevaContrasena.MaxLength = 50;
             this.txtNuevaContrasena.Name = "txtNuevaContrasena";
             this.txtNuevaContrasena.PasswordChar = '*';
             this.txtNuevaContrasena.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -273,7 +273,7 @@
             // 
             this.txtContrasenaActual.Lines = new string[0];
             this.txtContrasenaActual.Location = new System.Drawing.Point(39, 78);
-            this.txtContrasenaActual.MaxLength = 32767;
+            this.txtContrasenaActual.MaxLength = 50;
             this.txtContrasenaActual.Name = "txtContrasenaActual";
             this.txtContrasenaActual.PasswordChar = '*';
             this.txtContrasenaActual.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -295,7 +295,7 @@
             // 
             this.txtUsuarioModi.Lines = new string[0];
             this.txtUsuarioModi.Location = new System.Drawing.Point(39, 30);
-            this.txtUsuarioModi.MaxLength = 32767;
+            this.txtUsuarioModi.MaxLength = 50;
             this.txtUsuarioModi.Name = "txtUsuarioModi";
             this.txtUsuarioModi.PasswordChar = '\0';
             this.txtUsuarioModi.ScrollBars = System.Windows.Forms.ScrollBars.None;

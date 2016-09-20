@@ -19,11 +19,14 @@ namespace ProyectoECU
         public static object id_persona;
         public static object id_curso;
         public static object codi_matri;
+        public static object fecha_matricula;
+        ECU_GestionEstudiante.Validaciones valida = new ECU_GestionEstudiante.Validaciones();
 
         public ECU_GestionMatricula()
         {
             InitializeComponent();
             this.cargar_combos();
+            txt_Cedula.Focus();
         }
 
 
@@ -150,6 +153,7 @@ namespace ProyectoECU
             comb_Cod_Curso.Enabled = false;
             comb_Instructor.Enabled = false;
             datePFecha.Enabled = false;
+            btn_guardar.Enabled = false;
 
 
         }
@@ -189,6 +193,7 @@ namespace ProyectoECU
             txt_direcion.Text = "";
             txt_codMatri.Text = "";
             txx_precio_Matri.Text = "";
+            txt_Cedula.Focus();
         }
         public void cargar_combos()
         {
@@ -248,6 +253,8 @@ namespace ProyectoECU
                 this.desactivarcontroles();
                 txt_Cedula.Enabled = true;
                 btn_guardar.Enabled = true;
+                txt_Cedula.Focus();
+                btn_guardar.Enabled = false;
             }
         }
 
@@ -259,7 +266,7 @@ namespace ProyectoECU
                 //abrir la conexion
                 ECU_ConexionPostgres.coneccion.Open();
                 //consulta de usuario
-                NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_cons_Cur(" + comb_Cod_Curso.SelectedValue + ");", ECU_ConexionPostgres.coneccion);
+                NpgsqlCommand comando = new NpgsqlCommand("select * from pro_cons_cur(" + comb_Cod_Curso.SelectedValue + ");", ECU_ConexionPostgres.coneccion);
                 //ejecutar comando
                 NpgsqlDataReader resultado = comando.ExecuteReader();
                 if (resultado.Read())
@@ -279,6 +286,7 @@ namespace ProyectoECU
                     txt_tipo_lic.Text = tipo_licencia.ToString();
                     txt_horario_cur.Text = horario.ToString();
                     txt_prec_curso.Text = costo_curso.ToString();
+                    btn_guardar.Enabled = true;
                 }
                 ECU_ConexionPostgres.coneccion.Close();
 
@@ -293,7 +301,7 @@ namespace ProyectoECU
 
                 if (ModificarRegistro == 1)
                 {
-                    if (camposVacios() == false)
+                    if (camposVacios() == false && valida.cedula_valida(txt_Cedula.Text)&& valida.apellido_valido(txtApellido.Text) && valida.nombre_valido(txt_nombre.Text)&& txx_precio_Matri.Text!="")
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
@@ -321,7 +329,7 @@ namespace ProyectoECU
 
                 if (ModificarRegistro == 2)
                 {
-                    if (camposVacios() == false)
+                    if (camposVacios() == false && txx_precio_Matri.Text!="")
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
@@ -345,7 +353,7 @@ namespace ProyectoECU
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
-                        NpgsqlCommand comando2 = new NpgsqlCommand("select from Pro_Ins_Mat(" + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
+                        NpgsqlCommand comando2 = new NpgsqlCommand("select from pro_act_mat('" + codi_matri.ToString() + "'," + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + ",'" + fecha_matricula.ToString() + "'," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
                         //ejecutar comando
                         NpgsqlDataReader resultado2 = comando2.ExecuteReader();
                         ECU_ConexionPostgres.coneccion.Close();
@@ -363,8 +371,9 @@ namespace ProyectoECU
 
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                MessageBox.Show(""+ex);
                 ECU_ConexionPostgres.coneccion.Close();
                 throw;
             }
@@ -432,7 +441,7 @@ namespace ProyectoECU
                     object fech_nacim_estu = resultado[4];
                     object direcion_estud = resultado[5];
                     object telefono_estu = resultado[6];
-                    object fecha_matricula = resultado[7];
+                    fecha_matricula = resultado[7];
                     id_curso = resultado[8];
                     object id_instructor = resultado[9];
                     object precio_matricula = resultado[10];
@@ -516,6 +525,7 @@ namespace ProyectoECU
         private void btn_buscarBarra_Click(object sender, EventArgs e)
         {
             this.buscarMatriCodi();
+
         }
 
         //BOTTON ELIMINAR
@@ -575,6 +585,16 @@ namespace ProyectoECU
         {
             ProyectoECU.ECU_Ayuda.ECU_Ayuda gestionAyuda = new ProyectoECU.ECU_Ayuda.ECU_Ayuda();//Instanciamos
             gestionAyuda.Show();//Mostramos 
+        }
+
+        private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valida.soloNumeros(e);
+        }
+
+        private void ECU_GestionMatricula_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

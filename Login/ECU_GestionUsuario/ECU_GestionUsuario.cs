@@ -15,8 +15,8 @@ namespace ProyectoECU.Interfaces
     public partial class ECU_GestionUsuario : Form
     {
 
-        public static int check = 0;
-         
+        public static int check = 1;
+
         public ECU_GestionUsuario()
         {
             InitializeComponent();
@@ -53,9 +53,9 @@ namespace ProyectoECU.Interfaces
             DataSet ds = new DataSet();
             ada.Fill(ds);
             metroGrid1.DataSource = ds.Tables[0];
-            
+
             ECU_ConexionPostgres.coneccion.Close();
-            
+
 
         }
 
@@ -91,10 +91,11 @@ namespace ProyectoECU.Interfaces
             if (TabControl.SelectedTab == TabControl.TabPages["metroIngresar"])
             {
                 //VERIFICA CAMPOS VACIOS
-                if (string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtContrasena.Text))            
+                if (string.IsNullOrEmpty(txtUsuario.Text) || string.IsNullOrEmpty(txtContrasena.Text))
                 {
-                    MessageBox.Show("No ha rellenado todos los campos", "Aviso",MessageBoxButtons.OK);
-                } else
+                    MessageBox.Show("No ha rellenado todos los campos", "Aviso", MessageBoxButtons.OK);
+                }
+                else
                     try
                     {
                         ECU_ConexionPostgres.coneccion.Open();
@@ -122,48 +123,51 @@ namespace ProyectoECU.Interfaces
                             ECU_ConexionPostgres.coneccion.Open();
                             MyReader2 = MyCommand2.ExecuteReader();
                             MessageBox.Show("Datos guardados Correctamente");
-                            while (MyReader2.Read())
+                            /*while (MyReader2.Read())
                             {
-                            }
+                            }*/
                             ECU_ConexionPostgres.coneccion.Close();
                         }
+                       
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
                         ECU_ConexionPostgres.coneccion.Close();
                     }
-
+               
             }
+
             //MODIFICAR USUARIO
-            else
-            {
-                //VERIFICA CAMPOS VACIOS
-                if (string.IsNullOrEmpty(txtUsuarioModi.Text) || string.IsNullOrEmpty(txtContrasenaActual.Text)
-                    || string.IsNullOrEmpty(txtNuevaContrasena.Text) || !AdministradorModi.Checked || !SecretariaModi.Checked)
-                {
-                    MessageBox.Show("No ha rellenado todos los campos", "Aviso", MessageBoxButtons.OK);
-                }
-                else
-                    try
-                    {
-                        string Query = "update TMAEUSSECU set csi_uss='" + NuevaContrasena + "', id_tus_uss='" + check + "' where usi_uss='" + UsuarioModi + "' and csi_uss='" + ContrasenaModi + "';";
-                        NpgsqlCommand MyCommand2 = new NpgsqlCommand(Query, ECU_ConexionPostgres.coneccion);
-                        NpgsqlDataReader MyReader2;
-                        ECU_ConexionPostgres.coneccion.Open();
-                        MyReader2 = MyCommand2.ExecuteReader();
-                        MessageBox.Show("Datos modificados Correctamente");
-                        while (MyReader2.Read())
-                        {
-                        }
-                        ECU_ConexionPostgres.coneccion.Close();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+            else //PREGUNTA EN QUE PESTAÑA SE ENCUENTRA
 
-            }
+                if (TabControl.SelectedTab == TabControl.TabPages["metroModificar"])
+                {
+
+
+                    //VERIFICA CAMPOS VACIOS
+                    if (string.IsNullOrEmpty(txtUsuarioModi.Text) || string.IsNullOrEmpty(txtContrasenaActual.Text)
+                        || string.IsNullOrEmpty(txtNuevaContrasena.Text))
+                    {
+                        MessageBox.Show("No ha rellenado todos los campos", "Aviso", MessageBoxButtons.OK);
+                    }
+                    else
+                        try
+                        {
+
+                            ECU_ConexionPostgres.coneccion.Open();
+                            NpgsqlCommand comando1 = new NpgsqlCommand("update tmaeussecu set csi_uss='" + NuevaContrasena + "', id_tus_uss='" + check + "' where usi_uss='" + UsuarioModi + "' and csi_uss='" + ContrasenaModi + "';", ECU_ConexionPostgres.coneccion);
+                            //ejecutar comando
+                            NpgsqlDataReader resultado1 = comando1.ExecuteReader();
+                            ECU_ConexionPostgres.coneccion.Close();
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message+"-------------->");
+                        }
+
+                }
 
         }
 
@@ -271,7 +275,7 @@ namespace ProyectoECU.Interfaces
             ada.Fill(ds);
             metroGrid1.DataSource = ds.Tables[0];
             ECU_ConexionPostgres.coneccion.Close();
-        
+
         }
 
         private void btn_salir_Click(object sender, EventArgs e)

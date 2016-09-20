@@ -7,33 +7,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ProyectoECU.ECU_Concexion;
 using Npgsql;
+using ProyectoECU.ECU_Concexion;
 using ProyectoECU.Interfaces;
+using ProyectoECU.ECU_GestionEstudiante;
 
-namespace ProyectoECU.ECU_GestionEstudiante
+namespace ProyectoECU.ECU_GestionInstructor
 {
-    public partial class ECU_ConsultaEstudiante : Form
+    public partial class ECU_ConsultaInstructor : Form
     {
         Validaciones validar = new Validaciones();
-        public ECU_ConsultaEstudiante()
+        public ECU_ConsultaInstructor()
         {
             InitializeComponent();
         }
 
-        private void ECU_ConsultaEstudiante_Load(object sender, EventArgs e)
+        //click en el boton para salir
+        private void btn_salir_Click(object sender, EventArgs e)
         {
-            ECU_ConexionPostgres.coneccion.Open();
-            string SQL = "SELECT vced_per as cedula,vnom_per as nombre,vape_per as apellido ,vfn_per as fecha_nacimiento,vdir_per,vtel_per,vid_tsa_est FROM Pro_Con_Per_Est_Todo ()";
-            // Execute command
-            NpgsqlCommand command = new NpgsqlCommand(SQL, ECU_ConexionPostgres.coneccion);
-            NpgsqlDataAdapter ada = new NpgsqlDataAdapter(command);
-            DataSet ds = new DataSet();
-            ada.Fill(ds);
-            dgv_estudiante.DataSource = ds.Tables[0];
-            ECU_ConexionPostgres.coneccion.Close();
+            //condicion si el usuario presiona en ok el formulario se cerrara
+            if (MessageBox.Show("Estas seguro que deseas Salir?", "Estas Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Close();
+            }   
         }
-
+        //metodo que permite verificar si existe un instructor con un determinado numero de cedula
         public bool siExiste(string cedula)
         {
             int count = 0;
@@ -43,7 +41,7 @@ namespace ProyectoECU.ECU_GestionEstudiante
                 //abrimos la conexion
                 ECU_ConexionPostgres.coneccion.Open();
                 //consulta sql para verificar si hay datos
-                string SQL = "SELECT Count(*)FROM TMAEPERECU AS PER INNER JOIN TTRAESTECU AS EST ON EST.Id_Per_Est=PER.Id_Per INNER JOIN TMAETSAECU AS TPS ON TPS.Id_TSa=EST.Id_TSa_Est WHERE PER.Ced_Per = '" + cedula + "'";
+                string SQL = "SELECT Count(*) FROM TMAEPERECU AS PER INNER JOIN TTRAINSECU AS INS ON PER.Id_Per=INS.Id_Per_Ins WHERE PER.Ced_Per = '"+cedula+"';";
                 // Ejecutamos el comando
                 NpgsqlCommand consulta = new NpgsqlCommand(SQL, ECU_ConexionPostgres.coneccion);
                 //variable contador para que al momento de que se ejecute la consulta si devuelve 1 el dato existe si no el dato no existe
@@ -71,22 +69,30 @@ namespace ProyectoECU.ECU_GestionEstudiante
         }
 
 
+        //evento click que se produce cuando se presiona el radio button todos
         private void rd_todos_Click(object sender, EventArgs e)
         {
+            //bloqueamos el txt cedula
             txt_cedula.Enabled = false;
+            //bloqueamos el txt nombre
             txt_nombre.Enabled = false;
+            //limpiamos los campos de cedula y nombre
             txt_cedula.Text = "";
             txt_nombre.Text = "";
         }
 
+        //evento click que se produce cuando se presiona el radio button cedula
         private void rd_cedula_CheckedChanged(object sender, EventArgs e)
         {
+            //habilitamos el txt cedula 
             txt_cedula.Enabled = true;
             txt_nombre.Enabled = false;
             txt_nombre.Text = "";
+            //establecemos que el cursor se ponga automatica mente en el txt cedula
             txt_cedula.Focus();
         }
 
+        //evento click que se produce cuando se presiona el radio button nombre
         private void rd_nombre_CheckedChanged(object sender, EventArgs e)
         {
             txt_cedula.Enabled = false;
@@ -95,51 +101,58 @@ namespace ProyectoECU.ECU_GestionEstudiante
             txt_nombre.Focus();
         }
 
-        private void btn_salir_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Estas seguro que deseas Salir?", "Estas Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-            {
-                this.Close();
-            }   
-        }
-
+        //envento click al boton buscar
         private void btn_buscar_Click(object sender, EventArgs e)
         {
+            // condicion si esta presionado el radio buton todos
             if (rd_todos.Checked)
             {
+                //sentencia try chat para manejar errores
                 try
                 {
+                    //abrimos la conexion
                     ECU_ConexionPostgres.coneccion.Open();
-                    string SQL = "SELECT vced_per as cedula,vnom_per as nombre,vape_per as apellido ,vfn_per as fecha_nacimiento,vdir_per,vtel_per,vid_tsa_est FROM Pro_Con_Per_Est_Todo ()";
-                    // Execute command
+                    // consulta sql que nos devuelve todos los instructores
+                    string SQL = "SELECT vced_per as cedula,vnom_per as nombre,vape_per as apellido ,vfn_per as fecha_nacimiento,vdir_per as direccion ,vtel_per as telefono,vcod_ins as codigo_registro,vfec_ins as fecha_contrato FROM pro_Con_Per_Ins_Todo ()";
+                    // ejecutamos el comando
                     NpgsqlCommand command = new NpgsqlCommand(SQL, ECU_ConexionPostgres.coneccion);
+                    //adaptador para guardar los datos de la consulta
                     NpgsqlDataAdapter ada = new NpgsqlDataAdapter(command);
                     DataSet ds = new DataSet();
                     ada.Fill(ds);
                     dgv_estudiante.DataSource = ds.Tables[0];
+                    //cerramos la conexion
                     ECU_ConexionPostgres.coneccion.Close();
                 }
                 catch (Exception ex)
                 {
+                    //devuelve el mensaje de error
                     MessageBox.Show("Test" + ex);
+                    //cerramos la conexion
                     ECU_ConexionPostgres.coneccion.Close();
                 }
 
             }
             else
             {
+                //condicion si el radio button esta seleccionado
                 if (rd_cedula.Checked)
                 {
+                    //creamos variable cedula 
                     string cedula = txt_cedula.Text;
+                    //verificamos si es una cedula valida
                     if (validar.cedula_valida(cedula))
                     {
+                        //verificamos si la cedula existe
                         if (siExiste(cedula))
                         {
+                            //sentecia para manejar errores
                             try
                             {
                                 ECU_ConexionPostgres.coneccion.Open();
-                                string SQL = "SELECT vced_per as cedula,vnom_per as nombre,vape_per as apellido ,vfn_per as fecha_nacimiento,vdir_per,vtel_per,vid_tsa_est  FROM Pro_Con_Per_Est_Cedula ('" + cedula + "');";
-                                // Execute command
+                                //sentecia sql que devuelce el instructor por medio de la cedula
+                                string SQL = "SELECT vced_per as cedula,vnom_per as nombre,vape_per as apellido ,vfn_per as fecha_nacimiento,vdir_per as direccion ,vtel_per as telefono,vcod_ins as codigo_registro,vfec_ins as fecha_contrato FROM Pro_Con_Per_Ins_Cedula ('" + cedula + "');";
+                                // ejecutamos el comando
                                 NpgsqlCommand command = new NpgsqlCommand(SQL, ECU_ConexionPostgres.coneccion);
                                 NpgsqlDataAdapter ada = new NpgsqlDataAdapter(command);
                                 DataSet ds = new DataSet();
@@ -167,17 +180,20 @@ namespace ProyectoECU.ECU_GestionEstudiante
                 }
                 else
                 {
+                    //si el radio button nombre esta seleccionado
                     if (rd_nombre.Checked)
                     {
-
+                        //variable nombre
                         string nombre = txt_nombre.Text;
 
+                        //si es un nombre valido
                         if (validar.nombre_valido(nombre))
                         {
                             try
                             {
                                 ECU_ConexionPostgres.coneccion.Open();
-                                string SQL = "SELECT vced_per as cedula,vnom_per as nombre,vape_per as apellido ,vfn_per as fecha_nacimiento,vdir_per,vtel_per,vid_tsa_est  FROM Pro_Con_Per_Est_Nombre ('" + nombre + "');";
+                                //consulta sql por medio del nombre del instructor
+                                string SQL = "SELECT vced_per as cedula,vnom_per as nombre,vape_per as apellido ,vfn_per as fecha_nacimiento,vdir_per as direccion ,vtel_per as telefono,vcod_ins as codigo_registro,vfec_ins as fecha_contrato FROM Pro_Con_Per_Ins_Nombre ('" + nombre + "');";
                                 // Execute command
                                 NpgsqlCommand command = new NpgsqlCommand(SQL, ECU_ConexionPostgres.coneccion);
                                 NpgsqlDataAdapter ada = new NpgsqlDataAdapter(command);
@@ -203,9 +219,49 @@ namespace ProyectoECU.ECU_GestionEstudiante
             }
         }
 
+        //evento on load se ejecuta cuando abrimos el formulario
+        private void ECU_ConsultaInstructor_Load(object sender, EventArgs e)
+        {
+            ECU_ConexionPostgres.coneccion.Open();
+            //consulta sql que devuelve a todos los instructores
+            string SQL = "SELECT vced_per as cedula,vnom_per as nombre,vape_per as apellido ,vfn_per as fecha_nacimiento,vdir_per as direccion ,vtel_per as telefono,vcod_ins as codigo_registro,vfec_ins as fecha_contrato FROM pro_Con_Per_Ins_Todo ()";
+            // Execute command
+            NpgsqlCommand command = new NpgsqlCommand(SQL, ECU_ConexionPostgres.coneccion);
+            NpgsqlDataAdapter ada = new NpgsqlDataAdapter(command);
+            DataSet ds = new DataSet();
+            ada.Fill(ds);
+            dgv_estudiante.DataSource = ds.Tables[0];
+            ECU_ConexionPostgres.coneccion.Close();
+        }
+
+   
+     
         private void rd_todos_CheckedChanged(object sender, EventArgs e)
         {
-
+            txt_cedula.Enabled = false;
+            txt_nombre.Enabled = false;
+            txt_cedula.Text = "";
+            txt_nombre.Text = "";
         }
+
+        private void rd_cedula_CheckedChanged_1(object sender, EventArgs e)
+        {
+            txt_cedula.Enabled = true;
+            txt_nombre.Enabled = false;
+            txt_nombre.Text = "";
+            txt_cedula.Focus();
+        }
+
+        private void rd_nombre_CheckedChanged_1(object sender, EventArgs e)
+        {
+            txt_cedula.Enabled = false;
+            txt_nombre.Enabled = true;
+            txt_cedula.Text = "";
+            txt_nombre.Focus();
+        }
+
+      
+
+        
     }
 }

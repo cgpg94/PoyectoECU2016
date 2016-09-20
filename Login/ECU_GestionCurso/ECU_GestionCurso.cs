@@ -22,7 +22,8 @@ namespace ProyectoECU.Interfaces
         {
             InitializeComponent();
             this.cargar_combos();
-
+            txt_Duracion_curso.Enabled = false;
+            txt_Duracion_curso.Text = (MonthDifference(datetime_fecha_fin.Value, datetime_fecha_inic.Value)).ToString() + " Meses";
         }
 
 
@@ -47,7 +48,7 @@ namespace ProyectoECU.Interfaces
                     //abrir la conexion
                     ECU_ConexionPostgres.coneccion.Open();
                     //consulta de usuario
-                    NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_cons_Cur('" + txt_codCur.Text + "');", ECU_ConexionPostgres.coneccion);
+                    NpgsqlCommand comando = new NpgsqlCommand("select * from pro_cons_cur_codi('" + txt_codCur.Text + "');", ECU_ConexionPostgres.coneccion);
 
                     //ejecutar comando
                     NpgsqlDataReader resultado = comando.ExecuteReader();
@@ -111,9 +112,9 @@ namespace ProyectoECU.Interfaces
 
 
                 }
-                catch (Exception)
+                catch (Exception ddd)
                 {
-
+                    MessageBox.Show("2" + ddd);
                     throw;
                 }
 
@@ -163,7 +164,7 @@ namespace ProyectoECU.Interfaces
                 if (ModificarRegistro == true)
                 {
 
-                    if (camposVacios() == false)
+                    if (camposVacios() == false && txt_Duracion_curso.Text!="0 Meses")
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
@@ -177,14 +178,14 @@ namespace ProyectoECU.Interfaces
                     }
                     else
                     {
-                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK);
+                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
                     }
                 }
                 else
                 {
-                    if (camposVacios() == false)
+                    if (camposVacios() == false && txt_Duracion_curso.Text != "0 Meses")
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
@@ -198,7 +199,7 @@ namespace ProyectoECU.Interfaces
                     }
                     else
                     {
-                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK);
+                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
 
@@ -278,6 +279,7 @@ namespace ProyectoECU.Interfaces
             datetime_fecha_fin.Enabled = false;
             datetime_fecha_inic.Enabled = false;
             txt_costo.Enabled = false;
+            txt_Duracion_curso.Enabled = false;
             txt_descrp_curso.Enabled = false;
             txt_Duracion_curso.Enabled = false;
             ModificarRegistro = false;
@@ -454,7 +456,7 @@ namespace ProyectoECU.Interfaces
         private void datetime_fecha_fin_CloseUp(object sender, EventArgs e)
         {
             txt_Duracion_curso.Enabled = false;
-            txt_Duracion_curso.Text = (MonthDifference(datetime_fecha_fin.Value, datetime_fecha_inic.Value)).ToString() + " meses ";
+            txt_Duracion_curso.Text = (MonthDifference(datetime_fecha_fin.Value, datetime_fecha_inic.Value)).ToString() + " Meses ";
 
         }
 
@@ -463,5 +465,12 @@ namespace ProyectoECU.Interfaces
             ProyectoECU.ECU_Ayuda.ECU_Ayuda gestionAyuda = new ProyectoECU.ECU_Ayuda.ECU_Ayuda();//Instanciamos
             gestionAyuda.Show();//Mostramos 
         }
+
+        private void ECU_GestionCurso_Load(object sender, EventArgs e)
+        {
+
+        }
+
+     
     }
 }
