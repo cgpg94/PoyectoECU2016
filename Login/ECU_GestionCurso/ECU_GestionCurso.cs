@@ -338,7 +338,7 @@ namespace ProyectoECU.Interfaces
                     //abrir la conexion
                     ECU_ConexionPostgres.coneccion.Open();
                     //consulta de usuario
-                    NpgsqlCommand comando = new NpgsqlCommand("select * from Pro_cons_Cur('" + texto.ToString() + "');", ECU_ConexionPostgres.coneccion);
+                    NpgsqlCommand comando = new NpgsqlCommand("select * from pro_cons_cur_codi('" + texto.ToString() + "');", ECU_ConexionPostgres.coneccion);
 
                     //ejecutar comando
                     NpgsqlDataReader resultado = comando.ExecuteReader();

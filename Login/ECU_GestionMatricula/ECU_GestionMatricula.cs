@@ -313,7 +313,7 @@ namespace ProyectoECU
 
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
-                        NpgsqlCommand comando2 = new NpgsqlCommand("select from Pro_Ins_Mat(" + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
+                        NpgsqlCommand comando2 = new NpgsqlCommand("select Pro_Ins_Mat(" + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
                         //ejecutar comando
                         NpgsqlDataReader resultado2 = comando2.ExecuteReader();
                         ECU_ConexionPostgres.coneccion.Close();
@@ -333,7 +333,7 @@ namespace ProyectoECU
                     {
                         //abrir la conexion
                         ECU_ConexionPostgres.coneccion.Open();
-                        NpgsqlCommand comando2 = new NpgsqlCommand("select from Pro_Ins_Mat(" + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
+                        NpgsqlCommand comando2 = new NpgsqlCommand("select Pro_Ins_Mat(" + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
                         //ejecutar comando
                         NpgsqlDataReader resultado2 = comando2.ExecuteReader();
                         ECU_ConexionPostgres.coneccion.Close();
