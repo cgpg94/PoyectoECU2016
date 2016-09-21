@@ -178,7 +178,7 @@ namespace ProyectoECU.Interfaces
                 else
                 {
                     MessageBox.Show("La cantidad de dinero por ingresar supera el saldo, por favor ingrese una cantidad menor o igual a la del Saldo restante", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    MessageBox.Show("Test"+(Decimal.Parse(txt_valor_pagar.Text)+"   "+ Decimal.Parse(txt_saldo.Text);
+                    MessageBox.Show("Test"+(Decimal.Parse(txt_valor_pagar.Text)+"   "+ Decimal.Parse(txt_saldo.Text));
                 }
 
 
