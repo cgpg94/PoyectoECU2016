@@ -243,7 +243,7 @@
             this.txt_codigo.Enabled = false;
             this.txt_codigo.Lines = new string[0];
             this.txt_codigo.Location = new System.Drawing.Point(90, 64);
-            this.txt_codigo.MaxLength = 5;
+            this.txt_codigo.MaxLength = 25;
             this.txt_codigo.Name = "txt_codigo";
             this.txt_codigo.PasswordChar = '\0';
             this.txt_codigo.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -306,6 +306,7 @@
             this.dtp_fecha_Nac.Name = "dtp_fecha_Nac";
             this.dtp_fecha_Nac.Size = new System.Drawing.Size(110, 29);
             this.dtp_fecha_Nac.TabIndex = 58;
+            this.dtp_fecha_Nac.ValueChanged += new System.EventHandler(this.dtp_fecha_Nac_ValueChanged);
             // 
             // txt_apellido
             // 
@@ -346,7 +347,6 @@
             this.metroLabel6.Size = new System.Drawing.Size(50, 19);
             this.metroLabel6.TabIndex = 54;
             this.metroLabel6.Text = "Celular";
-            this.metroLabel6.Click += new System.EventHandler(this.metroLabel6_Click);
             // 
             // metroLabel4
             // 
@@ -411,6 +411,7 @@
             this.txt_cedula.Size = new System.Drawing.Size(130, 23);
             this.txt_cedula.TabIndex = 54;
             this.txt_cedula.UseSelectable = true;
+            this.txt_cedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cedula_KeyPress);
             // 
             // metroTile1
             // 

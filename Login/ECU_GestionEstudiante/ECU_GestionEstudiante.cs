@@ -195,7 +195,11 @@ namespace ProyectoECU.Interfaces
                 MessageBox.Show("Error: "+ec);
             }           
         }
-
+        /// <summary>
+        /// Metodo de guardar datos
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_guardar_Click(object sender, EventArgs e)
         {
             //cracion de instancia para validar
@@ -285,7 +289,12 @@ namespace ProyectoECU.Interfaces
         }
 
 
-        //boton eliminar
+       /// <summary>
+        ///  //boton eliminar
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
+
         private void btn_eliminar_Click(object sender, EventArgs e)
         {
             //verificamos si la cedula no esta vacia
@@ -320,7 +329,11 @@ namespace ProyectoECU.Interfaces
             }     
         }
 
-       
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="sender"></param>
+       /// <param name="e"></param>
         private void btn_verificar_Click(object sender, EventArgs e)
         {
             Validaciones valida = new Validaciones();
@@ -362,7 +375,13 @@ namespace ProyectoECU.Interfaces
                 txt_cedula.Focus();
             }       
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="promptText"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static DialogResult InputBox(string title, string promptText, ref string value)
         {
             Form form = new Form();
@@ -404,7 +423,11 @@ namespace ProyectoECU.Interfaces
             value = textBox.Text;
             return dialogResult;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_buscar_Click(object sender, EventArgs e)
         {
             string cedula = "";
@@ -452,14 +475,13 @@ namespace ProyectoECU.Interfaces
                
             }
         }
-        private void ECU_GestionEstudiante_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            validar.soloNumeros(e);
-        }
-
-           
-
-
+        
+      
+        /// <summary>
+        /// prara borrar todos los datos del formulario
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
             modificar = 0;
@@ -478,21 +500,46 @@ namespace ProyectoECU.Interfaces
                  this.Close();
              }                    
         }
-
-        private void nuevoCtrlGToolStripMenuItem_Click(object sender, EventArgs e)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ECU_GestionEstudiante_KeyPress(object sender, KeyPressEventArgs e)
         {
-
+            validar.soloNumeros(e);
         }
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Test " + validar.nombre_valido(txt_nombre.Text));
-        }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
         {
 
             validar.soloNumeros(e);
         
+        }
+        /// <summary>
+        /// pARA VALIDAR SI ES MAYOR DE EDAD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dtp_fecha_Nac_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtp_fecha_Nac.Value.AddYears(18) > DateTime.Today)
+            {
+                MessageBox.Show("Error, tiene que ser persona mayor a 18 años", "Se requiere persona mayor de edad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        /// <summary>
+        /// valida cedula solo numeros
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txt_cedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validar.soloNumeros(e);
         }         
     }
 }

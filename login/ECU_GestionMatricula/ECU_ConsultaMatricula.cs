@@ -14,6 +14,7 @@ namespace ProyectoECU.Interfaces
 {
     public partial class ECU_ConsultaMatricula : Form
     {
+        //intancia la clase valicaciones
         ProyectoECU.ECU_GestionEstudiante.Validaciones valida = new ProyectoECU.ECU_GestionEstudiante.Validaciones();
         public ECU_ConsultaMatricula()
         {
@@ -40,6 +41,7 @@ namespace ProyectoECU.Interfaces
 
         private void rbtn_numCedula_CheckedChanged(object sender, EventArgs e)
         {
+            //si el radio buton esta activo entonce realiza esto
             if (rbtn_numCedula.Checked)
             {
                 txt_nombreEstud.Text = "";
@@ -54,6 +56,7 @@ namespace ProyectoECU.Interfaces
 
         private void rbtn_numMatricula_CheckedChanged(object sender, EventArgs e)
         {
+           //si el radio buton esta activo entonce realiza esto
             if (rbtn_numMatricula.Checked)
             {
                 txt_cedula.Text = "";
@@ -67,8 +70,10 @@ namespace ProyectoECU.Interfaces
             }
         }
 
+        
         private void rbtn_nomEstudiante_CheckedChanged(object sender, EventArgs e)
         {
+            //si el radio buton esta activo entonce realiza esto
             if (rbtn_nomEstudiante.Checked)
             {
                 txt_cedula.Text = "";
@@ -80,14 +85,6 @@ namespace ProyectoECU.Interfaces
 
             }
         }
-
-
-
-
-
-
-
-
 
         private void btn_salir_Click(object sender, EventArgs e)
         {
@@ -157,8 +154,19 @@ namespace ProyectoECU.Interfaces
             }
 
 
+        }
 
-
+        //permite ecaliar cada vez q se preciona una tecla
+        private void txt_cedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Métdo de validacion
+             valida.soloNumeros(e);
+        }
+        //permite ecaliar cada vez q se preciona una tecla
+        private void txt_nombreEstud_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            //Métdo de validacion
+            valida.soloLetras(e);
         }
 
 

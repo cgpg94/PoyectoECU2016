@@ -20,27 +20,9 @@ namespace ProyectoECU
             this.cargar_combo();
             this.cargarTodoVCurso();
         }
-
-        private void ECU_ConsultaCurso_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Alt || e.KeyCode == Keys.F4)
-            {
-                //cuadro de dialogo
-                DialogResult rs = MessageBox.Show("¿ Desea cerrar esta ventana ?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (rs == DialogResult.Yes)
-                {
-                    //cierra el formulario
-                    Close();
-                }
-                else
-                {
-                    //no lo cierra
-                    e.Handled = true;
-                }
-
-            }
-        }
-
+        /// <summary>
+        /// PARA CARGAR LOS COMBOS DEL FORMULARIO
+        /// </summary>
         public void cargar_combo()
         {
             //abrir la conexion
@@ -56,14 +38,15 @@ namespace ProyectoECU
             comb_tip_lic.DisplayMember = "des_tlc";
             comb_tip_lic.ValueMember = "id_tlc";
             ECU_ConexionPostgres.coneccion.Close();
-            
-
+           
             
         }
 
-
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbtn_cod_cur_CheckedChanged(object sender, EventArgs e)
         {
 
@@ -74,8 +57,11 @@ namespace ProyectoECU
             }
         }
 
-
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbtn_ti_lic_CheckedChanged(object sender, EventArgs e)
         {
             if (rbtn_ti_lic.Checked)
@@ -85,12 +71,20 @@ namespace ProyectoECU
             }
            
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_salir_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_verificar_Click(object sender, EventArgs e)
         {
             if (rbtn_todo.Checked)
@@ -132,7 +126,11 @@ namespace ProyectoECU
             
 
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rbtn_todo_CheckedChanged(object sender, EventArgs e)
         {
             

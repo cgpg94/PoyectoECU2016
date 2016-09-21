@@ -237,7 +237,6 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta de Cursos";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ECU_ConsultaCurso_KeyDown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btn_verificar)).EndInit();

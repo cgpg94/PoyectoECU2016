@@ -205,7 +205,7 @@
             this.groupBox1.Controls.Add(this.metroLabel3);
             this.groupBox1.Controls.Add(this.metroLabel2);
             this.groupBox1.Controls.Add(this.metroLabel1);
-            this.groupBox1.Location = new System.Drawing.Point(27, 86);
+            this.groupBox1.Location = new System.Drawing.Point(27, 62);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(667, 192);
             this.groupBox1.TabIndex = 4;
@@ -267,7 +267,8 @@
             // 
             // txt_codigo_mat
             // 
-            this.txt_codigo_mat.Lines = new string[0];
+            this.txt_codigo_mat.Lines = new string[] {
+        "MECU-00"};
             this.txt_codigo_mat.Location = new System.Drawing.Point(146, 28);
             this.txt_codigo_mat.MaxLength = 25;
             this.txt_codigo_mat.Name = "txt_codigo_mat";
@@ -276,6 +277,7 @@
             this.txt_codigo_mat.SelectedText = "";
             this.txt_codigo_mat.Size = new System.Drawing.Size(105, 23);
             this.txt_codigo_mat.TabIndex = 32;
+            this.txt_codigo_mat.Text = "MECU-00";
             this.txt_codigo_mat.UseSelectable = true;
             // 
             // txt_tipo_lice
@@ -413,7 +415,7 @@
             this.groupBox2.Controls.Add(this.txt_valor_pagar);
             this.groupBox2.Controls.Add(this.metroLabel9);
             this.groupBox2.Controls.Add(this.metroLabel10);
-            this.groupBox2.Location = new System.Drawing.Point(27, 284);
+            this.groupBox2.Location = new System.Drawing.Point(27, 260);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(667, 80);
             this.groupBox2.TabIndex = 5;
@@ -444,6 +446,8 @@
             this.txt_valor_pagar.Size = new System.Drawing.Size(136, 23);
             this.txt_valor_pagar.TabIndex = 37;
             this.txt_valor_pagar.UseSelectable = true;
+            this.txt_valor_pagar.Click += new System.EventHandler(this.txt_valor_pagar_Click);
+            this.txt_valor_pagar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_valor_pagar_KeyPress);
             // 
             // metroLabel9
             // 

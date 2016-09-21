@@ -20,7 +20,11 @@ namespace ProyectoECU.ECU_GestionEstudiante
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ECU_ConsultaEstudiante_Load(object sender, EventArgs e)
         {
             ECU_ConexionPostgres.coneccion.Open();
@@ -33,7 +37,11 @@ namespace ProyectoECU.ECU_GestionEstudiante
             dgv_estudiante.DataSource = ds.Tables[0];
             ECU_ConexionPostgres.coneccion.Close();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cedula"></param>
+        /// <returns></returns>
         public bool siExiste(string cedula)
         {
             int count = 0;
@@ -70,7 +78,11 @@ namespace ProyectoECU.ECU_GestionEstudiante
             }
         }
 
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rd_todos_Click(object sender, EventArgs e)
         {
             txt_cedula.Enabled = false;
@@ -78,7 +90,11 @@ namespace ProyectoECU.ECU_GestionEstudiante
             txt_cedula.Text = "";
             txt_nombre.Text = "";
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rd_cedula_CheckedChanged(object sender, EventArgs e)
         {
             txt_cedula.Enabled = true;
@@ -86,7 +102,11 @@ namespace ProyectoECU.ECU_GestionEstudiante
             txt_nombre.Text = "";
             txt_cedula.Focus();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rd_nombre_CheckedChanged(object sender, EventArgs e)
         {
             txt_cedula.Enabled = false;
@@ -94,7 +114,11 @@ namespace ProyectoECU.ECU_GestionEstudiante
             txt_cedula.Text = "";
             txt_nombre.Focus();
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_salir_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Estas seguro que deseas Salir?", "Estas Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -102,7 +126,11 @@ namespace ProyectoECU.ECU_GestionEstudiante
                 this.Close();
             }   
         }
-
+        /// <summary>
+        /// Bonto bucar registro
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_buscar_Click(object sender, EventArgs e)
         {
             if (rd_todos.Checked)
@@ -203,9 +231,5 @@ namespace ProyectoECU.ECU_GestionEstudiante
             }
         }
 
-        private void rd_todos_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

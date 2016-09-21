@@ -262,6 +262,7 @@
             // 
             // txt_horario_cur
             // 
+            this.txt_horario_cur.Enabled = false;
             this.txt_horario_cur.Lines = new string[0];
             this.txt_horario_cur.Location = new System.Drawing.Point(138, 105);
             this.txt_horario_cur.MaxLength = 32767;
@@ -275,6 +276,7 @@
             // 
             // txt_tipo_lic
             // 
+            this.txt_tipo_lic.Enabled = false;
             this.txt_tipo_lic.Lines = new string[0];
             this.txt_tipo_lic.Location = new System.Drawing.Point(138, 68);
             this.txt_tipo_lic.MaxLength = 32767;
@@ -308,6 +310,7 @@
             this.txx_precio_Matri.Size = new System.Drawing.Size(121, 23);
             this.txx_precio_Matri.TabIndex = 13;
             this.txx_precio_Matri.UseSelectable = true;
+            this.txx_precio_Matri.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txx_precio_Matri_KeyPress);
             // 
             // metroLabel5
             // 
@@ -338,7 +341,7 @@
             this.datePFecha.Location = new System.Drawing.Point(463, 145);
             this.datePFecha.MinimumSize = new System.Drawing.Size(0, 29);
             this.datePFecha.Name = "datePFecha";
-            this.datePFecha.Size = new System.Drawing.Size(243, 29);
+            this.datePFecha.Size = new System.Drawing.Size(251, 29);
             this.datePFecha.TabIndex = 6;
             // 
             // metroLabel7
@@ -429,7 +432,7 @@
             this.comb_tip_sangre.ItemHeight = 23;
             this.comb_tip_sangre.Location = new System.Drawing.Point(628, 107);
             this.comb_tip_sangre.Name = "comb_tip_sangre";
-            this.comb_tip_sangre.Size = new System.Drawing.Size(78, 29);
+            this.comb_tip_sangre.Size = new System.Drawing.Size(86, 29);
             this.comb_tip_sangre.TabIndex = 19;
             this.comb_tip_sangre.UseSelectable = true;
             // 
@@ -487,7 +490,7 @@
             this.txt_direcion.PasswordChar = '\0';
             this.txt_direcion.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.txt_direcion.SelectedText = "";
-            this.txt_direcion.Size = new System.Drawing.Size(609, 23);
+            this.txt_direcion.Size = new System.Drawing.Size(617, 23);
             this.txt_direcion.TabIndex = 5;
             this.txt_direcion.UseSelectable = true;
             // 
@@ -549,6 +552,7 @@
             this.txt_Cedula.Size = new System.Drawing.Size(146, 23);
             this.txt_Cedula.TabIndex = 1;
             this.txt_Cedula.UseSelectable = true;
+            this.txt_Cedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_telefono_KeyPress);
             // 
             // metroLabel12
             // 
@@ -574,8 +578,9 @@
             this.dateP_fecha_nacim.Location = new System.Drawing.Point(463, 63);
             this.dateP_fecha_nacim.MinimumSize = new System.Drawing.Size(0, 29);
             this.dateP_fecha_nacim.Name = "dateP_fecha_nacim";
-            this.dateP_fecha_nacim.Size = new System.Drawing.Size(243, 29);
+            this.dateP_fecha_nacim.Size = new System.Drawing.Size(251, 29);
             this.dateP_fecha_nacim.TabIndex = 6;
+            this.dateP_fecha_nacim.ValueChanged += new System.EventHandler(this.dateP_fecha_nacim_ValueChanged);
             // 
             // metroLabel1
             // 
@@ -621,7 +626,7 @@
             // txt_codMatri
             // 
             this.txt_codMatri.Lines = new string[] {
-        "MECU-004"};
+        "MECU-00"};
             this.txt_codMatri.Location = new System.Drawing.Point(158, 24);
             this.txt_codMatri.MaxLength = 32767;
             this.txt_codMatri.Name = "txt_codMatri";
@@ -631,7 +636,7 @@
             this.txt_codMatri.Size = new System.Drawing.Size(112, 23);
             this.txt_codMatri.TabIndex = 48;
             this.txt_codMatri.TabStop = false;
-            this.txt_codMatri.Text = "MECU-004";
+            this.txt_codMatri.Text = "MECU-00";
             this.txt_codMatri.UseSelectable = true;
             // 
             // metroLabel16
@@ -675,7 +680,6 @@
             this.Name = "ECU_GestionMatricula";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestion Matrícula";
-            this.Load += new System.EventHandler(this.ECU_GestionMatricula_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);

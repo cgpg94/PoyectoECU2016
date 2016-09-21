@@ -296,6 +296,7 @@
             this.dtp_fecha_Nac.Name = "dtp_fecha_Nac";
             this.dtp_fecha_Nac.Size = new System.Drawing.Size(143, 29);
             this.dtp_fecha_Nac.TabIndex = 38;
+            this.dtp_fecha_Nac.ValueChanged += new System.EventHandler(this.dtp_fecha_Nac_ValueChanged);
             // 
             // txt_apellido
             // 
@@ -335,6 +336,7 @@
             this.txt_cedula.Size = new System.Drawing.Size(111, 23);
             this.txt_cedula.TabIndex = 34;
             this.txt_cedula.UseSelectable = true;
+            this.txt_cedula.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_cedula_KeyPress);
             // 
             // metroLabel6
             // 

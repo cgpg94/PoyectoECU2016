@@ -235,7 +235,11 @@ namespace ProyectoECU.ECU_GestionInstructor
         }
 
    
-     
+     /// <summary>
+     /// metodo q desactiva u antiva controles
+     /// </summary>
+     /// <param name="sender"></param>
+     /// <param name="e"></param>
         private void rd_todos_CheckedChanged(object sender, EventArgs e)
         {
             txt_cedula.Enabled = false;
@@ -243,7 +247,11 @@ namespace ProyectoECU.ECU_GestionInstructor
             txt_cedula.Text = "";
             txt_nombre.Text = "";
         }
-
+        /// <summary>
+        /// metodo q desactiva u antiva controles
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rd_cedula_CheckedChanged_1(object sender, EventArgs e)
         {
             txt_cedula.Enabled = true;
@@ -251,13 +259,35 @@ namespace ProyectoECU.ECU_GestionInstructor
             txt_nombre.Text = "";
             txt_cedula.Focus();
         }
-
+        /// <summary>
+        /// metodo q desactiva u antiva controles
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void rd_nombre_CheckedChanged_1(object sender, EventArgs e)
         {
             txt_cedula.Enabled = false;
             txt_nombre.Enabled = true;
             txt_cedula.Text = "";
             txt_nombre.Focus();
+        }
+        /// <summary>
+        /// Metodo que se activa cada ves q puslsamos y llama a a un metodo de validacion de numeros
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txt_cedula_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validar.soloNumeros(e);
+        }
+        /// <summary>
+        /// Metodo que se activa cada ves q puslsamos y llama a a un metodo de validacion de letras
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txt_nombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            validar.soloLetras(e);
         }
 
       

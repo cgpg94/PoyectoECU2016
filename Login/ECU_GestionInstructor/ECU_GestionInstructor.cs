@@ -22,8 +22,10 @@ namespace ProyectoECU.Interfaces
         public ECU_GestionInstructor()
         {
             InitializeComponent();
-        }
+            dtp_fecha_Nac.Value = DateTime.Today.AddYears(-20);
 
+
+        }
         //metodo que bloquea todos los controloes del formulario
         private void bloquear()
         {
@@ -405,10 +407,6 @@ namespace ProyectoECU.Interfaces
 
         }
 
-        private void metroLabel6_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btn_nuevo_Click(object sender, EventArgs e)
         {
@@ -480,6 +478,23 @@ namespace ProyectoECU.Interfaces
         }
 
         private void txt_telefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            valida.soloNumeros(e);
+        }
+        /// <summary>
+        /// pARA VALIDAR SI ES MAYOR DE EDAD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dtp_fecha_Nac_ValueChanged(object sender, EventArgs e)
+        {
+            if (dtp_fecha_Nac.Value.AddYears(20) > DateTime.Today)
+            {
+                MessageBox.Show("Error, tiene que ser persona con mayor años", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void txt_cedula_KeyPress(object sender, KeyPressEventArgs e)
         {
             valida.soloNumeros(e);
         }

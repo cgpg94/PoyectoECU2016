@@ -68,7 +68,8 @@ namespace ProyectoECU.Interfaces
                 if (resultado.Read())
                 {   //resultado de la consulta
                     saldoPorPagar = resultado[0];
-                    txt_saldo.Text = saldoPorPagar.ToString();
+                    txt_saldo.Text = String.Format("{0:#,##0.00}", double.Parse(saldoPorPagar.ToString()));
+                    
                 }
                 //abrir la conexion
                 ECU_ConexionPostgres.coneccion.Close();
@@ -112,8 +113,8 @@ namespace ProyectoECU.Interfaces
                         txt_codigo_mat.Text = codi_matri.ToString();
                         txt_nombre.Text = nomb_estu.ToString();
                         txt_tipo_lice.Text = licencia.ToString();
-                        txt_valor_matri.Text = precio_matricula.ToString();
-                        txt_valor_curso.Text = cost_curso.ToString();
+                        txt_valor_matri.Text = String.Format("{0:#,##0.00}", double.Parse(precio_matricula.ToString()));
+                        txt_valor_curso.Text = String.Format("{0:#,##0.00}", double.Parse(cost_curso.ToString()));
                         saldo();
                         txt_valor_pagar.Enabled = true;
                         btn_confirmar.Enabled = true;
@@ -162,7 +163,7 @@ namespace ProyectoECU.Interfaces
         {
             try
             {
-                if (Decimal.Parse(txt_valor_pagar.Text) <= Decimal.Parse(txt_saldo.Text))
+                if (Double.Parse(txt_valor_pagar.Text) <= Double.Parse(txt_saldo.Text))
                 {
                     //abrir la conexion
                     ECU_ConexionPostgres.coneccion.Open();
@@ -178,14 +179,13 @@ namespace ProyectoECU.Interfaces
                 else
                 {
                     MessageBox.Show("La cantidad de dinero por ingresar supera el saldo, por favor ingrese una cantidad menor o igual a la del Saldo restante", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    MessageBox.Show("Test"+(Decimal.Parse(txt_valor_pagar.Text)+"   "+ Decimal.Parse(txt_saldo.Text));
                 }
 
 
             }
             catch (Exception EX)
             {
-                MessageBox.Show("Test" + EX);
+                MessageBox.Show("Error      " + EX);
                 throw;
             }
 
@@ -193,6 +193,47 @@ namespace ProyectoECU.Interfaces
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void txt_valor_pagar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txt_valor_pagar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == 8)
+            {
+                e.Handled = false;
+                return;
+            }
+
+
+            bool IsDec = false;
+            int nroDec = 0;
+
+            for (int i = 0; i < txt_valor_pagar.Text.Length; i++)
+            {
+                if (txt_valor_pagar.Text[i] == '.')
+                    IsDec = true;
+
+                if (IsDec && nroDec++ >= 2)
+                {
+                    e.Handled = true;
+                    return;
+                }
+
+
+            }
+
+            if (e.KeyChar >= 48 && e.KeyChar <= 57)
+                e.Handled = false;
+            else if (e.KeyChar == 46)
+                e.Handled = (IsDec) ? true : false;
+            else
+                e.Handled = true;
 
         }
     }

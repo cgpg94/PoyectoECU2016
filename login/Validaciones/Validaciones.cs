@@ -22,6 +22,37 @@ namespace ProyectoECU.ECU_GestionEstudiante
                 return false;
             }
         }
+
+
+        //Valida para solo ingresar letras
+        public void soloLetras(KeyPressEventArgs e)
+        {
+            try
+            {
+                if (Char.IsLetter(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else if (Char.IsControl(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else if (Char.IsSeparator(e.KeyChar))
+                {
+                    e.Handled = false;
+                }
+                else
+                {
+                    e.Handled = true;
+                   
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         public bool apellido_valido(string nombre)
         {
             Regex Val = new Regex(@"[a-zA-Z]");

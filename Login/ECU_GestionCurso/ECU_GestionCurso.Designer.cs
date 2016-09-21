@@ -200,12 +200,11 @@
             // 
             // metroLabel1
             // 
-            this.metroLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel1.Location = new System.Drawing.Point(290, 55);
+            this.metroLabel1.Location = new System.Drawing.Point(291, 58);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(156, 25);
             this.metroLabel1.TabIndex = 2;
@@ -213,7 +212,6 @@
             // 
             // metroPanel1
             // 
-            this.metroPanel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.metroPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.metroPanel1.Controls.Add(this.metroTile1);
             this.metroPanel1.Controls.Add(this.btnBuscar);
@@ -236,7 +234,7 @@
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
             this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(11, 96);
+            this.metroPanel1.Location = new System.Drawing.Point(12, 99);
             this.metroPanel1.Name = "metroPanel1";
             this.metroPanel1.Size = new System.Drawing.Size(696, 283);
             this.metroPanel1.TabIndex = 3;
@@ -305,6 +303,7 @@
             this.txt_costo.Size = new System.Drawing.Size(188, 23);
             this.txt_costo.TabIndex = 37;
             this.txt_costo.UseSelectable = true;
+            this.txt_costo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_costo_KeyPress);
             // 
             // txt_Duracion_curso
             // 
@@ -472,10 +471,7 @@
             this.Name = "ECU_GestionCurso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de Curso";
-            this.Load += new System.EventHandler(this.ECU_GestionCurso_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ECU_GestionCurso_KeyDown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.ECU_GestionCurso_KeyUp);
-            this.menuStrip1.ResumeLayout(false);
+             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

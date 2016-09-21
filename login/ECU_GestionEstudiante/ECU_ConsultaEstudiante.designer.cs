@@ -80,8 +80,7 @@
             this.rd_todos.TabStop = true;
             this.rd_todos.Text = "Todos";
             this.rd_todos.UseSelectable = true;
-            this.rd_todos.CheckedChanged += new System.EventHandler(this.rd_todos_CheckedChanged);
-            this.rd_todos.Click += new System.EventHandler(this.rd_todos_Click);
+          this.rd_todos.Click += new System.EventHandler(this.rd_todos_Click);
             // 
             // txt_cedula
             // 

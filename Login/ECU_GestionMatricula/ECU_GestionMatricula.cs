@@ -15,31 +15,39 @@ namespace ProyectoECU
 {
     public partial class ECU_GestionMatricula : Form
     {
+        /// <summary>
+        /// declaracion de variables
+        /// </summary>
         public static int ModificarRegistro = 0;
         public static object id_persona;
         public static object id_curso;
         public static object codi_matri;
         public static object fecha_matricula;
         ECU_GestionEstudiante.Validaciones valida = new ECU_GestionEstudiante.Validaciones();
-
+        /// <summary>
+        /// iniciar componentes
+        /// </summary>
         public ECU_GestionMatricula()
         {
             InitializeComponent();
             this.cargar_combos();
             txt_Cedula.Focus();
+            dateP_fecha_nacim.Value = DateTime.Today.AddYears(-18);
         }
-
-
-
+        /// <summary>
+        /// Para buscar por cedula  al estudiente llama a un metodo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Buscar_Click(object sender, EventArgs e)
         {
             buscarEstudiante(txt_Cedula.Text);
 
         }
-
-
-
-        //metodo buscar estudiante
+        /// <summary>
+        ///  metodo buscar estudiante por cedula
+        /// </summary>
+        /// <param name="cedula"></param>
         public void buscarEstudiante(string cedula)
         {
             if (cedula.Equals(""))
@@ -127,19 +135,20 @@ namespace ProyectoECU
                     ECU_ConexionPostgres.coneccion.Close();
 
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-
+                    MessageBox.Show("Error:  "+ex);
                     throw;
                 }
             }
 
 
         }
-        //desactiva los controles
+        /// <summary>
+        ///  desactiva los controles
+        /// </summary>
         public void desactivarcontroles()
         {
-
             txt_nombre.Enabled = false;
             txtApellido.Enabled = false;
             dateP_fecha_nacim.Enabled = false;
@@ -158,7 +167,9 @@ namespace ProyectoECU
 
         }
 
-        //activa los controles 
+        /// <summary>
+        ///  //activa los controles del formulario
+        /// </summary>
         public void activarControles()
         {
             txt_nombre.Enabled = true;
@@ -167,20 +178,19 @@ namespace ProyectoECU
             txt_telefono.Enabled = true;
             comb_tip_sangre.Enabled = true;
             txt_direcion.Enabled = true;
-            txt_prec_curso.Enabled = true;
             txx_precio_Matri.Enabled = true;
             comb_Cod_Curso.Enabled = true;
             comb_Instructor.Enabled = true;
-            datePFecha.Enabled = true;
-            comb_Instructor.Enabled = true;
         }
-
+        /// <summary>
+        /// Metodo para reiniciar los controles del formulario
+        /// </summary>
         public void reiniciarControles()
         {
             txt_Cedula.Text = "";
             txt_nombre.Text = "";
             txtApellido.Text = "";
-            dateP_fecha_nacim.Value = DateTime.Now;
+            dateP_fecha_nacim.Value = DateTime.Today.AddYears(-18);
             txt_telefono.Text = "";
             comb_tip_sangre.SelectedValue = 1;
             comb_Cod_Curso.SelectedValue = 1;
@@ -195,6 +205,9 @@ namespace ProyectoECU
             txx_precio_Matri.Text = "";
             txt_Cedula.Focus();
         }
+        /// <summary>
+        /// metodo para cargar formulario
+        /// </summary>
         public void cargar_combos()
         {
             //abrir la conexion
@@ -225,7 +238,6 @@ namespace ProyectoECU
             comb_Cod_Curso.ValueMember = "id_cur";
             ECU_ConexionPostgres.coneccion.Close();
 
-
             //abrir la conexion
             ECU_ConexionPostgres.coneccion.Open();
             //consulta de usuario
@@ -241,6 +253,12 @@ namespace ProyectoECU
 
             ECU_ConexionPostgres.coneccion.Close();
         }
+
+        /// <summary>
+        /// metodo para el borno nuevo de la barra
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_nuevoBarra_Click(object sender, EventArgs e)
         {
             //mensaje de dialogo
@@ -258,6 +276,11 @@ namespace ProyectoECU
             }
         }
 
+        /// <summary>
+        /// metodo para la selecion de curso
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void comb_Cod_Curso_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comb_Cod_Curso.Enabled)
@@ -285,7 +308,7 @@ namespace ProyectoECU
                     //compara resultado con el dato ingresado
                     txt_tipo_lic.Text = tipo_licencia.ToString();
                     txt_horario_cur.Text = horario.ToString();
-                    txt_prec_curso.Text = costo_curso.ToString();
+                    txt_prec_curso.Text =  String.Format("{0:#,##0.00}", double.Parse(costo_curso.ToString()));
                     btn_guardar.Enabled = true;
                 }
                 ECU_ConexionPostgres.coneccion.Close();
@@ -293,7 +316,11 @@ namespace ProyectoECU
             }
 
         }
-
+        /// <summary>
+        /// metos para guardar los registros
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_guardar_Click(object sender, EventArgs e)
         {
             try
@@ -347,38 +374,20 @@ namespace ProyectoECU
                     }
 
                 }
-                if (ModificarRegistro == 3)
-                {
-                    if (camposVacios() == false)
-                    {
-                        //abrir la conexion
-                        ECU_ConexionPostgres.coneccion.Open();
-                        NpgsqlCommand comando2 = new NpgsqlCommand("select from pro_act_mat('" + codi_matri.ToString() + "'," + id_persona.ToString() + "," + id_curso.ToString() + "," + comb_Instructor.SelectedValue + ",'" + fecha_matricula.ToString() + "'," + txx_precio_Matri.Text + ");", ECU_ConexionPostgres.coneccion);
-                        //ejecutar comando
-                        NpgsqlDataReader resultado2 = comando2.ExecuteReader();
-                        ECU_ConexionPostgres.coneccion.Close();
-                        MessageBox.Show("Los datos an sido guardados correctamente");
-                        reiniciarControles();
-                        desactivarcontroles();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Existen campos vacios no se puede guardar", "Aviso", MessageBoxButtons.OK);
-                    }
-
-                }
-
-
-
+                
             }
             catch (Exception ex)
             {
-                MessageBox.Show(""+ex+"      "+id_persona.ToString()+"     "+id_curso.ToString() + "," + comb_Instructor.SelectedValue + "," + txx_precio_Matri.Text + "");
+                MessageBox.Show("" + ex);
                 ECU_ConexionPostgres.coneccion.Close();
                 throw;
             }
         }
-        //verifica los campos vacios
+        /// <summary>
+        ///  //verifica los campos vacios
+        /// </summary>
+        /// <returns></returns>
+
         public bool camposVacios()
         {
             bool estado = false;
@@ -419,7 +428,9 @@ namespace ProyectoECU
             }
         }
 
-        //buscar por codigo de matricula
+        /// <summary>
+        /// //buscar por codigo de matricula
+        /// </summary>
         public void buscarMatriCodi()
         {
             try
@@ -472,9 +483,7 @@ namespace ProyectoECU
                             desactivarcontroles();
                             btn_guardar.Enabled = false;
                             txt_Cedula.Enabled = false;
-
                         
-
                     }
                 }
                 else
@@ -482,14 +491,13 @@ namespace ProyectoECU
                     ECU_ConexionPostgres.coneccion.Close();
                     MessageBox.Show("La matricula con cdigo: " + txt_codMatri.Text + " no se encuentra registrado", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
                 }
 
 
             }
-            catch (Exception)
+            catch (Exception EX)
             {
-
+                MessageBox.Show("Error: "+EX);
                 throw;
             }
 
@@ -565,8 +573,52 @@ namespace ProyectoECU
             valida.soloNumeros(e);
         }
 
-        private void ECU_GestionMatricula_Load(object sender, EventArgs e)
+        /// <summary>
+        /// pARA VALIDAR SI ES MAYOR DE EDAD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dateP_fecha_nacim_ValueChanged(object sender, EventArgs e)
         {
+            if (dateP_fecha_nacim.Value.AddYears(18) > DateTime.Today)
+            {
+                MessageBox.Show("Error, tiene que ser persona mayor a 18 años", "Se requiere persona mayor de edad", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        /// <summary>
+        /// PARA VALIDAR LA CANTIDAD DEL PRECIO
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txx_precio_Matri_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+            if (e.KeyChar == 8)
+            {
+                e.Handled = false;
+                return;
+            }
+
+            bool IsDec = false;
+            int nroDec = 0;
+
+            for (int i = 0; i < txx_precio_Matri.Text.Length; i++)
+            {
+                if (txx_precio_Matri.Text[i] == '.')
+                    IsDec = true;
+
+                if (IsDec && nroDec++ >= 2)
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+            if (e.KeyChar >= 48 && e.KeyChar <= 57)
+                e.Handled = false;
+            else if (e.KeyChar == 46)
+                e.Handled = (IsDec) ? true : false;
+            else
+                e.Handled = true;
 
         }
     }

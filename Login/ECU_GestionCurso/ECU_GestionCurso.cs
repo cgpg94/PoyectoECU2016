@@ -18,6 +18,9 @@ namespace ProyectoECU.Interfaces
 
         public static bool ModificarRegistro = false;
         public static object id_curo_Modificar = 0;
+        /// <summary>
+        /// PARA INICIALIZAR COMPINENTES DEL FORM
+        /// </summary>
         public ECU_GestionCurso()
         {
             InitializeComponent();
@@ -27,13 +30,21 @@ namespace ProyectoECU.Interfaces
         }
 
 
-
+        /// <summary>
+        /// METODO PARA LLAMAR EL FORMULARIO CONSULTA
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ECU_ConsultaCurso consultaCurso = new ECU_ConsultaCurso();
             consultaCurso.ShowDialog();
         }
-
+        /// <summary>
+        /// METODO BUSCAR CURSO POR CODIGO DE CURSO
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             if (txt_codCur.Text.Equals(""))
@@ -217,7 +228,11 @@ namespace ProyectoECU.Interfaces
             }
 
         }
-
+        /// <summary>
+        /// METODO PARA ELIMINAR CURSO
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_Eliminar_Click(object sender, EventArgs e)
         {
             if (txt_codCur.Text != "")
@@ -300,6 +315,9 @@ namespace ProyectoECU.Interfaces
             txt_Duracion_curso.Enabled = true;
 
         }
+        /// <summary>
+        /// REINICIA LOS CONTROLES
+        /// </summary>
         public void reiniciarControles()
         {
             txt_codCur.Text = "";
@@ -307,7 +325,11 @@ namespace ProyectoECU.Interfaces
             txt_descrp_curso.Text = "";
             txt_Duracion_curso.Text = "";
         }
-        //verifica los campos vacios
+        /// <summary>
+        /// / //verifica los campos vacios
+        /// </summary>
+        /// <returns></returns>
+
         public bool camposVacios()
         {
             bool estado = false;
@@ -325,7 +347,11 @@ namespace ProyectoECU.Interfaces
 
 
 
-
+        /// <summary>
+        /// METODO BUSCAR MEDIANTE LA BARRA 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_buscarBarra_Click(object sender, EventArgs e)
         {
 
@@ -382,16 +408,20 @@ namespace ProyectoECU.Interfaces
 
 
             }
-            catch (Exception)
+            catch (Exception EX)
             {
-
+                MessageBox.Show("Error: 0"+EX);
                 throw;
             }
 
 
 
         }
-
+        /// <summary>
+        /// PARA REINICIAR LOS CONTROLES DEL FORMULARIO
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             //mensaje de dialogo
@@ -418,31 +448,11 @@ namespace ProyectoECU.Interfaces
 
         }
 
-        private void ECU_GestionCurso_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Alt && e.KeyCode == Keys.F4)
-            {
-                //cuadro de dialogo
-                DialogResult rs = MessageBox.Show("¿ Desea cerrar esta ventana ?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (rs == DialogResult.Yes)
-                {
-                    //cierra el formulario
-                    Close();
-                }
-                else
-                {
-                    //no lo cierra
-                    e.Handled = true;
-                    MessageBox.Show("¿ Desea cerrar esta ventana ?", "Mensaje", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                }
-
-            }
-        }
-        private void ECU_GestionCurso_KeyUp(object sender, KeyEventArgs e)
-        {
-        }
-
+        /// <summary>
+        /// boton salir para salir xD
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_salir_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Estas seguro que deseas Salir?", "Estas Saliendo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
@@ -452,28 +462,73 @@ namespace ProyectoECU.Interfaces
         }
 
 
-
+        /// <summary>
+        /// calcula la duracion del curso
+        /// </summary>
+        /// <param name="FechaFin"></param>
+        /// <param name="FechaInicio"></param>
+        /// <returns></returns>
         public static decimal MonthDifference(DateTime FechaFin, DateTime FechaInicio)
         {
             return Math.Abs((FechaFin.Month - FechaInicio.Month) + 12 * (FechaFin.Year - FechaInicio.Year));
 
         }
+        /// <summary>
+        /// vvalidacion de fecha
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void datetime_fecha_fin_CloseUp(object sender, EventArgs e)
         {
             txt_Duracion_curso.Enabled = false;
             txt_Duracion_curso.Text = (MonthDifference(datetime_fecha_fin.Value, datetime_fecha_inic.Value)).ToString() + " Meses ";
 
         }
-
+        /// <summary>
+        /// ayuda
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ayudaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ProyectoECU.ECU_Ayuda.ECU_Ayuda gestionAyuda = new ProyectoECU.ECU_Ayuda.ECU_Ayuda();//Instanciamos
             gestionAyuda.Show();//Mostramos 
         }
 
-        private void ECU_GestionCurso_Load(object sender, EventArgs e)
+        /// <summary>
+        /// para validar el precio 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txt_costo_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+            if (e.KeyChar == 8)
+            {
+                e.Handled = false;
+                return;
+            }
+
+            bool IsDec = false;
+            int nroDec = 0;
+
+            for (int i = 0; i < txt_costo.Text.Length; i++)
+            {
+                if (txt_costo.Text[i] == '.')
+                    IsDec = true;
+
+                if (IsDec && nroDec++ >= 2)
+                {
+                    e.Handled = true;
+                    return;
+                }
+            }
+            if (e.KeyChar >= 48 && e.KeyChar <= 57)
+                e.Handled = false;
+            else if (e.KeyChar == 46)
+                e.Handled = (IsDec) ? true : false;
+            else
+                e.Handled = true;
         }
 
      
