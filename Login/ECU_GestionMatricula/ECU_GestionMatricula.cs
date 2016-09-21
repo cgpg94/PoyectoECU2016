@@ -453,34 +453,7 @@ namespace ProyectoECU
                     //compara resultado con el dato ingresado
                     if (codi_matri.Equals(txt_codMatri.Text))
                     {
-                        //mensaje de dialogo
-                        DialogResult respuesta = MessageBox.Show("La matrícula ya existe, ¿Desea modificarlo?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        //si es si entonces llena los texbox
-                        if (respuesta == DialogResult.Yes)
-                        {
-                            ECU_ConexionPostgres.coneccion.Close();
-                            txt_Cedula.Text = ced_Est.ToString();
-                            txt_nombre.Text = nomb_estu.ToString();
-                            txtApellido.Text = apel_estu.ToString();
-                            dateP_fecha_nacim.Text = fech_nacim_estu.ToString();
-                            txt_direcion.Text = direcion_estud.ToString();
-                            txt_telefono.Text = telefono_estu.ToString();
-                            comb_tip_sangre.SelectedIndex = Int32.Parse(id_tipo_sangre.ToString());
-                            datePFecha.Text = fecha_matricula.ToString();
-                            comb_Cod_Curso.SelectedValue = Int32.Parse(id_curso.ToString());
-                            comb_Instructor.SelectedValue = Int32.Parse(id_instructor.ToString());
-                            txt_prec_curso.Text = cost_curso.ToString();
-                            txx_precio_Matri.Text = precio_matricula.ToString();
-                            txt_tipo_lic.Text = tip_licen.ToString();
-                            txt_horario_cur.Text = horario_curso.ToString();
-                            activarControles();
-                            ModificarRegistro = 3;
-                            btn_guardar.Enabled = true;
-
-
-                        }
-                        else if (respuesta == DialogResult.No)
-                        {
+                        
                             ECU_ConexionPostgres.coneccion.Close();
                             txt_Cedula.Text = ced_Est.ToString();
                             txt_nombre.Text = nomb_estu.ToString();
@@ -500,7 +473,7 @@ namespace ProyectoECU
                             btn_guardar.Enabled = false;
                             txt_Cedula.Enabled = false;
 
-                        }
+                        
 
                     }
                 }

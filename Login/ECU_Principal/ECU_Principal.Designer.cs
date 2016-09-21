@@ -37,8 +37,8 @@
             this.ayudaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.texto_Usuario = new System.Windows.Forms.Label();
+            this.btn_usuario = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,7 +51,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_usuario)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -129,8 +129,8 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.pictureBox6);
+            this.panel1.Controls.Add(this.texto_Usuario);
+            this.panel1.Controls.Add(this.btn_usuario);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.pictureBox5);
             this.panel1.Controls.Add(this.label4);
@@ -147,28 +147,28 @@
             this.panel1.Size = new System.Drawing.Size(835, 477);
             this.panel1.TabIndex = 2;
             // 
-            // label6
+            // texto_Usuario
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(581, 387);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(43, 13);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Usuario";
+            this.texto_Usuario.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.texto_Usuario.AutoSize = true;
+            this.texto_Usuario.Location = new System.Drawing.Point(581, 387);
+            this.texto_Usuario.Name = "texto_Usuario";
+            this.texto_Usuario.Size = new System.Drawing.Size(43, 13);
+            this.texto_Usuario.TabIndex = 12;
+            this.texto_Usuario.Text = "Usuario";
             // 
-            // pictureBox6
+            // btn_usuario
             // 
-            this.pictureBox6.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pictureBox6.Image = global::ProyectoECU.Properties.Resources.add_user1;
-            this.pictureBox6.Location = new System.Drawing.Point(529, 251);
-            this.pictureBox6.MaximumSize = new System.Drawing.Size(159, 133);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(159, 133);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 11;
-            this.pictureBox6.TabStop = false;
-            this.pictureBox6.Click += new System.EventHandler(this.tab_Usuario_Click);
+            this.btn_usuario.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_usuario.Image = global::ProyectoECU.Properties.Resources.add_user1;
+            this.btn_usuario.Location = new System.Drawing.Point(529, 251);
+            this.btn_usuario.MaximumSize = new System.Drawing.Size(159, 133);
+            this.btn_usuario.Name = "btn_usuario";
+            this.btn_usuario.Size = new System.Drawing.Size(159, 133);
+            this.btn_usuario.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btn_usuario.TabIndex = 11;
+            this.btn_usuario.TabStop = false;
+            this.btn_usuario.Click += new System.EventHandler(this.tab_Usuario_Click);
             // 
             // label5
             // 
@@ -187,6 +187,7 @@
             this.pictureBox5.Location = new System.Drawing.Point(335, 251);
             this.pictureBox5.MaximumSize = new System.Drawing.Size(159, 133);
             this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Padding = new System.Windows.Forms.Padding(10);
             this.pictureBox5.Size = new System.Drawing.Size(159, 133);
             this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox5.TabIndex = 9;
@@ -208,8 +209,10 @@
             this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox4.Image = global::ProyectoECU.Properties.Resources.contra_entrega;
             this.pictureBox4.Location = new System.Drawing.Point(133, 251);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 3, 100, 3);
             this.pictureBox4.MaximumSize = new System.Drawing.Size(159, 133);
             this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Padding = new System.Windows.Forms.Padding(3);
             this.pictureBox4.Size = new System.Drawing.Size(159, 133);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 7;
@@ -297,12 +300,13 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sistema de Matriculación";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.ECU_Principal_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ECU_Principal_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btn_usuario)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -333,9 +337,9 @@
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox btn_usuario;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label texto_Usuario;
 
 
 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoECU.ECU_Ayuda;
+using Login;
 
 namespace ProyectoECU.Interfaces
 {
@@ -16,6 +17,16 @@ namespace ProyectoECU.Interfaces
         public ECU_Principal()
         {
             InitializeComponent();
+            //instancia de form2 pasandole el valor del textbox
+
+            if ((ECU_Login.tipo.ToString()).Equals("2"))
+            {
+                usuarioToolStripMenuItem.Visible = false;
+                btn_usuario.Visible = false;
+                texto_Usuario.Visible = false;
+
+
+            }
         }
 
         private void tab_Estudiantes_Click(object sender, EventArgs e)
@@ -45,8 +56,18 @@ namespace ProyectoECU.Interfaces
 
         private void tab_Cursos_Click(object sender, EventArgs e)
         {
-            Form gestionCurso = new ECU_GestionCurso();//Instanciamos
-            gestionCurso.ShowDialog();//Mostramos 
+            if ((ECU_Login.tipo.ToString()).Equals("2"))
+            {
+                Form consu_cur = new ECU_ConsultaCurso();
+                consu_cur.ShowDialog();
+
+            }
+            else
+            {
+                Form gestionCurso = new ECU_GestionCurso();//Instanciamos
+                gestionCurso.ShowDialog();//Mostramos 
+            }
+            
         }
 
         private void tab_Usuario_Click(object sender, EventArgs e)
@@ -81,8 +102,14 @@ namespace ProyectoECU.Interfaces
             }
         }
 
-       
-    
-       
+        private void ECU_Principal_Load(object sender, EventArgs e)
+        {
+
+
+        }
+
+
+
+
     }
 }

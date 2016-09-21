@@ -205,7 +205,7 @@
             this.groupBox1.Controls.Add(this.metroLabel3);
             this.groupBox1.Controls.Add(this.metroLabel2);
             this.groupBox1.Controls.Add(this.metroLabel1);
-            this.groupBox1.Location = new System.Drawing.Point(29, 85);
+            this.groupBox1.Location = new System.Drawing.Point(27, 86);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(667, 192);
             this.groupBox1.TabIndex = 4;
@@ -413,7 +413,7 @@
             this.groupBox2.Controls.Add(this.txt_valor_pagar);
             this.groupBox2.Controls.Add(this.metroLabel9);
             this.groupBox2.Controls.Add(this.metroLabel10);
-            this.groupBox2.Location = new System.Drawing.Point(29, 283);
+            this.groupBox2.Location = new System.Drawing.Point(27, 284);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(667, 80);
             this.groupBox2.TabIndex = 5;
@@ -468,7 +468,7 @@
             this.metroLabel11.AutoSize = true;
             this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Tall;
             this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel11.Location = new System.Drawing.Point(336, 57);
+            this.metroLabel11.Location = new System.Drawing.Point(334, 70);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(72, 25);
             this.metroLabel11.TabIndex = 6;

@@ -16,9 +16,12 @@ namespace Login
 {
     public partial class ECU_Login : Form 
     {
+         public static object tipo= 0;
+
         public ECU_Login()
         {
             InitializeComponent();
+
         }
 
         private void txt_Usuario_KeyPress(object sender, KeyPressEventArgs e)
@@ -69,11 +72,14 @@ namespace Login
                     NpgsqlDataReader resultado = command.ExecuteReader();
 
 
+                    
 
                     if (resultado.Read())
                     {
+                        
                         //FORMULARIO PRINCIPAL 
-                        Form formularioprincipal = new ECU_Principal();
+                        tipo = resultado[1];
+                        Form formularioprincipal = new ECU_Principal();                   
                         ECU_ConexionPostgres.coneccion.Close();
                         this.Hide();
                         formularioprincipal.ShowDialog();
@@ -95,10 +101,13 @@ namespace Login
                 }  
 
             }
-            
-        }
+
+            }
 
 
-          
+
+
+
+
     }
 }
